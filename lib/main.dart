@@ -5,7 +5,8 @@ import 'package:testing_asg1/features/authentication/screens/onboarding/onboardi
 import 'package:testing_asg1/utils/theme/theme.dart';
 
 // ------ Entry point of Flutter App ------
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
   // Todo: Add Widgets Binding
   // Todo: Init Local Storage 
