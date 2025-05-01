@@ -48,13 +48,13 @@ class OnBoardingScreen extends StatelessWidget {
           ),
 
           /// Skip Button 
-          OnBoardingSkip(),
+          const OnBoardingSkip(),
           
           /// Dot Navigation SmoothPageIndicator 
-          OnBoardingDotNavigation(),
+          const OnBoardingDotNavigation(),
           
           /// Circular Button
-          OnBoardingNextButton(),
+          const OnBoardingNextButton(),
         ],
       ),
     );
