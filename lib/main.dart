@@ -23,6 +23,10 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
+      home: Scaffold(
+        appBar: AppBar(title: Text("Welcome")),
+        body: Center(child: Text("App Loaded")),
+      ),
     );
   }
 }
