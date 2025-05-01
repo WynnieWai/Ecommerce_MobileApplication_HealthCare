@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:testing_asg1/utils/theme/theme.dart';
 
+// ------ Entry point of Flutter App ------
 void main() {
+
+  // Todo: Add Widgets Binding
+  // Todo: Init Local Storage 
+  // Todo: Await Native Splash
+  // Todo: Initialize Firebase 
+  // Todo: Initialize Authentication 
+
   runApp(const App());
 }
 
+// -- Use this Class to setup themes, initial Bindings, any animations and much --
 class App extends StatelessWidget {
   const App({super.key});
 
