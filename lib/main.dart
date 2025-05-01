@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:testing_asg1/features/authentication/screens.onboarding/onboarding/onboarding.dart';
-import 'package:testing_asg1/navigation_menu.dart';
+import 'package:testing_asg1/features/authentication/screens/login/login.dart';
+import 'package:testing_asg1/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:testing_asg1/utils/theme/theme.dart';
 
 // ------ Entry point of Flutter App ------

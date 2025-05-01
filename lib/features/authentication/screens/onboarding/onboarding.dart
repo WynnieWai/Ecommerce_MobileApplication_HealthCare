@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:iconsax/iconsax.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:testing_asg1/features/authentication/controllers.onboarding/onboarding_controller.dart';
-import 'package:testing_asg1/features/authentication/screens.onboarding/widgets/onboarding_dot_navigation.dart';
-import 'package:testing_asg1/features/authentication/screens.onboarding/widgets/onboarding_next_button.dart';
-import 'package:testing_asg1/features/authentication/screens.onboarding/widgets/onboarding_page.dart';
-import 'package:testing_asg1/features/authentication/screens.onboarding/widgets/onboarding_skip.dart';
-import 'package:testing_asg1/utils/constants/colors.dart';
+import 'package:testing_asg1/features/authentication/screens/onboarding/widgets/onboarding_dot_navigation.dart';
+import 'package:testing_asg1/features/authentication/screens/onboarding/widgets/onboarding_next_button.dart';
+import 'package:testing_asg1/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
+import 'package:testing_asg1/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
+
+
 import 'package:testing_asg1/utils/constants/image_strings.dart';
-import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/constants/text_strings.dart';
-import 'package:testing_asg1/utils/device/device_utility.dart';
-import 'package:testing_asg1/utils/helpers/helper_functions.dart';
+
+
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
