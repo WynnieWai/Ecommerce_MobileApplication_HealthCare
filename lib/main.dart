@@ -9,6 +9,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      themeMode: ThemeMode.system,
+      theme: ,
+      darkTheme: ThemeData(),
+    );
   }
 }
