@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testing_asg1/utils/theme/theme.dart';
 
 void main() {
   runApp(const App());
@@ -11,8 +12,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.system,
-      theme: ,
-      darkTheme: ThemeData(),
+      theme: TAppTheme.lightTheme,
+      darkTheme: TAppTheme.darkTheme,
     );
   }
 }
