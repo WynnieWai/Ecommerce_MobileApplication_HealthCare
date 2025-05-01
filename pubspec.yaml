@@ -44,6 +44,7 @@ dependencies:
 
   # State Management 
   get: 
+  intl: ^0.20.2
 
   # Product Specific
 
