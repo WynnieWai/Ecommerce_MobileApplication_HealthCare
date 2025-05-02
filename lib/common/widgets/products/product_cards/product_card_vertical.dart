@@ -8,7 +8,11 @@ class TProductCardVertical extends StatelessWidget{
     return Container(
       width:180,
       padding:const EdgeInsets.all(1),
-      decoration:BoxDecoration()
+      decoration:BoxDecoration(
+        // boxShadow:[TShadowStyle.verticalProductShadow],
+        // borderRadius:BorderRadius.circular(TSizes.productImageRadius),
+        // color:THelperFunctions.isDarkMode(context)?TColors.darkerGrey:TColors.white,
+      )
     );
   }
 }
