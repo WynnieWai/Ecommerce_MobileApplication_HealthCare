@@ -20,15 +20,24 @@ class TProductCardVertical extends StatelessWidget{
         color:dark?TColors.darkerGrey:TColors.white,
       ),
 
-      child:Column(
-        // children:[
-        //   ///Thumbnail,wishlist button,discount tag
-        //   TRoundedContainer();
+      // child:Column(
+      //   children:[
+      //     ///Thumbnail,wishlist button,discount tag
+      //     TRoundedContainer(
+      //       height:180,
+      //       padding:const EdgeInsets.all(TSizes.sm),
+      //       backgroundColor:dark?TColors.dark:TColors.light,
+      //       child:Stack(
+      //         children: [
+      //           TRoundedImage(imageUrl:TImages.productImage1)
+      //         ],
+      //       )
+      //     ),
 
-        //   ///Details
-        // ]
+      //     ///Details
+      //   ]
 
-      )
+      // )
     );
   }
 }
