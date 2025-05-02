@@ -21,7 +21,13 @@ class TProductCardVertical extends StatelessWidget{
       ),
 
       child:Column(
-        
+        // children:[
+        //   ///Thumbnail,wishlist button,discount tag
+        //   TRoundedContainer();
+
+        //   ///Details
+        // ]
+
       )
     );
   }
