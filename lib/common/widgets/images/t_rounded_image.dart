@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:testing_asg1/utils/constants/colors.dart';
+import 'package:testing_asg1/utils/constants/sizes.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 
 class TRoundedImage extends StatelessWidget {
   const TRoundedImage({
-    super.key, 
-    this.width, 
-    this.height, 
-    required this.imageUrl, 
-    this.applyImageRadius = true, 
-    this.border, 
-    this.backgroundColor = TColors.light, 
-    this.fit = BoxFit.contain, 
-    this.padding, 
-    this.isNetworkImage = false, 
-    this.onPressed, 
-    this.borderRadius = TSizes.md,
+    super.key,
+    this.border,
+    this.padding,
+    this.onPressed,
+    this.width,
+    this.height,
+    this.applyImageRadius=true,
+    required this.imageUrl,
+    this.fit=BoxFit.contain,
+    this.backgroundColor=TColors.light,
+    this.isNetworkImage=false,
+    this.borderRadius=TSizes.md,
   });
 
   final double? width, height;
