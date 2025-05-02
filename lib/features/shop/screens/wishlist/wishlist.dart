@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
-import 'package:testing_asg1/features/shop/screens/home/home.dart';
 
 import '../../../../utils/constants/sizes.dart';
 

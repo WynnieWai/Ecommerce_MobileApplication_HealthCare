@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/search_container.dart';
-import 'package:testing_asg1/common/widgets/image_text_widgets/vertical_image_text.dart';
+import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
+import 'package:testing_asg1/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_categories.dart';
@@ -52,14 +52,18 @@ class HomeScreen extends StatelessWidget {
 
             /// Body -- Tutorial [Section # 3, video #5]
             Padding(
-              padding: EdgeInsets.all(TSizes.defaultSpace),
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children:[
-                  TPromoSlider(banners: [TImages.promoBanner1, TImages.promoBanner2, TImages.promoBanner3]),
-                  // TProductCardVertical();
-               ]
-              )
-            )
+                  //Promo Slider
+                  const TPromoSlider(banners: [TImages.promoBanner1, TImages.promoBanner2, TImages.promoBanner3]),
+                  const SizedBox(height:TSizes.spaceBtwSections),
+
+                  //Popular Product
+                  TGridLayout(itemCount: 4, itemBuilder: (_,index)=>const TProductCardVertical())
+               ],
+              ),
+            ),
           ],
         ),
       ),
