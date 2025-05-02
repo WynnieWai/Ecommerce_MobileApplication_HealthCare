@@ -15,6 +15,5 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const OnBoardingScreen(),
     );
-    //hallo
   }
 }
