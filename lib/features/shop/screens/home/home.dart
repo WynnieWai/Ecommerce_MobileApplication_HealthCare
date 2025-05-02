@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/primary_header_container.dart';
+import 'package:testing_asg1/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:testing_asg1/common/widgets/image_text_widgets/vertical_image_text.dart';
+import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_appbar.dart';
+import 'package:testing_asg1/features/shop/screens/home/widgets/home_categories.dart';
+import 'package:testing_asg1/utils/constants/colors.dart';
+import 'package:testing_asg1/utils/constants/image_strings.dart';
+import 'package:testing_asg1/utils/constants/sizes.dart';
+import 'package:testing_asg1/utils/device/device_utility.dart';
+import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -16,11 +26,27 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   /// -- Appbar --
-                  THomeAppBar(),
+                  const THomeAppBar(),
+                  const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Searchbar --
+                  const TSearchContainer(text: 'Search in Store'),
+                  const SizedBox(height: TSizes.spaceBtwSections),
                   
                   /// -- Categories --
+                  Padding(
+                    padding: EdgeInsets.only(left: TSizes.defaultSpace), 
+                    child: Column(
+                      children: [
+                        /// Heading 
+                        TSectionHeading(title: 'Popular Categories', showActionButton: false, textColor: Colors.white),
+                        const SizedBox(height: TSizes.spaceBtwItems),
+
+                        /// Categories 
+                        THomeCategories(),
+                      ],
+                    ),
+                  ),
                 ],
               )
             ),
@@ -30,6 +56,10 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
 
 
