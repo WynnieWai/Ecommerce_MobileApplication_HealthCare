@@ -16,9 +16,9 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   /// -- Appbar --
-                  THomeAppBar(),
+                THomeAppBar(),
 
-                  /// -- Searchbar --
+
                   
                   /// -- Categories --
                 ],
