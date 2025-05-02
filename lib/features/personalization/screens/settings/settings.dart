@@ -13,6 +13,7 @@ class SettingScreen extends StatelessWidget{
             TPrimaryHeaderContainer(
               child:Column(
                 children:[
+                  //TAppBar(title:Text('Account'),style:Theme.of(context).textTheme.headlineMedium!.apply(color:TColors.white)),
                 ]
               )
             ),

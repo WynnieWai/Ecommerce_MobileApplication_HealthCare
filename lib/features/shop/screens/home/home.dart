@@ -50,6 +50,16 @@ class HomeScreen extends StatelessWidget {
                 ],
               )
             ),
+
+            //Padding(
+              //padding:EdgeInsets.all(TSizes.defaultSpace),
+              //child:Column(
+                //children:[
+                  //TPromoSlider(banners:[TImage.promoBanner1,TImages.promoBanner2,TImages.promoBanner3]),
+                  //TProductCardVertical();
+               // ]
+              //)
+            //)
           ],
         ),
       ),
