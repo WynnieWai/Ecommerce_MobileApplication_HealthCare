@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
 import 'package:testing_asg1/common/widgets/appbar/tabbar.dart';
@@ -14,6 +15,7 @@ import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
+import 'package:testing_asg1/features/shop/screens/brand/all_brands.dart';
 import 'package:testing_asg1/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/enums.dart';
@@ -61,7 +63,7 @@ class StoreScreen extends StatelessWidget{
       
       
                       //Featured Brands
-                      TSectionHeading(title:'Featured Brands', showActionButton:true,onPressed: (){}),
+                      TSectionHeading(title:'Featured Brands', showActionButton:true,onPressed: () => Get.to(() => const AllBrandsScreen())),
                       const SizedBox(height: TSizes.spaceBtwItems/1.5),
       
                       TGridLayout(
