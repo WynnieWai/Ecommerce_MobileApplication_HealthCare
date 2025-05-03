@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TAppBar(
-        title: const Text('Profile'),
+        title: Text('Profile'),
         showBackArrow: true,
       ),
       body: SingleChildScrollView(
