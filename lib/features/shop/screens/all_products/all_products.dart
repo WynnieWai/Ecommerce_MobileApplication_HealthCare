@@ -15,25 +15,36 @@ class AllProducts extends StatelessWidget{
       body:SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(TSizes.defaultSpace),
-          child: Column(
-            children: [
-              //Dropdown
-              DropdownButtonFormField(
-                decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
-                onChanged:(value){},
-                items: ['Name','Higher Price','Lower Price','Sale','Newest','Popularity']
-                .map((option)=>DropdownMenuItem(value:option, child: Text(option)))
-                .toList(),
-              ),
-
-              const SizedBox(height: TSizes.spaceBtwSections),
-
-              //Product
-              TGridLayout(itemCount: 4, itemBuilder: (_,index)=>TProductCardVertical())
-            ],
-          ),
+          child: TSortableProducts(),
         ),
       ),
+    );
+  }
+}
+
+class TSortableProducts extends StatelessWidget {
+  const TSortableProducts({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        //Dropdown
+        DropdownButtonFormField(
+          decoration: const InputDecoration(prefixIcon: Icon(Iconsax.sort)),
+          onChanged:(value){},
+          items: ['Name','Higher Price','Lower Price','Sale','Newest','Popularity']
+          .map((option)=>DropdownMenuItem(value:option, child: Text(option)))
+          .toList(),
+        ),
+    
+        const SizedBox(height: TSizes.spaceBtwSections),
+    
+        //Product
+        TGridLayout(itemCount: 4, itemBuilder: (_,index)=>TProductCardVertical())
+      ],
     );
   }
 }
