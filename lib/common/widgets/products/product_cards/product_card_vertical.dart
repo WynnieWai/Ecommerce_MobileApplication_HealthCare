@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/styles/shadows.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -6,6 +7,8 @@ import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
 import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';
 import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
+import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
+import 'package:testing_asg1/features/shop/screens/product_details/product_detail.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
 // ignore: library_prefixes
@@ -20,7 +23,7 @@ class TProductCardVertical extends StatelessWidget{
     final dark=THelperFunctions.isDarkMode(context);
 
     return GestureDetector(
-      onTap:(){},
+      onTap:() => Get.to(() => const ProductDetailScreen()),
       child: Container(
         width:180,
         padding:const EdgeInsets.all(1),
@@ -65,22 +68,19 @@ class TProductCardVertical extends StatelessWidget{
             const SizedBox(height:TSizes.spaceBtwItems/2),
       
             ///Details
-            Padding(
-              padding:const EdgeInsets.only(left:TSizes.sm),
+            const Padding(
+              padding:EdgeInsets.only(left:TSizes.sm),
               child:Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TProductTitleText(title: 'Green Nike Air Shoes',smallSize: true),
-                  const SizedBox(height:TSizes.spaceBtwItems/2),
-                  Row(
-                    children: [
-                      Text('Nike',overflow:TextOverflow.ellipsis,maxLines: 1,style: Theme.of(context).textTheme.labelMedium),
-                      const SizedBox(width:TSizes.xs),
-                      const Icon(Iconsax.verify5,color:TColors.primary,size:TSizes.iconXs),
-                    ],
-                  ),
-      
-      
+                  TProductTitleText(title: 'Green Nike Air Shoes',smallSize: true),
+                  SizedBox(height:TSizes.spaceBtwItems/2),
+                  TBrandTitleWithVerifiedIcon(title:'Nike'),
+                ], 
+              ),
+            ),
+                  const Spacer(),
+                  //Price Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -102,9 +102,7 @@ class TProductCardVertical extends StatelessWidget{
                       )
                     ],
                   )
-                ],
-              ) 
-            )
+
           ],
       
         )
