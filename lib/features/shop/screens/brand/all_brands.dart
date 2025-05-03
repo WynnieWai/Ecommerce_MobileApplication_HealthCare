@@ -4,7 +4,9 @@ import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
 import 'package:testing_asg1/common/widgets/brands/brand_card.dart';
 import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
+import 'package:testing_asg1/features/shop/screens/brand/brand_products.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
+import 'package:get/get.dart';
 
 class AllBrandsScreen extends StatelessWidget{
   const AllBrandsScreen({super.key});
@@ -23,7 +25,11 @@ class AllBrandsScreen extends StatelessWidget{
               const SizedBox(height: TSizes.spaceBtwItems),
 
               //Brands
-              TGridLayout(itemCount: 10, mainAxisExtent: 80,itemBuilder:(context,index)=>const TBrandCard(showBorder:true)),
+              TGridLayout(
+                itemCount: 10, 
+                mainAxisExtent: 80,
+                itemBuilder:(context,index)=>TBrandCard(showBorder:true, onTap:()=> Get.to(()=>const BrandProducts()), ),
+              ),
             ],
           ),
         ),
@@ -31,3 +37,4 @@ class AllBrandsScreen extends StatelessWidget{
     );
   }
 }
+
