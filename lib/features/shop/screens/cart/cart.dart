@@ -13,7 +13,7 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TAppBar(title: Text('Cart', style: Theme.of(context).textTheme.headlineSmall)),
+      appBar: TAppBar( showBackArrow:true ,title: Text('Cart', style: Theme.of(context).textTheme.headlineSmall)),
       body: Padding(
         padding: EdgeInsets.all(TSizes.defaultSpace),
         child: ListView.separated(

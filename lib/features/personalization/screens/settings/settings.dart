@@ -8,6 +8,7 @@ import "package:testing_asg1/common/widgets/list_tiles/settings_menu_tile.dart";
 import "package:testing_asg1/common/widgets/list_tiles/user_profile_tile.dart";
 import "package:testing_asg1/common/widgets/texts/section_heading.dart";
 import "package:testing_asg1/features/personalization/screens/address/address.dart";
+import "package:testing_asg1/features/personalization/screens/profile/profile.dart";
 import "package:testing_asg1/features/shop/screens/order/order.dart";
 import "package:testing_asg1/utils/constants/colors.dart";
 import "package:testing_asg1/utils/constants/image_strings.dart";
@@ -29,7 +30,8 @@ class SettingScreen extends StatelessWidget{
                   TAppBar(title: Text('Account',style: Theme.of(context).textTheme.headlineMedium!.apply(color:TColors.white))),
 
                   ///User Profile Card
-                  TUserProfileTile(),
+                  TUserProfileTile(onPressed: ()=>Get.to(()=>const ProfileScreen())),
+                   
                   const SizedBox(height:TSizes.spaceBtwSections),
                 ],
               ),
