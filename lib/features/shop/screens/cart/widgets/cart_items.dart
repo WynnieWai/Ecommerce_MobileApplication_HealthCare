@@ -17,7 +17,7 @@ class TCartItems extends StatelessWidget {
     return ListView.separated(
       shrinkWrap: true,
       separatorBuilder: (_,__)=>const SizedBox(height:TSizes.spaceBtwSections), 
-      itemCount: 4,
+      itemCount: 2,
       itemBuilder: (_, index) => Column(
         children:[
 
@@ -46,6 +46,6 @@ class TCartItems extends StatelessWidget {
           ),
         ]
       )
-    ),
+    );
   }
 }
