@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
+import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
+import 'package:testing_asg1/common/widgets/products/product_cards/product_card_horizontal.dart';
+import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
+import 'package:testing_asg1/utils/constants/image_strings.dart';
+import 'package:testing_asg1/utils/constants/sizes.dart';
+
+class SubCategoriesScreen extends StatelessWidget {
+  const SubCategoriesScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const TAppBar(title: Text('Sports'), showBackArrow: true),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
+          child: Column(
+            children: [
+              /// Banner 
+              TRoundedImage(width: double.infinity, imageUrl: TImages.promoBanner3, applyImageRadius: true),
+              SizedBox(height: TSizes.spaceBtwSections),
+
+              /// Sub-Categories 
+              Column(
+                children: [
+                  /// Heading 
+                  TSectionHeading(title: 'Sports shirts', onPressed: () {}),
+                  const SizedBox(height: TSizes.spaceBtwItems / 2),
+
+                  const TProductCardHorizontal(),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
