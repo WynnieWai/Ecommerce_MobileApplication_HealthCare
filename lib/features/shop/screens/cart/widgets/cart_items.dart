@@ -46,6 +46,6 @@ class TCartItems extends StatelessWidget {
           ),
         ]
       )
-    ),
+    );
   }
 }
