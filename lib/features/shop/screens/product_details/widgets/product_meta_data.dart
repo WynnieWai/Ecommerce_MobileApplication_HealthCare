@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:testing_asg1/common/widgets/images/t_circular_image.dart';
 import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';
 import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
+import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
+import 'package:testing_asg1/utils/constants/enums.dart';
+import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
 import '../../../../../utils/constants/colors.dart';
@@ -54,17 +58,17 @@ class TProductMetaData extends StatelessWidget {
         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
         /// Brand
-        // Row(
-        //   children: [
-        //     TCircularImage(
-        //       image: TImages.cosmeticsIcon,
-        //       width: 32,
-        //       height: 32,
-        //       overlayColor: darkMode ? TColors.white : TColors.black,
-        //     ),
-        //     const TBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.medium),
-        //   ],
-        // ),
+        Row(
+          children: [
+            TCircularImage(
+              image: TImages.cosmeticsIcon,
+              width: 32,
+              height: 32,
+              overlayColor: darkMode ? TColors.white : TColors.black,
+            ),
+            const TBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.medium),
+          ],
+        ),
       ],
     );
   }
