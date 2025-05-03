@@ -4,7 +4,9 @@ import 'package:testing_asg1/common/styles/shadows.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
+import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';
 import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
+import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
@@ -21,9 +23,8 @@ class TProductCardHorizontal extends StatelessWidget {
       width: 310, 
       padding: const EdgeInsets.all(1), 
       decoration: BoxDecoration(
-        boxShadow: [TShadowStyle.verticalProductShadow], 
         borderRadius: BorderRadius.circular(TSizes.productImageRadius), 
-        color: dark ? TColors.darkerGrey : TColors.white,
+        color: dark ? TColors.darkerGrey : TColors.softGrey,
       ),
       child: Row(
         children: [
@@ -66,19 +67,49 @@ class TProductCardHorizontal extends StatelessWidget {
           ),
 
           /// Details 
-          const Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: TSizes.sm),
-                child: Column(
-                  children: [
-                    TProductTitleText(title: 'Green Nike Half Sleeves Shirt', smallSize: true),
-                    SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TBrandTitleWithVerifiedIcon(title: 'Nike'),
-                  ],
-                )
+          SizedBox(
+            width: 172,
+            child: Padding(
+              padding: const EdgeInsets.only(top: TSizes.sm, left: TSizes.sm),
+              child: Column(
+                children: [
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TProductTitleText(title: 'Green Nike Half Sleeves Shirt', smallSize: true),
+                      SizedBox(height: TSizes.spaceBtwItems / 2),
+                      TBrandTitleWithVerifiedIcon(title: 'Nike'),
+                    ],
+                  ),
+
+                  const Spacer(),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      /// Pricing 
+                      const Flexible(child: const TProductPriceText(price: '256.0')),
+
+                      /// Add to cart 
+                      Container(
+                        decoration: const BoxDecoration(
+                          color:TColors.dark,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(TSizes.cardRadiusMd),
+                            bottomRight: Radius.circular(TSizes.productImageRadius),
+                          ),
+                        ),
+                        child: const SizedBox(
+                          width: TSizes.iconLg * 1.2,
+                          height: TSizes.iconLg * 1.2,
+                          child: Center(child:Icon(Iconsax.add, color: TColors.white)),
+                        ),
+                      ),
+                    ]
+                  )
+                ],
               ),
-            ],
+            ),
           ),
         ],
       ),

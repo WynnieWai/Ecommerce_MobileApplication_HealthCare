@@ -8,6 +8,7 @@ import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
 import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';
 import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
+import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/product_detail.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
@@ -70,49 +71,52 @@ class TProductCardVertical extends StatelessWidget{
             const SizedBox(height:TSizes.spaceBtwItems/2),
       
             ///Details
-            Padding(
-              padding:const EdgeInsets.only(left:TSizes.sm),
+            const Padding(
+              padding:EdgeInsets.only(left:TSizes.sm),
               child:Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TProductTitleText(title: 'Green Nike Air Shoes',smallSize: true),
-                  const SizedBox(height:TSizes.spaceBtwItems/2),
-                  Row(
-                    children: [
-                      Text('Nike',overflow:TextOverflow.ellipsis,maxLines: 1,style: Theme.of(context).textTheme.labelMedium),
-                      const SizedBox(width:TSizes.xs),
-                      const Icon(Iconsax.verify5,color:TColors.primary,size:TSizes.iconXs),
-                    ],
+                  TProductTitleText(title: 'Green Nike Air Shoes',smallSize: true),
+                  SizedBox(height:TSizes.spaceBtwItems/2),
+                  TBrandTitleWithVerifiedIcon(title:'Nike'),
+                ], 
+              ),
+            ),
+            
+            // Use Spacer() to utilize all the space to set the price and the cart button at the bottom
+            // This usually happens when Product title is in single line or 2 lines (Max) 
+
+            const Spacer(),
+
+            //Price Row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /// Price 
+                const Padding(
+                  padding: EdgeInsets.only(left: TSizes.sm),
+                  child: TProductPriceText(price: '35.0'),
+                ),
+
+                /// Add to Cart Button 
+                Container(
+                  decoration: const BoxDecoration(
+                    color:TColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(TSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(TSizes.productImageRadius),
+                    ),
                   ),
-      
-      
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const TProductPriceText(price:'35.0'),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color:TColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(TSizes.cardRadiusMd),
-                            bottomRight: Radius.circular(TSizes.productImageRadius),
-                          ),
-                        ),
-      
-                        child:const SizedBox(
-                          width:TSizes.iconLg*1.2,
-                          height:TSizes.iconLg*1.2,
-                          child: Center(child:Icon(Iconsax.add,color: TColors.white)),
-                        )
-                      )
-                    ],
-                  )
-                ],
-              ) 
-            )
+                  child: const SizedBox(
+                    width: TSizes.iconLg * 1.2,
+                    height: TSizes.iconLg * 1.2,
+                    child: Center(child:Icon(Iconsax.add, color: TColors.white)),
+                  ),
+                ),
+              ],
+            ),
           ],
-      
-        )
+        ),
       ),
     );
   }
