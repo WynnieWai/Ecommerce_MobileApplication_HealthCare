@@ -4,6 +4,13 @@ import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
 class TCircularIcon extends StatelessWidget {
+  /// A custom Circular Icon widget with a background color.
+  /// 
+  /// Properties are: 
+  /// Container [width], [height], & [backgroundColor],
+  /// 
+  /// Icon's [size], [color] & [onPressed].
+  
   const TCircularIcon({
     super.key,
     required this.icon,
@@ -27,11 +34,14 @@ class TCircularIcon extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color:backgroundColor!=null?backgroundColor!:THelperFunctions.isDarkMode(context)?
-        TColors.black.withOpacity(0.9):TColors.white.withOpacity(0.9),
+        color: backgroundColor != null 
+          ? backgroundColor!
+          : THelperFunctions.isDarkMode(context)
+            ? TColors.black.withOpacity(0.9)
+            : TColors.white.withOpacity(0.9),
         borderRadius: BorderRadius.circular(100),
       ),
-      child:IconButton(onPressed: onPressed, icon: Icon(icon,color:color,size:size)),
+      child: IconButton(onPressed: onPressed, icon: Icon(icon,color: color, size: size)),
     );
   }
 }
