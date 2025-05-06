@@ -128,11 +128,89 @@ class TImages {
   // static const String productImage76 = "assets/images/products/slipper-product-3.png";
   // static const String productImage77= "assets/images/products/slipper-product.png";
 
+  // //Personal Care Products
   static const String productImage1 = "assets/images/products/babybath1-1.png";
   static const String productImage2 = "assets/images/products/babybath2-1.png";
   static const String productImage3 = "assets/images/products/babybath2-2.png";
   static const String productImage4 = "assets/images/products/babybath3-1.png";
   static const String productImage5 = "assets/images/products/babybath3-2.png";
+
+  // static const String productImage26 = "assets/images/products/bathcare1-1.png"; 
+  // static const String productImage27 = "assets/images/products/bathcare2-1.png"; 
+  // static const String productImage28 = "assets/images/products/bathcare2-2.png"; 
+  // static const String productImage29 = "assets/images/products/bathcare3-1.png"; 
+  // static const String productImage30 = "assets/images/products/bathcare4-1.png"; 
+  // static const String productImage31 = "assets/images/products/bathcare5-1.png"; 
+
+  // static const String productImage32 = "assets/images/products/Deodorants1-1.png"; 
+  // static const String productImage33 = "assets/images/products/Deodorants2-1.png";
+  // static const String productImage34 = "assets/images/products/Deodorants3-1.png";
+  // static const String productImage35 = "assets/images/products/Deodorants4-1.png";
+  // static const String productImage36 = "assets/images/products/Deodorants5-1.png";
+
+  // static const String productImage37 = "assets/images/products/fermininehygiene1-1.png";
+  // static const String productImage38 = "assets/images/products/fermininehygiene2-1.png";
+  // static const String productImage39 = "assets/images/products/fermininehygiene3-1.png";
+  // static const String productImage40 = "assets/images/products/fermininehygiene4-1.png";
+  // static const String productImage41 = "assets/images/products/fermininehygiene5-1.png";
+
+  // static const String productImage42 = "assets/images/products/oralcare1-1.png";
+  // static const String productImage43 = "assets/images/products/oralcare2-1.png";
+  // static const String productImage44 = "assets/images/products/oralcare3-1.png";
+  // static const String productImage45 = "assets/images/products/oralcare4-1.png";
+  // static const String productImage46 = "assets/images/products/oralcare5-1.png";
+
+  // // skincare products
+  // static const String productImage47 = "assets/images/products/facialcare1-1.png";
+  // static const String productImage48 = "assets/images/products/facialcare1-2.png";
+  // static const String productImage49 = "assets/images/products/facialcare2-1.png";
+  // static const String productImage50 = "assets/images/products/facialcare2-2.png";
+  // static const String productImage51 = "assets/images/products/facialcare3-1.png";
+  // static const String productImage52 = "assets/images/products/facialcare3-2.png";
+  // static const String productImage53 = "assets/images/products/facialcare3-3.png";
+  // static const String productImage54 = "assets/images/products/facialcare4-1.png";
+  // static const String productImage55 = "assets/images/products/facialcare4-2.png";
+  // static const String productImage56 = "assets/images/products/facialcare4-3.png";
+  // static const String productImage57 = "assets/images/products/facialcare4-4.png";
+  // static const String productImage58 = "assets/images/products/facialcare5-1.png";
+
+  // static const String productImage59 = "assets/images/products/handandbody1-1.png";
+  // static const String productImage60 = "assets/images/products/handandbody1-2.png";
+  // static const String productImage61 = "assets/images/products/handandbody2-1.png";
+  // static const String productImage62 = "assets/images/products/handandbody3-1.png";
+  // static const String productImage63 = "assets/images/products/handandbody3-2.png";
+  // static const String productImage64 = "assets/images/products/handandbody4-1.png";
+  // static const String productImage65 = "assets/images/products/handandbody5-1.png";
+
+  // static const String productImage66 = "assets/images/products/suncare1-1.png";
+  // static const String productImage67 = "assets/images/products/suncare2-1.png";
+  // static const String productImage68 = "assets/images/products/suncare2-2.png";
+  // static const String productImage69 = "assets/images/products/suncare3-1.png";
+  // static const String productImage70 = "assets/images/products/suncare4-1.png";
+  // static const String productImage71 = "assets/images/products/suncare4-2.png";
+  // static const String productImage72 = "assets/images/products/suncare5-1.png";
+  // static const String productImage73 = "assets/images/products/suncare5-2.png";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+   
+
 
 
   // -- Product Reviews
