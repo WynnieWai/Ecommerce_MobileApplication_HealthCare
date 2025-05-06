@@ -13,15 +13,15 @@ class TImages {
   static const String facebook = "assets/logos/facebook-icon.png";
 
   // -- Category Icons
-  // static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
-  // static const String clothIcon = "assets/icons/categories/icons8-tailors-dummy-64.png";
-  // static const String shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
-  // static const String cosmeticsIcon = "assets/icons/categories/icons8-cosmetics-64.png";
-  // static const String animalIcon = "assets/icons/categories/icons8-dog-heart-64.png";
-  // static const String toyIcon = "assets/icons/categories/icons8-wooden-toy-car-50.png";
-  // static const String furnitureIcon = "assets/icons/categories/icons8-dining-chair-64.png";
-  // static const String jeweleryIcon = "assets/icons/categories/icons8-sparkling-diamond-64.png";
-  // static const String electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
+  static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
+  static const String clothIcon = "assets/icons/categories/icons8-tailors-dummy-64.png";
+  static const String shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
+  static const String cosmeticsIcon = "assets/icons/categories/icons8-cosmetics-64.png";
+  static const String animalIcon = "assets/icons/categories/icons8-dog-heart-64.png";
+  static const String toyIcon = "assets/icons/categories/icons8-wooden-toy-car-50.png";
+  static const String furnitureIcon = "assets/icons/categories/icons8-dining-chair-64.png";
+  static const String jeweleryIcon = "assets/icons/categories/icons8-sparkling-diamond-64.png";
+  static const String electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
   // -- myCategory Icons 
   static const String healthIcon = "assets/icons/categories/Health.png";
   static const String skinCareIcon = "assets/icons/categories/Skincare.png";
@@ -159,7 +159,16 @@ class TImages {
   static const String banner6 = "assets/images/banners/banner_6.jpg";
   static const String banner7 = "assets/images/banners/banner_7.jpg";
   static const String banner8 = "assets/images/banners/banner_8.jpg";
-
+  // -- MyBanners
+  static const String myBanner1 = "assets/images/products/myBanner_01.png";
+  static const String myBanner2 = "assets/images/products/myBanner_02.png";
+  static const String myBanner3 = "assets/images/products/myBanner_03.png";
+  static const String bannerHealth = "assets/images/products/Banner_Health_Hansaplast.png"; 
+  static const String bannerSkinCare = "assets/images/products/Banner_SkinCare_Cetaphil.png"; 
+  static const String bannerPersonalCare = "assets/images/products/Banner_PersonalCare_Colgate.png"; 
+  static const String bannerHairCare = "assets/images/products/Banner_HairCare_Kérastase.png"; 
+  static const String bannerBabyCare = "assets/images/products/myBanner_03.png"; 
+  static const String bannerHousehold = "assets/images/products/Banner_Household_Orita.png"; 
 
   //Profile
   static const String user = "assets/images/user/user.png";
