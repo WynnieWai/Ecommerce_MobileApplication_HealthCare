@@ -13,15 +13,22 @@ class TImages {
   static const String facebook = "assets/logos/facebook-icon.png";
 
   // -- Category Icons
-  static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
-  static const String clothIcon = "assets/icons/categories/icons8-tailors-dummy-64.png";
-  static const String shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
-  static const String cosmeticsIcon = "assets/icons/categories/icons8-cosmetics-64.png";
-  static const String animalIcon = "assets/icons/categories/icons8-dog-heart-64.png";
-  static const String toyIcon = "assets/icons/categories/icons8-wooden-toy-car-50.png";
-  static const String furnitureIcon = "assets/icons/categories/icons8-dining-chair-64.png";
-  static const String jeweleryIcon = "assets/icons/categories/icons8-sparkling-diamond-64.png";
-  static const String electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
+  // static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
+  // static const String clothIcon = "assets/icons/categories/icons8-tailors-dummy-64.png";
+  // static const String shoeIcon = "assets/icons/categories/icons8-shoes-64.png";
+  // static const String cosmeticsIcon = "assets/icons/categories/icons8-cosmetics-64.png";
+  // static const String animalIcon = "assets/icons/categories/icons8-dog-heart-64.png";
+  // static const String toyIcon = "assets/icons/categories/icons8-wooden-toy-car-50.png";
+  // static const String furnitureIcon = "assets/icons/categories/icons8-dining-chair-64.png";
+  // static const String jeweleryIcon = "assets/icons/categories/icons8-sparkling-diamond-64.png";
+  // static const String electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
+  // -- myCategory Icons 
+  static const String healthIcon = "assets/icons/categories/Health.png";
+  static const String skinCareIcon = "assets/icons/categories/Skincare.png";
+  static const String personalCareIcon = "assets/icons/categories/Personalcare.png";
+  static const String hairCareIcon = "assets/icons/categories/Haircare.png";
+  static const String babyCareIcon = "assets/icons/categories/Babycare.png";
+  static const String houseHoldIcon = "assets/icons/categories/Household.png";
 
   // -- Brand Icons
   static const String nikeLogo = "assets/icons/brands/nike.png";
@@ -150,7 +157,7 @@ class TImages {
 
 
   //Profile
-  static const String user = "assets/images/content/user.png";
+  static const String user = "assets/images/user/user.png";
 
   // -- Payment Methods
   static const String applePay = "assets/icons/payment_methods/apple-pay.png";
