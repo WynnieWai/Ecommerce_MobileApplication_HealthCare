@@ -10,16 +10,31 @@ class THomeCategories extends StatelessWidget {
     super.key,
   });
 
+  // Define the list of categories and their respective images
+  final List<Map<String, dynamic>> categories = const [
+    {"image": TImages.healthIcon, "title": "Health"},
+    {"image": TImages.skinCareIcon, "title": "Skin Care"},
+    {"image": TImages.personalCareIcon, "title": "Personal Care"},
+    {"image": TImages.hairCareIcon, "title": "Hair Care"},
+    {"image": TImages.babyCareIcon, "title": "Bay Care"},
+    {"image": TImages.houseHoldIcon, "title": "House Hold"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 80,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 6, 
+        itemCount: categories.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index) {
-          return TVerticalImageText(image: TImages.shoeIcon, title: 'Shoes', onTap: () => Get.to(() => const SubCategoriesScreen()));
+          final category = categories[index];
+          return TVerticalImageText(
+            image: category["image"],
+            title: category["title"],
+            onTap: () => Get.to(() => const SubCategoriesScreen()),
+          );
         },
       ),
     );

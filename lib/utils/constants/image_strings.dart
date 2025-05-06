@@ -22,6 +22,13 @@ class TImages {
   static const String furnitureIcon = "assets/icons/categories/icons8-dining-chair-64.png";
   static const String jeweleryIcon = "assets/icons/categories/icons8-sparkling-diamond-64.png";
   static const String electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
+  // -- myCategory Icons 
+  static const String healthIcon = "assets/icons/categories/Health.png";
+  static const String skinCareIcon = "assets/icons/categories/Skincare.png";
+  static const String personalCareIcon = "assets/icons/categories/Personalcare.png";
+  static const String hairCareIcon = "assets/icons/categories/Haircare.png";
+  static const String babyCareIcon = "assets/icons/categories/Babycare.png";
+  static const String houseHoldIcon = "assets/icons/categories/Household.png";
 
   // -- Brand Icons
   static const String nikeLogo = "assets/icons/brands/nike.png";
@@ -233,6 +240,65 @@ class TImages {
   static const String productImage88 = "assets/images/products/OTC4.png";
   static const String productImage89 = "assets/images/products/OTC5.png";
   
+  //Personal Care Products
+  static const String productImage90 = "assets/images/products/bathcare1-1.png"; 
+  static const String productImage91 = "assets/images/products/bathcare2-1.png"; 
+  static const String productImage92 = "assets/images/products/bathcare2-2.png"; 
+  static const String productImage93 = "assets/images/products/bathcare3-1.png"; 
+  static const String productImage94 = "assets/images/products/bathcare4-1.png"; 
+  static const String productImage95 = "assets/images/products/bathcare5-1.png"; 
+
+  static const String productImage96 = "assets/images/products/Deodorants1-1.png"; 
+  static const String productImage97 = "assets/images/products/Deodorants2-1.png";
+  static const String productImage98 = "assets/images/products/Deodorants3-1.png";
+  static const String productImage99 = "assets/images/products/Deodorants4-1.png";
+  static const String productImage100 = "assets/images/products/Deodorants5-1.png";
+
+  static const String productImage101 = "assets/images/products/fermininehygiene1-1.png";
+  static const String productImage102 = "assets/images/products/fermininehygiene2-1.png";
+  static const String productImage103 = "assets/images/products/fermininehygiene3-1.png";
+  static const String productImage104 = "assets/images/products/fermininehygiene4-1.png";
+  static const String productImage105 = "assets/images/products/fermininehygiene5-1.png";
+
+  static const String productImage106 = "assets/images/products/oralcare1-1.png";
+  static const String productImage107 = "assets/images/products/oralcare2-1.png";
+  static const String productImage108 = "assets/images/products/oralcare3-1.png";
+  static const String productImage109 = "assets/images/products/oralcare4-1.png";
+  static const String productImage110 = "assets/images/products/oralcare5-1.png";
+
+  // skincare products
+  static const String productImage111 = "assets/images/products/facialcare1-1.png";
+  static const String productImage112 = "assets/images/products/facialcare1-2.png";
+  static const String productImage113 = "assets/images/products/facialcare2-1.png";
+  static const String productImage114 = "assets/images/products/facialcare2-2.png";
+  static const String productImage115 = "assets/images/products/facialcare3-1.png";
+  static const String productImage116 = "assets/images/products/facialcare3-2.png";
+  static const String productImage117 = "assets/images/products/facialcare3-3.png";
+  static const String productImage118 = "assets/images/products/facialcare4-1.png";
+  static const String productImage119 = "assets/images/products/facialcare4-2.png";
+  static const String productImage120 = "assets/images/products/facialcare4-3.png";
+  static const String productImage121 = "assets/images/products/facialcare4-4.png";
+  static const String productImage122 = "assets/images/products/facialcare5-1.png";
+
+  static const String productImage123 = "assets/images/products/handandbody1-1.png";
+  static const String productImage124 = "assets/images/products/handandbody1-2.png";
+  static const String productImage125 = "assets/images/products/handandbody2-1.png";
+  static const String productImage126 = "assets/images/products/handandbody3-1.png";
+  static const String productImage127 = "assets/images/products/handandbody3-2.png";
+  static const String productImage128 = "assets/images/products/handandbody4-1.png";
+  static const String productImage129 = "assets/images/products/handandbody5-1.png";
+
+  static const String productImage130 = "assets/images/products/suncare1-1.png";
+  static const String productImage131 = "assets/images/products/suncare2-1.png";
+  static const String productImage132 = "assets/images/products/suncare2-2.png";
+  static const String productImage133 = "assets/images/products/suncare3-1.png";
+  static const String productImage134 = "assets/images/products/suncare4-1.png";
+  static const String productImage135 = "assets/images/products/suncare4-2.png";
+  static const String productImage136 = "assets/images/products/suncare5-1.png";
+  static const String productImage137 = "assets/images/products/suncare5-2.png";
+
+
+
 
   // -- Product Reviews
   static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.jpg";
