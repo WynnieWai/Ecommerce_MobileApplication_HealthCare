@@ -30,13 +30,14 @@ class StoreScreen extends StatelessWidget{
   Widget build(BuildContext context){
     //return DefaultTabController()
     // length: 5,
+    final dark = THelperFunctions.isDarkMode(context);
     return DefaultTabController(
-      length: 5,//number of tabs we created
+      length: 6,//number of tabs we created
       child: Scaffold(
         appBar: TAppBar(
           title:Text('Store',style: Theme.of(context).textTheme.headlineMedium),
           actions: [
-            TCartCounterIcon(onPressed:(){}, iconColor: TColors.black),
+            TCartCounterIcon(onPressed:(){}, iconColor: dark? TColors.white : TColors.dark),
           ],
       
         ),
@@ -56,7 +57,7 @@ class StoreScreen extends StatelessWidget{
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
                       //Search Bar
-                      const SizedBox(height:TSizes.spaceBtwItems),
+                      // const SizedBox(height:TSizes.spaceBtwItems),
                       const TSearchContainer(
                             text:"Search in Store", showBorder:true, showBackground:false, padding: EdgeInsets.zero),
                       const SizedBox(height: TSizes. spaceBtwSections),
@@ -84,20 +85,32 @@ class StoreScreen extends StatelessWidget{
                 //Tabs --video 18
                 bottom:const TTabBar(
                   tabs: [
-                     Tab(child: Text('Sports')),
-                     Tab(child: Text('Furniture')),
-                     Tab(child: Text('Electronics')),
-                     Tab(child: Text('Clothes')),
-                     Tab(child: Text('Cosmetics')),
+                     Tab(child: Text('Health')),
+                     Tab(child: Text('Skin Care')),
+                     Tab(child: Text('Personal Care')),
+                     Tab(child: Text('Hair Care')),
+                     Tab(child: Text('Baby Care')),
+                     Tab(child: Text('Household')),
                   ],
                 )
               ),
             ];
           }, 
           // Body
-             body:const TabBarView(
-              children: [TCategoryTab(),TCategoryTab(),TCategoryTab(),TCategoryTab(),TCategoryTab()],
-             ),
+            //  body:const TabBarView(
+            //   children: [TCategoryTab(),TCategoryTab(),TCategoryTab(),TCategoryTab(),TCategoryTab(),TCategoryTab()],
+            //  ),
+        
+            body: const TabBarView(
+              children: [
+                TCategoryTab(category: 'Health'),
+                TCategoryTab(category: 'Skin Care'),
+                TCategoryTab(category: 'Personal Care'),
+                TCategoryTab(category: 'Hair Care'),
+                TCategoryTab(category: 'Baby Care'),
+                TCategoryTab(category: 'Household'),
+              ],
+            ),
           ),
       ),
     );
