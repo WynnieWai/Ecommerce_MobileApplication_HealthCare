@@ -22,6 +22,12 @@ class TPromoSlider extends StatelessWidget {
       children: [
         CarouselSlider(
           options: CarouselOptions(
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 500),
+            autoPlayCurve: Curves.easeInOut,
+            pauseAutoPlayOnTouch: true,
+            enlargeCenterPage: true,
             viewportFraction: 1,
             onPageChanged: (index, _) => controller.updatePageIndicator(index)
           ),

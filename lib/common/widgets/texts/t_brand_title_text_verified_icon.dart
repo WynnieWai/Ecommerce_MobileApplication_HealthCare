@@ -39,7 +39,7 @@ class TBrandTitleWithVerifiedIcon extends StatelessWidget {
           ),
         ),
         const SizedBox(width:TSizes.xs),
-        const Icon(Iconsax.verify5,color:TColors.primary,size:TSizes.iconXs),
+        const Icon(Iconsax.verify5,color:TColors.verifiedIcon,size:TSizes.iconXs),
       ],
     );
   }

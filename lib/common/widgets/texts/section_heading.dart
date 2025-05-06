@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../utils/constants/colors.dart';
+
 class TSectionHeading extends StatelessWidget {
   const TSectionHeading({
     super.key, 
@@ -24,7 +26,7 @@ class TSectionHeading extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineSmall!.apply(color: textColor), 
           maxLines: 1, 
           overflow: TextOverflow.ellipsis),
-        if(showActionButton) TextButton(onPressed: onPressed, child: Text(buttonTitle))
+        if(showActionButton) TextButton(onPressed: onPressed, child: Text(buttonTitle, style: TextStyle(color: TColors.primary)))
       ],
     );
   }
