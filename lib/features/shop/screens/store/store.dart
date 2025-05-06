@@ -30,13 +30,14 @@ class StoreScreen extends StatelessWidget{
   Widget build(BuildContext context){
     //return DefaultTabController()
     // length: 5,
+    final dark = THelperFunctions.isDarkMode(context);
     return DefaultTabController(
       length: 5,//number of tabs we created
       child: Scaffold(
         appBar: TAppBar(
           title:Text('Store',style: Theme.of(context).textTheme.headlineMedium),
           actions: [
-            TCartCounterIcon(onPressed:(){}, iconColor: TColors.black),
+            TCartCounterIcon(onPressed:(){}, iconColor: dark? TColors.white : TColors.dark),
           ],
       
         ),
