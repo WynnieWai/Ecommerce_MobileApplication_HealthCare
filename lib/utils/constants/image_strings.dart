@@ -22,6 +22,13 @@ class TImages {
   static const String furnitureIcon = "assets/icons/categories/icons8-dining-chair-64.png";
   static const String jeweleryIcon = "assets/icons/categories/icons8-sparkling-diamond-64.png";
   static const String electronicsIcon = "assets/icons/categories/icons8-smartphone-64.png";
+  // -- myCategory Icons 
+  static const String healthIcon = "assets/icons/categories/Health.png";
+  static const String skinCareIcon = "assets/icons/categories/Skincare.png";
+  static const String personalCareIcon = "assets/icons/categories/Personalcare.png";
+  static const String hairCareIcon = "assets/icons/categories/Haircare.png";
+  static const String babyCareIcon = "assets/icons/categories/Babycare.png";
+  static const String houseHoldIcon = "assets/icons/categories/Household.png";
 
   // -- Brand Icons
   static const String nikeLogo = "assets/icons/brands/nike.png";
