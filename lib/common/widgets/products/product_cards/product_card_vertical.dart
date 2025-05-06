@@ -12,6 +12,8 @@ import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
 import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';
 import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
+import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
+import 'package:testing_asg1/features/shop/screens/home/home.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/product_detail.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
@@ -20,7 +22,9 @@ import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
 class TProductCardVertical extends StatelessWidget{
-  const TProductCardVertical ({super.key});
+  const TProductCardVertical ({super.key, required this.product});
+
+  final Product product;
 
   @override
   Widget build(BuildContext context){
@@ -48,7 +52,8 @@ class TProductCardVertical extends StatelessWidget{
               child: Stack(
                 children: [
                   // --- Thumbnail Image
-                  const TRoundedImage(imageUrl: TImages.productImage80, applyImageRadius: true,),
+                  // const TRoundedImage(imageUrl: TImages.productImage80, applyImageRadius: true,),
+                  TRoundedImage(imageUrl: product.imageUrl, applyImageRadius: true,),
       
                   // --- Sale Tag
                   Positioned(
@@ -74,14 +79,14 @@ class TProductCardVertical extends StatelessWidget{
             const SizedBox(height:TSizes.spaceBtwItems/2),
       
             ///Details
-            const Padding(
-              padding:EdgeInsets.only(left:TSizes.sm),
+            Padding(
+              padding:const EdgeInsets.only(left:TSizes.sm),
               child:Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TProductTitleText(title: 'Green Nike Air Shoes',smallSize: true),
-                  SizedBox(height:TSizes.spaceBtwItems/2),
-                  TBrandTitleWithVerifiedIcon(title:'Nike'),
+                  TProductTitleText(title: product.title,smallSize: true),
+                  const SizedBox(height:TSizes.spaceBtwItems/2),
+                  TBrandTitleWithVerifiedIcon(title:product.brand),
                 ], 
               ),
             ),
@@ -96,9 +101,9 @@ class TProductCardVertical extends StatelessWidget{
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 /// Price 
-                const Padding(
-                  padding: EdgeInsets.only(left: TSizes.sm),
-                  child: TProductPriceText(price: '35.0'),
+                Padding(
+                  padding: const EdgeInsets.only(left: TSizes.sm),
+                  child: TProductPriceText(price: product.price),
                 ),
 
                 /// Add to Cart Button 

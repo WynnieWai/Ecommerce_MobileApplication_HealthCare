@@ -7,6 +7,7 @@ import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
+import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/promo_slider.dart';
@@ -69,7 +70,13 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   //Popular Product
-                  TGridLayout(itemCount: 4, itemBuilder: (_,index)=>const TProductCardVertical())
+                  // TGridLayout(itemCount: 4, itemBuilder: (_,index)=>const TProductCardVertical())
+                  TGridLayout(
+                    itemCount: products.length,
+                    itemBuilder: (_, index) => TProductCardVertical(
+                      product: products[index],
+                    ),
+                  ),
                ],
               ),
             ),
