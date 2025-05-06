@@ -297,6 +297,63 @@ class TImages {
   static const String productImage136 = "assets/images/products/suncare5-1.png";
   static const String productImage137 = "assets/images/products/suncare5-2.png";
 
+  // static const String productImage66 = "assets/images/products/suncare1-1.png";
+  // static const String productImage67 = "assets/images/products/suncare2-1.png";
+  // static const String productImage68 = "assets/images/products/suncare2-2.png";
+  // static const String productImage69 = "assets/images/products/suncare3-1.png";
+  // static const String productImage70 = "assets/images/products/suncare4-1.png";
+  // static const String productImage71 = "assets/images/products/suncare4-2.png";
+  // static const String productImage72 = "assets/images/products/suncare5-1.png";
+  // static const String productImage73 = "assets/images/products/suncare5-2.png";
+
+  static const String productImage138 = "assets/images/products/bathroom1-1.png";
+  static const String productImage139 = "assets/images/products/bathroom2-1.png";
+  static const String productImage140 = "assets/images/products/bathroom2-2.png";
+  static const String productImage141 = "assets/images/products/bathroom2-3.png";
+  static const String productImage142 = "assets/images/products/bathroom3-1.png";
+  static const String productImage143 = "assets/images/products/bathroom3-2.png";
+
+  static const String productImage144 = "assets/images/products/cleaning1-1.png";
+  static const String productImage145 = "assets/images/products/cleaning1-2.png";
+  static const String productImage146 = "assets/images/products/cleaning2-1.png";
+  static const String productImage147 = "assets/images/products/cleaning2-2.png";
+  static const String productImage148 = "assets/images/products/cleaning3-1.png";
+  static const String productImage149 = "assets/images/products/cleaning3-2.png";
+  static const String productImage150 = "assets/images/products/cleaning4-1.png";
+  static const String productImage151 = "assets/images/products/cleaning4-2.png";
+  static const String productImage152 = "assets/images/products/cleaning5-1.png";
+
+  static const String productImage153 = "assets/images/products/sundries1-1.png";
+  static const String productImage154 = "assets/images/products/sundries1-2.png";
+  static const String productImage155 = "assets/images/products/sundries2-1.png";
+  static const String productImage156 = "assets/images/products/sundries2-2.png";
+  static const String productImage157 = "assets/images/products/sundries3-1.png";
+  static const String productImage158 = "assets/images/products/sundries4-1.png";
+  static const String productImage159 = "assets/images/products/sundries4-2.png";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+   
 
 
 
