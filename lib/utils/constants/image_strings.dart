@@ -323,7 +323,7 @@ class TImages {
   // static const String productImage72 = "assets/images/products/suncare5-1.png";
   // static const String productImage73 = "assets/images/products/suncare5-2.png";
 
-  static const String productImage138 = "assets/images/products/bathroom1-1.png";
+  static const String productImage138 = "assets/images/products/bathroom1-1,png.avif";
   static const String productImage139 = "assets/images/products/bathroom2-1.png";
   static const String productImage140 = "assets/images/products/bathroom2-2.png";
   static const String productImage141 = "assets/images/products/bathroom2-3.png";

@@ -67,10 +67,15 @@ class TProductCardVertical extends StatelessWidget{
                   ),
 
                   // -- Favourite Icon Button 
-                  const Positioned(
+                  Positioned(
                     top: 0,
                     right: 0,
-                    child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                    // child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                    child: TCircularIcon(
+                      icon: Iconsax.heart5,
+                      color: product.isFavorite ? Colors.red : null, // Red if true, default if false
+                      // onPressed: () => _toggleFavorite(product),
+                    ),
                   ),
                 ],
               )
@@ -79,18 +84,36 @@ class TProductCardVertical extends StatelessWidget{
             const SizedBox(height:TSizes.spaceBtwItems/2),
       
             ///Details
+            // Padding(
+            //   padding:const EdgeInsets.only(left:TSizes.sm),
+            //   child:Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       TProductTitleText(title: product.title,smallSize: true),
+            //       const SizedBox(height:TSizes.spaceBtwItems/2),
+            //       TBrandTitleWithVerifiedIcon(title:product.brand),
+            //     ], 
+            //   ),
+            // ),
+
             Padding(
-              padding:const EdgeInsets.only(left:TSizes.sm),
-              child:Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              padding: const EdgeInsets.symmetric(horizontal: TSizes.md),
+              child: Row(
                 children: [
-                  TProductTitleText(title: product.title,smallSize: true),
-                  const SizedBox(height:TSizes.spaceBtwItems/2),
-                  TBrandTitleWithVerifiedIcon(title:product.brand),
-                ], 
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TProductTitleText(title: product.title, smallSize: true),
+                        const SizedBox(height: TSizes.spaceBtwItems/2),
+                        TBrandTitleWithVerifiedIcon(title: product.brand),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-            
+
             // Use Spacer() to utilize all the space to set the price and the cart button at the bottom
             // This usually happens when Product title is in single line or 2 lines (Max) 
 
@@ -102,7 +125,7 @@ class TProductCardVertical extends StatelessWidget{
               children: [
                 /// Price 
                 Padding(
-                  padding: const EdgeInsets.only(left: TSizes.sm),
+                  padding: const EdgeInsets.only(left: TSizes.md),
                   child: TProductPriceText(price: product.price),
                 ),
 

@@ -16,6 +16,7 @@ import 'package:testing_asg1/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
 import 'package:testing_asg1/features/shop/screens/brand/all_brands.dart';
+import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/features/shop/screens/store/dummy_brand.dart';
 import 'package:testing_asg1/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
@@ -36,6 +37,7 @@ class StoreScreen extends StatelessWidget{
 
     return DefaultTabController(
       length: 6,//number of tabs we created
+      // length: productsByCategory.length,
       child: Scaffold(
         appBar: TAppBar(
           title:Text('Store',style: Theme.of(context).textTheme.headlineMedium),
