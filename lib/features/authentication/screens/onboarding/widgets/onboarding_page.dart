@@ -7,19 +7,23 @@ class OnBoardingPage extends StatelessWidget {
     super.key, required this.image, required this.title, required this.subTitle,
   });
 
-  final String image, title, subTitle;
-
+  //final String image, title, subTitle;
+  final String title, subTitle;
+  final Widget image;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(TSizes.defaultSpace),
       child: Column(
         children: [
-          Image(
+          //Image(
+          SizedBox(
             width: THelperFunctions.screenWidth() * 0.8, 
             height: THelperFunctions.screenHeight() * 0.6, 
-            image: AssetImage(image),
+            //image: AssetImage(image),
+            child: image,
           ),
+          
           Text(
             title, 
             style: Theme.of(context).textTheme.headlineMedium, 

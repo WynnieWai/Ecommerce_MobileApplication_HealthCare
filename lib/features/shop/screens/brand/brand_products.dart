@@ -16,7 +16,7 @@ class BrandProducts extends StatelessWidget {
           padding: EdgeInsets.all(TSizes.defaultSpace),
           child:Column(
             children: [
-              TBrandCard(showBorder:true),
+              //TBrandCard(showBorder:true),
               SizedBox(height: TSizes.spaceBtwSections),
 
               TSortableProducts(),

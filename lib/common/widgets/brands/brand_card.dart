@@ -14,10 +14,16 @@ class TBrandCard extends StatelessWidget {
     super.key,
     this.onTap,
     required this.showBorder,
+    required this.title,
+    required this.imagePath,
+    required this.productCount,
   });
 
   final bool showBorder;
   final void Function()? onTap;
+  final String title;
+  final String imagePath;
+  final int productCount;
 
 
   @override
@@ -37,9 +43,9 @@ class TBrandCard extends StatelessWidget {
             Flexible(
               child: TCircularImage(
                 isNetworkImage: false,
-                image:TImages.clothIcon,
+                image:imagePath,
                 backgroundColor: Colors.transparent,
-                overlayColor: THelperFunctions.isDarkMode(context) ? TColors.white : TColors.black,
+                //overlayColor: THelperFunctions.isDarkMode(context) ? TColors.white : TColors.black,
               ),
             ),
             const SizedBox(width: TSizes.spaceBtwItems/2),
@@ -50,9 +56,9 @@ class TBrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const TBrandTitleWithVerifiedIcon(title:'Nike',brandTextSize: TextSizes.large),
+                  TBrandTitleWithVerifiedIcon(title:title,brandTextSize: TextSizes.large),
                   Text(
-                    '256 products',
+                    '$productCount products',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   )
