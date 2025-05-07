@@ -1,14 +1,14 @@
 flutter_native_splash:
   color: "#ffffff"
   color_dark: "#272727"
-  image: assets/logos/t-store-splash-logo-black.png
-  image_dark: assets/logos/t-store-splash-logo-white.png
+  image: assets/logos/Carewell_Logo.png
+  image_dark: assets/logos/Carewell_Logo.png
 
   android_12:
     color: "#ffffff"
     color_dark: "#272727"
-    image: assets/logos/t-store-splash-logo-black.png
-    image_dark: assets/logos/t-store-splash-logo-white.png
+    image: assets/logos/Carewell_Logo.png
+    image_dark: assets/logos/Carewell_Logo.png
   
   web: false
 

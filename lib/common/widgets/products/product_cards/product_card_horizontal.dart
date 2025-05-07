@@ -13,33 +13,41 @@ import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
 class TProductCardHorizontal extends StatelessWidget {
-  const TProductCardHorizontal({super.key});
+  final String imageUrl;
+
+  const TProductCardHorizontal({
+    super.key,
+    required this.imageUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
 
     return Container(
-      width: 310, 
-      padding: const EdgeInsets.all(1), 
+      width: 310,
+      padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(TSizes.productImageRadius), 
+        borderRadius: BorderRadius.circular(TSizes.productImageRadius),
         color: dark ? TColors.darkerGrey : TColors.softGrey,
       ),
       child: Row(
         children: [
           /// Thumbnail
           TRoundedContainer(
-            height: 120, 
-            padding: const EdgeInsets.all(TSizes.sm), 
+            height: 120,
+            padding: const EdgeInsets.all(TSizes.sm),
             backgroundColor: dark ? TColors.dark : TColors.light,
             child: Stack(
               children: [
-                /// -- Thumbnail Image 
-                const SizedBox(
-                  height: 120, 
+                /// -- Thumbnail Image
+                SizedBox(
+                  height: 120,
                   width: 120,
-                  child: TRoundedImage(imageUrl: TImages.productImage1, applyImageRadius: true),
+                  child: TRoundedImage(
+                    imageUrl: imageUrl,
+                    applyImageRadius: true,
+                  ),
                 ),
 
                 /// --- Sale Tag
@@ -50,23 +58,23 @@ class TProductCardHorizontal extends StatelessWidget {
                     backgroundColor: TColors.secondary.withOpacity(0.8),
                     padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
                     child: Text(
-                      '25%', 
-                      style: Theme.of(context).textTheme.labelLarge!.apply(color:TColors.black)
+                      '25%',
+                      style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),
                     ),
                   ),
                 ),
-  
-                  /// -- Favourite Icon Button 
-                  const Positioned(
-                    top: 0,
-                    right: 0,
-                    child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red),
-                  ),
+
+                /// -- Favourite Icon Button
+                const Positioned(
+                  top: 0,
+                  right: 0,
+                  child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                ),
               ],
             ),
           ),
 
-          /// Details 
+          /// Details
           SizedBox(
             width: 172,
             child: Padding(
@@ -87,13 +95,10 @@ class TProductCardHorizontal extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      /// Pricing 
-                      const Flexible(child: const TProductPriceText(price: '256.0')),
-
-                      /// Add to cart 
+                      const Flexible(child: TProductPriceText(price: '256.0')),
                       Container(
                         decoration: const BoxDecoration(
-                          color:TColors.dark,
+                          color: TColors.dark,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(TSizes.cardRadiusMd),
                             bottomRight: Radius.circular(TSizes.productImageRadius),
@@ -102,10 +107,10 @@ class TProductCardHorizontal extends StatelessWidget {
                         child: const SizedBox(
                           width: TSizes.iconLg * 1.2,
                           height: TSizes.iconLg * 1.2,
-                          child: Center(child:Icon(Iconsax.add, color: TColors.white)),
+                          child: Center(child: Icon(Iconsax.add, color: TColors.white)),
                         ),
                       ),
-                    ]
+                    ],
                   )
                 ],
               ),

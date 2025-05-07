@@ -16,8 +16,8 @@ class THomeCategories extends StatelessWidget {
     {"image": TImages.skinCareIcon, "title": "Skin Care"},
     {"image": TImages.personalCareIcon, "title": "Personal Care"},
     {"image": TImages.hairCareIcon, "title": "Hair Care"},
-    {"image": TImages.babyCareIcon, "title": "Bay Care"},
-    {"image": TImages.houseHoldIcon, "title": "House Hold"},
+    {"image": TImages.babyCareIcon, "title": "Baby Care"},
+    {"image": TImages.houseHoldIcon, "title": "Household"},
   ];
 
   @override
@@ -33,7 +33,7 @@ class THomeCategories extends StatelessWidget {
           return TVerticalImageText(
             image: category["image"],
             title: category["title"],
-            onTap: () => Get.to(() => const SubCategoriesScreen()),
+            onTap: () => Get.to(() => SubCategoriesScreen(categoryTitle: category["title"])),
           );
         },
       ),

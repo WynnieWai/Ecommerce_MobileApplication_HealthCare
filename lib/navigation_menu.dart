@@ -27,11 +27,11 @@ class NavigationMenu extends StatelessWidget {
           backgroundColor: darkMode ? TColors.black : Colors.white,
           indicatorColor: darkMode ? TColors.white.withOpacity(0.1) : TColors.black.withOpacity(0.1),
 
-          destinations: const [
-            NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
-            NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
-            NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
+          destinations: [
+            NavigationDestination(icon: Image.asset('assets/logos/Home_Button.png', height: 24), label: 'Home'),
+            NavigationDestination(icon: Image.asset('assets/logos/Store_Button.png', height: 24), label: 'Store'),
+            NavigationDestination(icon: Image.asset('assets/logos/Wishlist_Button.png', height: 24), label: 'Wishlist'),
+            NavigationDestination(icon: Image.asset('assets/logos/Profile_Button.png', height: 24), label: 'Profile'),
           ],
         ),
       ),
