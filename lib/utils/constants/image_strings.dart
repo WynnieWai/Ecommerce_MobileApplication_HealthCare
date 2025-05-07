@@ -41,6 +41,19 @@ class TImages {
   static const String hermanMillerLogo = "assets/icons/brands/herman-miller-logo.png";
   static const String ikeaLogo = "assets/icons/brands/ikea_logo.png";
   static const String acerlogo = "assets/icons/brands/acer_logo.png";
+  static const String blackmoresLogo = "assets/icons/brands/blackmores.png";
+  static const String cetaphilLogo = "assets/icons/brands/cetaphil-logo.png";
+  static const String colgateLogo = "assets/icons/brands/colgate-logo.png";
+  static const String doveLogo = "assets/icons/brands/dove-logo.png";
+  static const String dettolLogo = "assets/icons/brands/dettol-logo.png";
+  static const String ensureLogo = "assets/icons/brands/ensuregold-logo.png";
+  static const String natureLogo = "assets/icons/brands/NaturesBounty.png";
+  static const String oritaLogo = "assets/icons/brands/ortia-logo.png";
+  static const String panteneLogo = "assets/icons/brands/pantene-logo1.png";
+  static const String larocheposayLogo = "assets/icons/brands/La-Roche-Posay-Logo.png";
+
+
+
 
   // -- Animations
   static const String productsIllustration = "assets/images/animations/sammy-line-workout.gif";
@@ -51,9 +64,13 @@ class TImages {
   static const String verifyIllustration = "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
 
   // -- OnBoarding Images
-  static const String onBoardingImage1 = "assets/images/on_boarding_images/sammy-line-searching.gif";
-  static const String onBoardingImage2 = "assets/images/on_boarding_images/sammy-line-shopping.gif";
-  static const String onBoardingImage3 = "assets/images/on_boarding_images/sammy-line-delivery.gif";
+  // static const String onBoardingImage1 = "assets/images/on_boarding_images/sammy-line-searching.gif";
+  // static const String onBoardingImage2 = "assets/images/on_boarding_images/sammy-line-shopping.gif";
+  // static const String onBoardingImage3 = "assets/images/on_boarding_images/sammy-line-delivery.gif";
+
+  // static const String onBoardingImage1 = "assets/images/on_boarding_images/searching.gif";
+  // static const String onBoardingImage2 = "assets/images/on_boarding_images/payment.gif";
+  // static const String onBoardingImage3 = "assets/images/on_boarding_images/delivery.gif";
 
   // -- Products
   // static const String productImage1 = "assets/images/products/nike-shoes.png";
@@ -306,7 +323,7 @@ class TImages {
   // static const String productImage72 = "assets/images/products/suncare5-1.png";
   // static const String productImage73 = "assets/images/products/suncare5-2.png";
 
-  static const String productImage138 = "assets/images/products/bathroom1-1.png";
+  static const String productImage138 = "assets/images/products/bathroom1-1,png.avif";
   static const String productImage139 = "assets/images/products/bathroom2-1.png";
   static const String productImage140 = "assets/images/products/bathroom2-2.png";
   static const String productImage141 = "assets/images/products/bathroom2-3.png";

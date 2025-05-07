@@ -16,12 +16,15 @@ import 'package:testing_asg1/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
 import 'package:testing_asg1/features/shop/screens/brand/all_brands.dart';
+import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
+import 'package:testing_asg1/features/shop/screens/store/dummy_brand.dart';
 import 'package:testing_asg1/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/enums.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
+
 
 class StoreScreen extends StatelessWidget{
   const StoreScreen({super.key});
@@ -31,8 +34,10 @@ class StoreScreen extends StatelessWidget{
     //return DefaultTabController()
     // length: 5,
     final dark = THelperFunctions.isDarkMode(context);
+
     return DefaultTabController(
       length: 6,//number of tabs we created
+      // length: productsByCategory.length,
       child: Scaffold(
         appBar: TAppBar(
           title:Text('Store',style: Theme.of(context).textTheme.headlineMedium),
@@ -65,15 +70,23 @@ class StoreScreen extends StatelessWidget{
       
                       //Featured Brands
                       TSectionHeading(title:'Featured Brands', showActionButton:true,onPressed: () => Get.to(() => const AllBrandsScreen())),
+                      //TSectionHeading(title:'Featured Brands', showActionButton:true,onPressed: (){}),
                       const SizedBox(height: TSizes.spaceBtwItems/1.5),
       
                       TGridLayout(
                         itemCount:4,
+                        //itemCount: dummyBrands.length,
                         mainAxisExtent: 80, 
                         itemBuilder:(_,index){
+                        final brand = dummyBrands[index];
                         // In the Backend Tutorial we will pass the each Brand and onPress Event also
                         // return const TBrandCard(showBorder:false); 
-                        return TBrandCard(showBorder:false);
+                        return TBrandCard(
+                          showBorder:false,
+                          title: brand.title,
+                          imagePath: brand.image,
+                          productCount: brand.productCount,
+                          );
 
                       }
                       )
