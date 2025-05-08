@@ -7,6 +7,7 @@ import 'package:testing_asg1/common/widgets/custom_shapes/curved_edges/curved_ed
 import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
+import 'package:testing_asg1/features/shop/screens/checkout/checkout.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:testing_asg1/features/shop/screens/product_reviews/product_reviews.dart';
@@ -48,7 +49,7 @@ class ProductDetailScreen extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Checkout Button
-                  SizedBox(width: double.infinity, child: ElevatedButton(onPressed: (){}, child: Text('Checkout'))),
+                  SizedBox(width: double.infinity, child: ElevatedButton(onPressed: ()=>Get.to(()=> const CheckoutScreen()), child: Text('Checkout'))),
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// - Description
