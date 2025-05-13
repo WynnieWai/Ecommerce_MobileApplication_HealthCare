@@ -36,15 +36,15 @@ class TProductMetaData extends StatelessWidget {
             const SizedBox(width: TSizes.spaceBtwItems),
 
             /// Price
-            Text('\$250', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
+            // Text('\$250', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
             const SizedBox(width: TSizes.spaceBtwItems),
-            const TProductPriceText(price: '175', isLarge: true),
+            const TProductPriceText(price: '38.96', isLarge: true),
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
         /// Title
-        const TProductTitleText(title: 'Green Nike Sports Shirt'),
+        const TProductTitleText(title: 'Cetaphil Baby Wash & Shampoo 230ml'),
         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
         
         /// Stock Status
@@ -61,12 +61,12 @@ class TProductMetaData extends StatelessWidget {
         Row(
           children: [
             TCircularImage(
-              image: TImages.cosmeticsIcon,
+              image: TImages.babyCareIcon,
               width: 32,
               height: 32,
               overlayColor: darkMode ? TColors.white : TColors.black,
             ),
-            const TBrandTitleWithVerifiedIcon(title: 'Nike', brandTextSize: TextSizes.medium),
+            const TBrandTitleWithVerifiedIcon(title: 'Cetaphil', brandTextSize: TextSizes.medium),
           ],
         ),
       ],
