@@ -39,7 +39,7 @@ class ProductDetailScreen extends StatelessWidget {
                   TProductMetaData(),
 
                   /// -- Attributes
-                  TProductAttributes(),
+                  // TProductAttributes(),
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Checkout Button
@@ -50,7 +50,7 @@ class ProductDetailScreen extends StatelessWidget {
                   const TSectionHeading(title: 'Description', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   ReadMoreText(
-                    'This is a Product description for Blue Nike Sleeve less vest. There are more things that can be added but I am just practicing and nothing else.',
+                    'Bath time should be fun and happy for you and your baby, and with Cetaphil Baby Gentle Wash & Shampoo, it\'s now easier to do! Tear-free, soap-free and hypoallergenic, it keeps your baby\'s hair and skin soft, healthy and clean.',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',

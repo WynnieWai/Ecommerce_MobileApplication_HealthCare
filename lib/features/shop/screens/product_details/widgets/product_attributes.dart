@@ -37,14 +37,14 @@ class TProductAttributes extends StatelessWidget {
                           const TProductTitleText(title: 'Price : ', smallSize: true),
                           
                           /// Actual Price
-                          Text(
-                            '\$25',
-                            style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),
-                          ),
-                          const SizedBox(width: TSizes.spaceBtwItems),
+                          // Text(
+                          //   '\$25',
+                          //   style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),
+                          // ),
+                          // const SizedBox(width: TSizes.spaceBtwItems),
 
                           /// Sale Price
-                          const TProductPriceText(price: '20')
+                          const TProductPriceText(price: '38.96')
                         ],
                       ),
 
