@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
-import 'package:testing_asg1/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:testing_asg1/common/widgets/images/t_circular_image.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/personalization/screens/profile/widgets/profile_menu.dart';

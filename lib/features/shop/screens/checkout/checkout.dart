@@ -16,7 +16,7 @@ import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
 class CheckoutScreen extends StatelessWidget {
-  const CheckoutScreen({Key? key}) : super(key: key);
+  const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

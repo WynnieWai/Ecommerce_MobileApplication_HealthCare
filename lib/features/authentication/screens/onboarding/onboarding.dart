@@ -8,7 +8,6 @@ import 'package:testing_asg1/features/authentication/screens/onboarding/widgets/
 import 'package:testing_asg1/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
 
 
-import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/text_strings.dart';
 
 

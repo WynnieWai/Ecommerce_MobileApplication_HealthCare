@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';

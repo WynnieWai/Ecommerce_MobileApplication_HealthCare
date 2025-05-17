@@ -3,7 +3,7 @@ import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 
 class TRoundedContainer extends StatelessWidget {
-  TRoundedContainer({
+  const TRoundedContainer({
     super.key,
     this.child, 
     this.width,

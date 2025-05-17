@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 
 class TSettingsMenuTile extends StatelessWidget{

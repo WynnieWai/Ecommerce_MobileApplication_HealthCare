@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/state_manager.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/features/personalization/screens/settings/settings.dart';
 import 'package:testing_asg1/features/shop/screens/home/home.dart';
 import 'package:testing_asg1/features/shop/screens/store/store.dart';

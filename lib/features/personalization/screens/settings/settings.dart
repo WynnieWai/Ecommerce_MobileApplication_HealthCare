@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:get/get_core/src/get_main.dart";
 import "package:iconsax/iconsax.dart";
 import "package:testing_asg1/common/widgets/appbar/appbar.dart";
 import "package:testing_asg1/common/widgets/custom_shapes/containers/primary_header_container.dart";
@@ -12,7 +11,6 @@ import "package:testing_asg1/features/personalization/screens/profile/profile.da
 import "package:testing_asg1/features/shop/screens/cart/cart.dart";
 import "package:testing_asg1/features/shop/screens/order/order.dart";
 import "package:testing_asg1/utils/constants/colors.dart";
-import "package:testing_asg1/utils/constants/image_strings.dart";
 import "package:testing_asg1/utils/constants/sizes.dart";
 
 class SettingScreen extends StatelessWidget{

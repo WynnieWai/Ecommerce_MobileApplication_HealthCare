@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';

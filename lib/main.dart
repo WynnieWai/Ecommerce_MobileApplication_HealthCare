@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:testing_asg1/app.dart';
-import 'package:testing_asg1/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:testing_asg1/firebase_options.dart';
-import 'package:testing_asg1/utils/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 // ------ Entry point of Flutter App ------
 Future<void> main() async {

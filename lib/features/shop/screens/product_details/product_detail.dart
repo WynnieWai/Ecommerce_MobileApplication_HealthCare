@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
-import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
-import 'package:testing_asg1/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
-import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
-import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/screens/checkout/checkout.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
@@ -14,8 +10,6 @@ import 'package:testing_asg1/features/shop/screens/product_reviews/product_revie
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/rating_share_widget.dart';
-import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
