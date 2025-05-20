@@ -16,7 +16,7 @@ class TBillingAmountSection extends StatelessWidget {
             //Billing Address
             Text('Subtotal', style: Theme.of(context).textTheme.bodyMedium),
             //Product Price
-            Text('\$256.0', style: Theme.of(context).textTheme.bodyMedium),
+            Text('\$15.0', style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems/2),
@@ -41,7 +41,7 @@ class TBillingAmountSection extends StatelessWidget {
             //Billing Address
             Text('Tax Fee', style: Theme.of(context).textTheme.bodyMedium),
             //Product Price
-            Text('\$6.0', style: Theme.of(context).textTheme.labelLarge),
+            Text('\$3.0', style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems/2),
@@ -53,7 +53,7 @@ class TBillingAmountSection extends StatelessWidget {
             //Billing Address
             Text('Order Total', style: Theme.of(context).textTheme.bodyMedium),
             //Product Price
-            Text('\$6.0', style: Theme.of(context).textTheme.titleMedium),
+            Text('\$26.0', style: Theme.of(context).textTheme.titleMedium),
           ],
         ),      
       ],    

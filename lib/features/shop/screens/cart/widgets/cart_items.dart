@@ -41,7 +41,7 @@ class TCartItems extends StatelessWidget {
                 ),
               
               //Product Total Price
-              TProductPriceText(price: '256'),
+              TProductPriceText(price: '7.5'),
             ],
           ),
         ]

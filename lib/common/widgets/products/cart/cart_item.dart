@@ -31,19 +31,19 @@ class TCartItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const TBrandTitleWithVerifiedIcon( title: "Nike"),
-              const Flexible(child: TProductTitleText(title:'Black Sports shoes', maxLines: 1)),
+              const TBrandTitleWithVerifiedIcon( title: "Cetaphil"),
+              const Flexible(child: TProductTitleText(title:'Baby Wash & Shampoo 230ml', maxLines: 1)),
           
-              Text.rich(
-                TextSpan(children: 
-                  [
-                    TextSpan(text: 'Color: ', style: Theme.of(context).textTheme.bodySmall),
-                    TextSpan(text: 'Green', style: Theme.of(context).textTheme.bodyLarge),
-                    TextSpan(text: 'Size: ', style: Theme.of(context).textTheme.bodySmall),
-                    TextSpan(text: 'UK 08', style: Theme.of(context).textTheme.bodyLarge)
-                  ]
-                )
-              )
+              // Text.rich(
+              //   TextSpan(children: 
+              //     [
+              //       TextSpan(text: 'Color: ', style: Theme.of(context).textTheme.bodySmall),
+              //       TextSpan(text: 'Green', style: Theme.of(context).textTheme.bodyLarge),
+              //       TextSpan(text: 'Size: ', style: Theme.of(context).textTheme.bodySmall),
+              //       TextSpan(text: 'UK 08', style: Theme.of(context).textTheme.bodyLarge)
+              //     ]
+              //   )
+              // )
             ],
           ),
         )
