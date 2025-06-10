@@ -365,7 +365,8 @@ class TImages {
 
 
 
-  
+  // Sign Up Images
+  static const String docerAnimation = "assets/images/animations/141594-animation-of-docer.json";
   
   
 
