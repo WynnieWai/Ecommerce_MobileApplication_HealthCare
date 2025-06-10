@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:testing_asg1/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/theme/theme.dart';
 
 // -- Use this Class to setup themes, initial Bindings, any animations and much more using Material Widget
@@ -14,7 +15,8 @@ class App extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       // debugShowCheckedModeBanner: false,
-      home: const OnBoardingScreen(),
+      // Show Loader or Circular Progress Indicator meanwhile Authentication Repository is deciding to show relevant screen.
+      home: const Scaffold(backgroundColor: TColors.primary, body: Center(child: CircularProgressIndicator(color: Colors.white))),
     );
   }
 }
