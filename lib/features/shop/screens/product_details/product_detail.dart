@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
+import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/features/shop/screens/checkout/checkout.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_attributes.dart';
@@ -14,7 +15,9 @@ import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({super.key});
+  const ProductDetailScreen({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class ProductDetailScreen extends StatelessWidget {
         child: Column(
           children: [
             /// 1 - Product Image Slider
-            TProductImageSlider(),
+            const TProductImageSlider(),
 
             /// 2 - Product Details
             Padding(
@@ -33,13 +36,13 @@ class ProductDetailScreen extends StatelessWidget {
               child: Column(
                 children: [
                   /// - Rating & Share
-                  TRatingAndShare(),
+                  const TRatingAndShare(),
 
                   /// - Price, Title, Stock, & Brand
-                  TProductMetaData(),
+                  const TProductMetaData(),
 
                   /// -- Attributes
-                  // TProductAttributes(),
+                  const TProductAttributes(),
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Checkout Button

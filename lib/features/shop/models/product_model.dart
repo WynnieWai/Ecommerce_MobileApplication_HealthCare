@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:testing_asg1/features/shop/models/brand_model.dart';
 import 'package:testing_asg1/features/shop/models/product_attribute_model.dart';
 import 'package:testing_asg1/features/shop/models/product_variation_model.dart';
@@ -85,8 +86,14 @@ class ProductModel {
       productAttributes: (data['ProductAttributes'] as List<dynamic>).map((e) => ProductAttributeModel.fromJson(e)).toList(),
       productVariations: (data['ProductVariations'] as List<dynamic>).map((e) => ProductVariationModel.fromJson(e)).toList(),
     );
+
+    // Map Json-oriented document query snapshot from Firebase to Model 
+  //   factory ProductModel.fromQuerySnapshot(QueryDocumentSnapshot<Object?> document) {
+  //     final data = document.data() as Map<String, dynamic>;
+  //     return ProductModel (
+  //       id: document.id,
+  //     )
+  //   }
   }
-
-
 }
 

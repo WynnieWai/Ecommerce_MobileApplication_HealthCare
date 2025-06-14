@@ -56,5 +56,7 @@ class BrandModel {
         productsCount: data['ProductsCount'] ?? 0
       );
     } 
+    /// Add this to handle null safely
+    return BrandModel.empty();
   }
 }

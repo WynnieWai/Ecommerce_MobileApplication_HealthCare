@@ -3,6 +3,7 @@ import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/models/category_model.dart';
+import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 
@@ -41,13 +42,13 @@ class TCategoryTab extends StatelessWidget{
               TSectionHeading(title: "You might like", showActionButton: true,onPressed: (){}),
               const SizedBox(height: TSizes.spaceBtwItems),
       
-              // TGridLayout(itemCount:4, itemBuilder: (_,index)=>const TProductCardVertical()),
-              TGridLayout(
-                itemCount: categoryProducts.length,
-                itemBuilder: (_, index) => TProductCardVertical(
-                  product: categoryProducts[index],
-                ),
-              ),
+              TGridLayout(itemCount:4, itemBuilder: (_,index) => TProductCardVertical(product: ProductModel.empty())),
+              // TGridLayout(
+              //       itemCount: categoryProducts.length,
+              //       itemBuilder: (_, index) => TProductCardVertical(
+              //         product: categoryProducts[index],
+              //       ),
+              //     ),
               const SizedBox(height: TSizes.spaceBtwSections,)
       
             ],
