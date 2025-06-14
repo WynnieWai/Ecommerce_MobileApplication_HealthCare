@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:testing_asg1/common/widgets/shimmers/shimmer.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
@@ -37,22 +39,24 @@ class TCircularImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
     
     ),// BoxDecoration
-    
-    child: Center(
-      child: isNetworkImage
-        ? CachedNetworkImage(
-            fit: fit, 
-            color: overlayColor,
-            imageUrl: image,
-            progressIndicatorBuilder:(context, url, downloadProgress) => const TShimmerEffect(width: 55, height: 55, redius: 55),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
-          )
-        : Image(
-            fit:fit,
-            image: AssetImage(image),
-            color: overlayColor,
-          ), 
-      ), 
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(100),
+      child: Center(
+        child: isNetworkImage
+          ? CachedNetworkImage(
+              fit: fit, 
+              color: overlayColor,
+              imageUrl: image,
+              progressIndicatorBuilder:(context, url, downloadProgress) => const TShimmerEffect(width: 55, height: 55, radius: 55),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            )
+          : Image(
+              fit:fit,
+              image: AssetImage(image),
+              color: overlayColor,
+            ), 
+        ), 
+      ),
     );
   }
 }

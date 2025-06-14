@@ -1,12 +1,11 @@
+import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-<<<<<<< HEAD
 import 'package:image_picker/image_picker.dart';
-=======
 import 'package:testing_asg1/data/repositories/authentication/authentication_repository.dart';
->>>>>>> 36a34f8b57b4ad49fea6de9018df495f4fccf0ad
 import 'package:testing_asg1/data/repositories/user/user_repository.dart';
 import 'package:testing_asg1/features/authentication/screens/login/login.dart';
 import 'package:testing_asg1/features/personalization/models/user_model.dart';
@@ -24,6 +23,7 @@ class UserController extends GetxController {
   Rx<UserModel> user = UserModel.empty().obs;
 
   final hidePassword = false.obs;
+  final imageUploading = false.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final userRepository = Get.put(UserRepository());
@@ -51,25 +51,27 @@ class UserController extends GetxController {
   /// Save user Record from any Registration provider
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      if (userCredentials != null) {
-        // Convert Name to First and Last Name
-        final nameParts = UserModel.nameParts(userCredentials.user?.displayName ?? '');
-        final username = UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+      // Refresh User Record
+      await fetchUserRecord();
+      if (user.value.id.isNotEmpty) {
+        if (userCredentials != null) {
+          // Convert Name to First and Last Name
+          final nameParts = UserModel.nameParts(userCredentials.user?.displayName ?? '');
+          final username = UserModel.generateUsername(userCredentials.user!.displayName ?? '');
 
-        //Map Data
-        final user = UserModel(
-          id: userCredentials.user!.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          username: username,
-          email: userCredentials.user!.email ?? '',
-          phoneNumber: userCredentials.user!.phoneNumber ?? '',
-          profilePicture: userCredentials.user!.photoURL ?? '',
-        );
-
-        // Save User Record
-        await userRepository.saveUserRecord(user);
-
+          //Map Data
+          final user = UserModel(
+            id: userCredentials.user!.uid,
+            firstName: nameParts[0],
+            lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            username: username,
+            email: userCredentials.user!.email ?? '',
+            phoneNumber: userCredentials.user!.phoneNumber ?? '',
+            profilePicture: userCredentials.user!.photoURL ?? '',
+          );
+          // Save User Record
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       TLoaders.warningSnackBar(
@@ -79,27 +81,36 @@ class UserController extends GetxController {
     }
   }
 
-<<<<<<< HEAD
 
   // Upload Profile Image
-  uploadUserProfilePicture(String imagePath) async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 70, maxWidth: 512, maxHeight: 512);
-    try {
-      await userRepository.uploadProfileImage(imagePath);
-      TLoaders.successSnackBar(
-        title: 'Profile Image Updated',
-        message: 'Your profile image has been successfully updated.',
-      );
+  uploadUserProfilePicture() async {
+    try{
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 70, maxWidth: 512, maxHeight: 512);
+      if( image != null) {
+        imageUploading.value = true;
+        final imageUrl = await userRepository.uploadImage('Users/Images/Profile/', image);
+
+        // Update User Record with new Image URL
+        Map<String, dynamic> json = {
+          'profilePicture': imageUrl,
+        };
+        await userRepository.updateSingleField(json);
+
+        user.value.profilePicture = imageUrl; // Update local user model
+        user.refresh(); // Refresh the user observable
+        
+        TLoaders.successSnackBar(title: 'Profile Picture Updated', message: 'Your profile picture has been updated.');
+      }
     } catch (e) {
-      TLoaders.errorSnackBar(
-        title: 'Image Upload Failed',
-        message: 'Failed to upload profile image. Please try again.',
-      );
+      TLoaders.errorSnackBar(title: 'OnSnap', message: 'Something went wrong: $e');
+    }
+    finally {
+      imageUploading.value = false;
     }
   }
 
 
-=======
+
   /// Delete Account Warning 
   void deleteAccountWarningPopup() {
     Get.defaultDialog(
@@ -171,5 +182,4 @@ class UserController extends GetxController {
       TLoaders.warningSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
->>>>>>> 36a34f8b57b4ad49fea6de9018df495f4fccf0ad
 }
