@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
 import 'package:testing_asg1/common/widgets/images/t_circular_image.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
+import 'package:testing_asg1/features/personalization/controllers/user_controller.dart';
 import 'package:testing_asg1/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
@@ -11,6 +14,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final controller = UserController.instance;
     return Scaffold(
       appBar: TAppBar(
         title: const Text('Profile'),
@@ -26,7 +31,13 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const TCircularImage(image:TImages.user,width:80,height:80),
+                    Obx(() {
+                      final NetworkImage = controller.user.value.profilePicture;
+                      final image = NetworkImage.isNotEmpty
+                          ? NetworkImage
+                          : TImages.user; // Fallback to default image if empty
+                      return const TCircularImage(image: TImages.user, width: 80, height: 80);
+                    }),
                     TextButton(onPressed: (){}, child: const Text('Change Profile Picture')),
                   ],
                 )

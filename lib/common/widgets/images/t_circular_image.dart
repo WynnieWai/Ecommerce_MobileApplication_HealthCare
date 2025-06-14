@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
@@ -37,12 +38,21 @@ class TCircularImage extends StatelessWidget {
     
     ),// BoxDecoration
     
-    child: Image(
-      fit:fit,
-      image: isNetworkImage ? NetworkImage(image) : AssetImage(image) as ImageProvider,
-      color: overlayColor,
-    ), //image
-    
+    child: Center(
+      child: isNetworkImage
+        ? CachedNetworkImage(
+            fit: fit, 
+            color: overlayColor,
+            imageUrl: image,
+            progressIndicatorBuilder:(context, url, downloadProgress) => const TShimmerEffect(width: 55, height: 55, redius: 55),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
+          )
+        : Image(
+            fit:fit,
+            image: AssetImage(image),
+            color: overlayColor,
+          ), 
+      ), 
     );
   }
 }

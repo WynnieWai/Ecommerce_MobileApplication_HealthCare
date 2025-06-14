@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:testing_asg1/data/repositories/user/user_repository.dart';
 import 'package:testing_asg1/features/personalization/models/user_model.dart';
 import 'package:testing_asg1/utils/popups/loaders.dart';
@@ -39,4 +40,24 @@ class UserController extends GetxController {
       );
     }
   }
+
+
+  // Upload Profile Image
+  uploadUserProfilePicture(String imagePath) async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 70, maxWidth: 512, maxHeight: 512);
+    try {
+      await userRepository.uploadProfileImage(imagePath);
+      TLoaders.successSnackBar(
+        title: 'Profile Image Updated',
+        message: 'Your profile image has been successfully updated.',
+      );
+    } catch (e) {
+      TLoaders.errorSnackBar(
+        title: 'Image Upload Failed',
+        message: 'Failed to upload profile image. Please try again.',
+      );
+    }
+  }
+
+
 }
