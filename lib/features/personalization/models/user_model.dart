@@ -73,7 +73,9 @@ class UserModel {
         profilePicture: data['ProfilePicture'] ?? '',
       );
     }
-    // Return an empty UserModel if data is null
-    return UserModel.empty();
+    else {
+      // Return an empty UserModel if data is null
+      return UserModel.empty();
+    }
   }
 }

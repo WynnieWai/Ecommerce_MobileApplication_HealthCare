@@ -26,8 +26,6 @@ Future<void> main() async {
     (FirebaseApp value) => Get.put(AuthenticationRepository()),
   );
 
-  // Todo: Initialize Authentication 
-
   // Load all the Material Design / Themes / Localizations / Bindings 
   runApp(const App());
 }
