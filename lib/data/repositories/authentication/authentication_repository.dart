@@ -37,26 +37,43 @@ class AuthenticationRepository extends GetxController {
         Get.offAll(()=> VerifyEmailScreen(email: _auth.currentUser?.email));
       }
     } else{
-          // Loacl Storage 
-        if (kDebugMode) {
-          print('===================== GET STORAGE Auth Repo =====================');
-          print(deviceStorage.read('IsFirstTime'));
-        }
+          // Local Storage 
+        // if (kDebugMode) {
+        //   print('===================== GET STORAGE Auth Repo =====================');
+        //   print(deviceStorage.read('IsFirstTime'));
+        // }
 
         deviceStorage.writeIfNull('IsFirstTime', true);
-        deviceStorage.read('IsFirstTime') != true ? Get.offAll(() => const LoginScreen()) : Get.offAll(const OnBoardingScreen());
+        
+        deviceStorage.read('IsFirstTime') != true 
+          ? Get.offAll(() => const LoginScreen()) 
+          : Get.offAll(const OnBoardingScreen());
 
         }
-
     }
 
   
 
   /* --------------- Email & Password sign in --------------- */
 
-  /// [EmailAuthentication] - Sign In
-  
-  /// [EmailAuthentication] - Register 
+  /// [EmailAuthentication] - LOGIN
+  Future<UserCredential> loginWithEmailAndPassword(String email, String password) async {
+    try {
+      return await _auth.signInWithEmailAndPassword(email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  /// [EmailAuthentication] - REGISTER
   Future<UserCredential> registerWithEmailAndPassword(String email, String password) async {
     try {
       return await _auth.createUserWithEmailAndPassword(email: email, password: password);

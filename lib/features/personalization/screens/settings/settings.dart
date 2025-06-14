@@ -6,6 +6,7 @@ import "package:testing_asg1/common/widgets/custom_shapes/containers/primary_hea
 import "package:testing_asg1/common/widgets/list_tiles/settings_menu_tile.dart";
 import "package:testing_asg1/common/widgets/list_tiles/user_profile_tile.dart";
 import "package:testing_asg1/common/widgets/texts/section_heading.dart";
+import "package:testing_asg1/data/repositories/authentication/authentication_repository.dart";
 import "package:testing_asg1/features/personalization/screens/address/address.dart";
 import "package:testing_asg1/features/personalization/screens/profile/profile.dart";
 import "package:testing_asg1/features/shop/screens/cart/cart.dart";
