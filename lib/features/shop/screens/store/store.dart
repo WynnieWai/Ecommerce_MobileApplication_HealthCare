@@ -31,7 +31,7 @@ class StoreScreen extends StatelessWidget{
         appBar: TAppBar(
           title:Text('Store',style: Theme.of(context).textTheme.headlineMedium),
           actions: [
-            TCartCounterIcon(onPressed:(){}, iconColor: dark? TColors.white : TColors.dark),
+            TCartCounterIcon(onPressed:(){}, iconColor: dark? TColors.white : TColors.dark, counterBgColor: TColors.black, counterTextColor: TColors.white),
           ],
       
         ),

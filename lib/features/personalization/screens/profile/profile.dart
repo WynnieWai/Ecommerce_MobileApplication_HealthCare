@@ -1,10 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
 import 'package:testing_asg1/common/widgets/images/t_circular_image.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
-import 'package:testing_asg1/features/personalization/controllers/user_controller.dart';
 import 'package:testing_asg1/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
@@ -14,16 +12,15 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final controller = UserController.instance;
+
     return Scaffold(
-      appBar: TAppBar(
-        title: const Text('Profile'),
-        showBackArrow: true,
-      ),
+      appBar: const TAppBar(title: Text('Profile'), showBackArrow: true),
+
+      /// Body
       body: SingleChildScrollView(
         child: Padding(
-          padding:EdgeInsets.all(TSizes.defaultSpace),
+          padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
               //Profile Picture
@@ -40,28 +37,32 @@ class ProfileScreen extends StatelessWidget {
                     }),
                     TextButton(onPressed: (){}, child: const Text('Change Profile Picture')),
                   ],
-                )
+                ),
               ),
-              //Details
+
+              /// Details
               const SizedBox(height: TSizes.spaceBtwItems / 2),
               const Divider(), 
               const SizedBox(height: TSizes.spaceBtwItems),
+
+              /// Heading Profile Info
               const TSectionHeading(title: "Profile Information",showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
 
-              TProfileMenu(onPressed: (){}, title: 'Name', value: 'John Doe'),
-              TProfileMenu(onPressed: (){}, title: 'Username', value: 'John_Doe'),
+              TProfileMenu(onPressed: () => Get.to(() => const ChangeName()), title: 'Name', value: controller.user.value.fullName),
+              TProfileMenu(onPressed: (){}, title: 'Username', value: controller.user.value.username),
 
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(), 
               const SizedBox(height: TSizes.spaceBtwItems),
 
+              /// Heading Personal Info
               const TSectionHeading(title: "Personal Information",showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
 
-              TProfileMenu(onPressed: (){}, title: 'User ID', value: 'John Doe'),
-              TProfileMenu(onPressed: (){}, title: 'E-mail', value: 'JohnDoe@gmail.com'),
-              TProfileMenu(onPressed: (){}, title: 'Phone number', value: '+12-345-67890'),
+              TProfileMenu(onPressed: (){}, title: 'User ID', value: controller.user.value.id, icon: Iconsax.copy),
+              TProfileMenu(onPressed: (){}, title: 'E-mail', value: controller.user.value.email),
+              TProfileMenu(onPressed: (){}, title: 'Phone number', value: controller.user.value.phoneNumber),
               TProfileMenu(onPressed: (){}, title: 'Gender', value: 'Male'),             
               TProfileMenu(onPressed: (){}, title: 'Date of Birth', value: '10 October 2000'),
               const Divider(),
@@ -69,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                  onPressed: (){},
+                  onPressed: () => controller.deleteAccountWarningPopup(),
                   child: const Text('Close Account', style: TextStyle(color: Colors.red))                  
                 ),
               )

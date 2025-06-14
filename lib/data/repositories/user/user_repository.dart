@@ -30,6 +30,7 @@ class UserRepository extends GetxController {
     }
   }
 
+<<<<<<< HEAD
   // Function to fetch user details based on user ID
   Future<UserModel?> fetchUserDetails() async {
     try {
@@ -38,6 +39,17 @@ class UserRepository extends GetxController {
         return UserModel.fromSnapshot(documentSnapshot);
       } else {
         return UserModel.empty(); // User not found
+=======
+  /// Function to fetch user details based on user ID
+  Future<UserModel> fetchUserDetails() async {
+    try {
+      final documentSnapshot = await _db.collection("Users").doc(AuthenticationRepository.instance.authUser?.uid).get();
+      if (documentSnapshot.exists) {
+        return UserModel.fromSnapshot(documentSnapshot);
+      }
+      else {
+        return UserModel.empty();
+>>>>>>> 36a34f8b57b4ad49fea6de9018df495f4fccf0ad
       }
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
@@ -50,10 +62,17 @@ class UserRepository extends GetxController {
     }
   }
 
+<<<<<<< HEAD
   // Update any field in specific user Collection
   Future<void> updateUserField(Map<String, dynamic> json) async {
     try {
       await _db.collection('Users').doc(AuthenticationRepository.instance.authUser?.uid).update(json);
+=======
+  /// Function to update user data in Firestore 
+  Future<void> updateUserDetails(UserModel updatedUser) async {
+    try {
+      await _db.collection("Users").doc(updatedUser.id).update(updatedUser.toJson());
+>>>>>>> 36a34f8b57b4ad49fea6de9018df495f4fccf0ad
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on FormatException catch (_) {
@@ -65,10 +84,17 @@ class UserRepository extends GetxController {
     }
   }
 
+<<<<<<< HEAD
   // Delete to remove user data from Firestore
   Future<void> deleteUserRecord(String userId) async {
     try {
       await _db.collection('Users').doc(userId).delete();
+=======
+  /// Update any field in specific Users Collection 
+  Future<void> updateSingleField(Map<String, dynamic> json) async {
+    try {
+      await _db.collection("Users").doc(AuthenticationRepository.instance.authUser?.uid).update(json);
+>>>>>>> 36a34f8b57b4ad49fea6de9018df495f4fccf0ad
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on FormatException catch (_) {
@@ -80,6 +106,7 @@ class UserRepository extends GetxController {
     }
   }
 
+<<<<<<< HEAD
   // Upload any Image
   Future<String> uploadImage(String path, XFile image) async {
     try {
@@ -87,6 +114,12 @@ class UserRepository extends GetxController {
       await ref.putFile(File(image.path));
       final url = await ref.getDownloadURL();
       return url;
+=======
+  /// Function to remove user data from Firestore
+  Future<void> removeUserRecord(String userId) async {
+    try {
+      await _db.collection("Users").doc(userId).delete();
+>>>>>>> 36a34f8b57b4ad49fea6de9018df495f4fccf0ad
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on FormatException catch (_) {
@@ -98,4 +131,9 @@ class UserRepository extends GetxController {
     }
   }
 
+<<<<<<< HEAD
+=======
+  /// Upload any Image
+
+>>>>>>> 36a34f8b57b4ad49fea6de9018df495f4fccf0ad
 }
