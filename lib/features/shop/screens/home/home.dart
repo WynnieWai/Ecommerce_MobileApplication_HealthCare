@@ -4,6 +4,7 @@ import 'package:testing_asg1/common/widgets/custom_shapes/containers/primary_hea
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:testing_asg1/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/controllers/product_controller.dart';
 import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
@@ -74,8 +75,15 @@ class HomeScreen extends StatelessWidget {
 
                   //Popular Product
                   Obx (() {
-                    if (controller.isLoading.value) return 
-                    return TGridLayout(itemCount: 4, itemBuilder: (_,index)=>const TProductCardVertical());
+                    if (controller.isLoading.value) return const TVerticalProductShimmer();
+
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium));
+                    }
+                    return TGridLayout(
+                      itemCount: controller.featuredProducts.length, 
+                      itemBuilder: (_,index) => TProductCardVertical(product: controller.featuredProducts[index]),
+                    );
                   })
                   // TGridLayout(
                   //   itemCount: 2,

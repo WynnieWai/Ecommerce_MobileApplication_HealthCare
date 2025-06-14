@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/styles/shadows.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -10,9 +8,11 @@ import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
 import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';
 import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
+import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/product_detail.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
+import 'package:testing_asg1/utils/constants/image_strings.dart';
 // ignore: library_prefixes
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
@@ -20,13 +20,11 @@ import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 class TProductCardVertical extends StatelessWidget{
   const TProductCardVertical ({super.key, required this.product});
 
-  final Product product;
-
-  
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context){
-    final dark=THelperFunctions.isDarkMode(context);
+    final dark = THelperFunctions.isDarkMode(context);
 
     /// Container with side paddings, color, edges, radius, and shadow
     return GestureDetector(
@@ -39,7 +37,6 @@ class TProductCardVertical extends StatelessWidget{
           borderRadius: BorderRadius.circular(TSizes.productImageRadius),
           color: dark ? TColors.darkerGrey : TColors.white,
         ),
-      
         child: Column(
           children: [
             /// Thumbnail, Wishlist Button, Discount Tag
@@ -50,8 +47,8 @@ class TProductCardVertical extends StatelessWidget{
               child: Stack(
                 children: [
                   // --- Thumbnail Image
-                  // const TRoundedImage(imageUrl: TImages.productImage80, applyImageRadius: true,),
-                  TRoundedImage(imageUrl: product.imageUrl, applyImageRadius: true,),
+                  const TRoundedImage(imageUrl: TImages.productImage80, applyImageRadius: true,),
+                  // TRoundedImage(imageUrl: product.imageUrl, applyImageRadius: true,),
       
                   // --- Sale Tag
                   Positioned(
@@ -81,7 +78,7 @@ class TProductCardVertical extends StatelessWidget{
             ),
             const SizedBox(height:TSizes.spaceBtwItems/2),
       
-            ///Details
+            /// Details
             // Padding(
             //   padding:const EdgeInsets.only(left:TSizes.sm),
             //   child:Column(

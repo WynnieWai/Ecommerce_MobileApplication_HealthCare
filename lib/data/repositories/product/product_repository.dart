@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:testing_asg1/data/services/cloud_storage/firebase_storage_service.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/utils/exceptions/firebase_exceptions.dart';
 import 'package:testing_asg1/utils/exceptions/platform_exceptions.dart';
