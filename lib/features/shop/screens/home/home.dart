@@ -5,6 +5,7 @@ import 'package:testing_asg1/common/widgets/custom_shapes/containers/search_cont
 import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
+import 'package:testing_asg1/features/shop/controllers/product_controller.dart';
 import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
 import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_appbar.dart';
@@ -19,21 +20,23 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// -- Header --
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   /// -- Appbar --
-                  const THomeAppBar(),
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  THomeAppBar(),
+                  SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Searchbar --
-                  const TSearchContainer(text: 'Search in Store'),
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  TSearchContainer(text: 'Search in Store'),
+                  SizedBox(height: TSizes.spaceBtwSections),
                   
                   /// -- Categories --
                   Padding(
@@ -42,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         /// Heading 
                         TSectionHeading(title: 'Popular Categories', showActionButton: false, textColor: Colors.white),
-                        const SizedBox(height: TSizes.spaceBtwItems),
+                        SizedBox(height: TSizes.spaceBtwItems),
 
                         /// Categories 
                         THomeCategories(),
@@ -50,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  SizedBox(height: TSizes.spaceBtwSections),
                 ],
               )
             ),
@@ -61,7 +64,8 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children:[
                   //Promo Slider
-                  const TPromoSlider(banners: [TImages.myBanner1, TImages.myBanner2, TImages.myBanner3]),
+                  // const TPromoSlider(banners: [TImages.myBanner1, TImages.myBanner2, TImages.myBanner3]),
+                  const TPromoSlider(),
                   const SizedBox(height:TSizes.spaceBtwSections),
 
                   //Heading
@@ -69,13 +73,16 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwItems),
 
                   //Popular Product
-                  // TGridLayout(itemCount: 4, itemBuilder: (_,index)=>const TProductCardVertical())
-                  TGridLayout(
-                    itemCount: products.length,
-                    itemBuilder: (_, index) => TProductCardVertical(
-                      product: products[index],
-                    ),
-                  ),
+                  Obx (() {
+                    if (controller.isLoading.value) return 
+                    return TGridLayout(itemCount: 4, itemBuilder: (_,index)=>const TProductCardVertical());
+                  })
+                  // TGridLayout(
+                  //   itemCount: 2,
+                  //   itemBuilder: (_, index) => TProductCardVertical(
+                  //     product: products[index],
+                  //   ),
+                  // ),
                ],
               ),
             ),
