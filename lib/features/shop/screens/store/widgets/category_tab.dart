@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
+import 'package:testing_asg1/features/shop/models/category_model.dart';
 import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 
@@ -9,7 +10,7 @@ import 'package:testing_asg1/utils/constants/sizes.dart';
 class TCategoryTab extends StatelessWidget{
   const TCategoryTab({super.key, required this.category});
 
-  final String category;
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context){
