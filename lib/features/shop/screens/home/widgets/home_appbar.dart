@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
 import 'package:testing_asg1/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:testing_asg1/features/personalization/controllers/user_controller.dart';
-import 'package:testing_asg1/features/shop/screens/home/widgets/shimmer.dart';
+import 'package:testing_asg1/common/widgets/shimmers/shimmer.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/text_strings.dart';
 
