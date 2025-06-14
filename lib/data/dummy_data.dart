@@ -1,12 +1,17 @@
+import 'package:testing_asg1/features/shop/models/banner_model.dart';
+import 'package:testing_asg1/routes/routes.dart';
+
 import '../features/shop/models/category_model.dart';
 import '../utils/constants/image_strings.dart';
 
 class TDummyData {
   // /// -- Banners
-  // static final List<BannerModel> banners = [
-  //   BannerModel(imageUrl: TImages.banner1, targetScreen: TRoutes.order, active: false),
+  static final List<BannerModel> banners = [
+    BannerModel(imageUrl: TImages.myBanner1, targetScreen: TRoutes.order, active: true),
+    BannerModel(imageUrl: TImages.myBanner2, targetScreen: TRoutes.order, active: true),
+    BannerModel(imageUrl: TImages.myBanner3, targetScreen: TRoutes.order, active: true),
 
-  // ];
+  ];
 
   /// -- User
   // static final UserModel user = UserModel(
