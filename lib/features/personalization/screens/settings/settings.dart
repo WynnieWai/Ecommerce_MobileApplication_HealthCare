@@ -6,6 +6,7 @@ import "package:testing_asg1/common/widgets/custom_shapes/containers/primary_hea
 import "package:testing_asg1/common/widgets/list_tiles/settings_menu_tile.dart";
 import "package:testing_asg1/common/widgets/list_tiles/user_profile_tile.dart";
 import "package:testing_asg1/common/widgets/texts/section_heading.dart";
+import "package:testing_asg1/data/repositories/authentication/authentication_repository.dart";
 import "package:testing_asg1/features/personalization/screens/address/address.dart";
 import "package:testing_asg1/features/personalization/screens/profile/profile.dart";
 import "package:testing_asg1/features/shop/screens/cart/cart.dart";
@@ -85,7 +86,20 @@ class SettingScreen extends StatelessWidget{
                   const SizedBox(height:TSizes.spaceBtwSections),
                   SizedBox(
                     width: double.infinity,
-                    child:OutlinedButton(onPressed: (){}, child: const Text('Logout')),
+                    // child:OutlinedButton(onPressed: (){}, child: const Text('Logout')),
+                    child: OutlinedButton(
+                      onPressed: () async {
+                        try {
+                          await AuthenticationRepository.instance.logout();
+                          // Optionally, show a confirmation message
+                          Get.snackbar('Logout Successful', 'You have been logged out.', snackPosition: SnackPosition.BOTTOM);
+                        } catch (e) {
+                          // Handle any errors during logout
+                          Get.snackbar('Logout Failed', e.toString(), snackPosition: SnackPosition.BOTTOM);
+                        }
+                      },
+                      child: const Text('Logout'),
+                    ),
                   ),
 
                   const SizedBox(height: TSizes.spaceBtwSections*2.5),
