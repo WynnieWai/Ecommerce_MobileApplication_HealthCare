@@ -86,7 +86,20 @@ class SettingScreen extends StatelessWidget{
                   const SizedBox(height:TSizes.spaceBtwSections),
                   SizedBox(
                     width: double.infinity,
-                    child:OutlinedButton(onPressed: (){}, child: const Text('Logout')),
+                    // child:OutlinedButton(onPressed: (){}, child: const Text('Logout')),
+                    child: OutlinedButton(
+                      onPressed: () async {
+                        try {
+                          await AuthenticationRepository.instance.logout();
+                          // Optionally, show a confirmation message
+                          Get.snackbar('Logout Successful', 'You have been logged out.', snackPosition: SnackPosition.BOTTOM);
+                        } catch (e) {
+                          // Handle any errors during logout
+                          Get.snackbar('Logout Failed', e.toString(), snackPosition: SnackPosition.BOTTOM);
+                        }
+                      },
+                      child: const Text('Logout'),
+                    ),
                   ),
 
                   const SizedBox(height: TSizes.spaceBtwSections*2.5),
