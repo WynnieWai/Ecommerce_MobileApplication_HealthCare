@@ -6,84 +6,137 @@ import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 
-final Map<String, List<String>> subCategoriesMap = {
-  'Health': ['Health Supplements', 'First Aid', 'Home Health Care', 'Over the Counter', 'Medical Device'],
-  'Skin Care': ['Facial Care', 'Hand & Body', 'Sun Care'],
-  'Personal Care': ['Bath Care', 'Oral Care', 'Feminine Hygiene', 'Men\'s Grooming', 'Deodorants'],
-  'Hair Care': ['Shampoo', 'Conditioner', 'Hair Treatment', 'Styling'],
-  'Baby Care': ['Baby Bath and Hair', 'Baby Skin Care', 'Baby Diapers', 'Baby Food'],
-  'Household': ['Cleaning', 'Bathroom', 'Household Sundries'],
-};
+// final Map<String, List<String>> subCategoriesMap = {
+//   'Health': ['Health Supplements', 'First Aid', 'Home Health Care', 'Over the Counter', 'Medical Device'],
+//   'Skin Care': ['Facial Care', 'Hand & Body', 'Sun Care'],
+//   'Personal Care': ['Bath Care', 'Oral Care', 'Feminine Hygiene', 'Men\'s Grooming', 'Deodorants'],
+//   'Hair Care': ['Shampoo', 'Conditioner', 'Hair Treatment', 'Styling'],
+//   'Baby Care': ['Baby Bath and Hair', 'Baby Skin Care', 'Baby Diapers', 'Baby Food'],
+//   'Household': ['Cleaning', 'Bathroom', 'Household Sundries'],
+// };
 
-final Map<String, Map<String, List<String>>> subCategoryImages = {
-  'Health': {
-    'Health Supplements': [TImages.productImage57, TImages.productImage58, TImages.productImage59],
-    'First Aid': [TImages.productImage49, TImages.productImage50, TImages.productImage51],
-    'Home Health Care': [TImages.productImage67, TImages.productImage68, TImages.productImage69],
-    'Over the Counter': [TImages.productImage85, TImages.productImage86, TImages.productImage87],
-    'Medical Device': [TImages.productImage79, TImages.productImage80, TImages.productImage81],
-  },
-  'Skin Care': {
-    'Facial Care': [TImages.productImage111, TImages.productImage112, TImages.productImage113],
-    'Hand & Body': [TImages.productImage123, TImages.productImage124, TImages.productImage125],
-    'Sun Care': [TImages.productImage130, TImages.productImage131, TImages.productImage132],
-  },
-  'Personal Care': {
-    'Bath Care' : [TImages.productImage111], 
-    'Oral Care' : [TImages.productImage111], 
-    'Feminine Hygiene' : [TImages.productImage111], 
-    'Men\'s Grooming' : [TImages.productImage111], 
-    'Deodorants' : [TImages.productImage111],
-  },
-  'Hair Care': {
-    'Shampoo' : [TImages.productImage111], 
-    'Conditioner' : [TImages.productImage111],
-    'Hair Treatment' : [TImages.productImage111],
-    'Styling' : [TImages.productImage111],
-  },
-  'Baby Care': {
-    'Baby Bath and Hair' : [TImages.productImage111],
-    'Baby Skin Care' : [TImages.productImage111],
-    'Baby Diapers' : [TImages.productImage111],
-    'Baby Food' : [TImages.productImage111],
-  },
-  'Household': {
-    'Cleaning' : [TImages.productImage111],
-    'Bathroom' : [TImages.productImage111],
-    'Household Sundries' : [TImages.productImage111],
-  },
-};
+// final Map<String, Map<String, List<String>>> subCategoryImages = {
+//   'Health': {
+//     'Health Supplements': [TImages.productImage57, TImages.productImage58, TImages.productImage59],
+//     'First Aid': [TImages.productImage49, TImages.productImage50, TImages.productImage51],
+//     'Home Health Care': [TImages.productImage67, TImages.productImage68, TImages.productImage69],
+//     'Over the Counter': [TImages.productImage85, TImages.productImage86, TImages.productImage87],
+//     'Medical Device': [TImages.productImage79, TImages.productImage80, TImages.productImage81],
+//   },
+//   'Skin Care': {
+//     'Facial Care': [TImages.productImage111, TImages.productImage112, TImages.productImage113],
+//     'Hand & Body': [TImages.productImage123, TImages.productImage124, TImages.productImage125],
+//     'Sun Care': [TImages.productImage130, TImages.productImage131, TImages.productImage132],
+//   },
+//   'Personal Care': {
+//     'Bath Care' : [TImages.productImage111], 
+//     'Oral Care' : [TImages.productImage111], 
+//     'Feminine Hygiene' : [TImages.productImage111], 
+//     'Men\'s Grooming' : [TImages.productImage111], 
+//     'Deodorants' : [TImages.productImage111],
+//   },
+//   'Hair Care': {
+//     'Shampoo' : [TImages.productImage111], 
+//     'Conditioner' : [TImages.productImage111],
+//     'Hair Treatment' : [TImages.productImage111],
+//     'Styling' : [TImages.productImage111],
+//   },
+//   'Baby Care': {
+//     'Baby Bath and Hair' : [TImages.productImage111],
+//     'Baby Skin Care' : [TImages.productImage111],
+//     'Baby Diapers' : [TImages.productImage111],
+//     'Baby Food' : [TImages.productImage111],
+//   },
+//   'Household': {
+//     'Cleaning' : [TImages.productImage111],
+//     'Bathroom' : [TImages.productImage111],
+//     'Household Sundries' : [TImages.productImage111],
+//   },
+// };
 
 class SubCategoriesScreen extends StatelessWidget {
-  final String categoryTitle;
+  // final String categoryTitle;
 
-  const SubCategoriesScreen({super.key, required this.categoryTitle});
+  // const SubCategoriesScreen({super.key, required this.categoryTitle});
 
-  String getBannerImage() {
-    switch (categoryTitle) {
-      case 'Health':
-        return TImages.bannerHealth;
-      case 'Skin Care':
-        return TImages.bannerSkinCare;
-      case 'Personal Care':
-        return TImages.bannerPersonalCare;
-      case 'Hair Care':
-        return TImages.bannerHairCare;
-      case 'Baby Care':
-        return TImages.bannerBabyCare;
-      case 'Household':
-        return TImages.bannerHousehold;
-      default:
-        return TImages.myBanner1;
-    }
-  }
+  const SubCategoriesScreen({super.key});
+
+  // String getBannerImage() {
+  //   switch (categoryTitle) {
+  //     case 'Health':
+  //       return TImages.bannerHealth;
+  //     case 'Skin Care':
+  //       return TImages.bannerSkinCare;
+  //     case 'Personal Care':
+  //       return TImages.bannerPersonalCare;
+  //     case 'Hair Care':
+  //       return TImages.bannerHairCare;
+  //     case 'Baby Care':
+  //       return TImages.bannerBabyCare;
+  //     case 'Household':
+  //       return TImages.bannerHousehold;
+  //     default:
+  //       return TImages.myBanner1;
+  //   }
+  // }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   final subCats = subCategoriesMap[categoryTitle] ?? [];
+
+  //   return Scaffold(
+  //     appBar: TAppBar(title: Text(categoryTitle), showBackArrow: true),
+  //     body: SingleChildScrollView(
+  //       child: Column(
+  //         children: [
+  //           /// Top banner
+  //           Padding(
+  //             padding: const EdgeInsets.all(TSizes.defaultSpace),
+  //             child: TRoundedImage(
+  //               width: double.infinity,
+  //               imageUrl: getBannerImage(),
+  //               applyImageRadius: true,
+  //             ),
+  //           ),
+  //           const SizedBox(height: TSizes.spaceBtwSections),
+
+  //           /// Sectioned Subcategory Layout
+  //           Padding(
+  //             padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
+  //             child: Column(
+  //               children: subCats.map((subCat) {
+  //                 final images = subCategoryImages[categoryTitle]?[subCat] ?? [];
+
+  //                 return Column(
+  //                   crossAxisAlignment: CrossAxisAlignment.start,
+  //                   children: [
+  //                     TSectionHeading(title: subCat, onPressed: () {}),
+  //                     const SizedBox(height: TSizes.spaceBtwItems / 2),
+  //                     SizedBox(
+  //                       height: 120,
+  //                       child: ListView.separated(
+  //                         itemCount: images.length,
+  //                         scrollDirection: Axis.horizontal,
+  //                         separatorBuilder: (_, __) => const SizedBox(width: TSizes.spaceBtwItems),
+  //                         itemBuilder: (_, index) => TProductCardHorizontal(imageUrl: images[index]),
+  //                       ),
+  //                     ),
+  //                     const SizedBox(height: TSizes.spaceBtwSections),
+  //                   ],
+  //                 );
+  //               }).toList(),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
-    final subCats = subCategoriesMap[categoryTitle] ?? [];
-
     return Scaffold(
-      appBar: TAppBar(title: Text(categoryTitle), showBackArrow: true),
+      appBar: TAppBar(title: Text('Sports'), showBackArrow: true),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -92,39 +145,58 @@ class SubCategoriesScreen extends StatelessWidget {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: TRoundedImage(
                 width: double.infinity,
-                imageUrl: getBannerImage(),
+                imageUrl: TImages.promoBanner1,
                 applyImageRadius: true,
               ),
             ),
             const SizedBox(height: TSizes.spaceBtwSections),
 
-            /// Sectioned Subcategory Layout
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
-              child: Column(
-                children: subCats.map((subCat) {
-                  final images = subCategoryImages[categoryTitle]?[subCat] ?? [];
+            /// Sub-Categories 
+            Column(
+              children: [
+                /// Heading 
+                TSectionHeading(title: 'Sports shirts', onPressed: () {}),
+                const SizedBox(height: TSizes.spaceBtwItems / 2),
 
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TSectionHeading(title: subCat, onPressed: () {}),
-                      const SizedBox(height: TSizes.spaceBtwItems / 2),
-                      SizedBox(
-                        height: 120,
-                        child: ListView.separated(
-                          itemCount: images.length,
-                          scrollDirection: Axis.horizontal,
-                          separatorBuilder: (_, __) => const SizedBox(width: TSizes.spaceBtwItems),
-                          itemBuilder: (_, index) => TProductCardHorizontal(imageUrl: images[index]),
-                        ),
-                      ),
-                      const SizedBox(height: TSizes.spaceBtwSections),
-                    ],
-                  );
-                }).toList(),
-              ),
+                SizedBox(
+                  height: 120, 
+                  child: ListView.separated(
+                    itemCount: 4, 
+                    scrollDirection: Axis.horizontal,
+                    separatorBuilder: (context, index) => const SizedBox(width: TSizes.spaceBtwItems),
+                    itemBuilder: (context, index) => const TProductCardHorizontal(imageUrl: '',),
+                  ),
+                ),
+              ],
             ),
+            
+            // /// Sectioned Subcategory Layout
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
+            //   child: Column(
+            //     children: subCats.map((subCat) {
+            //       final images = subCategoryImages[categoryTitle]?[subCat] ?? [];
+
+            //       return Column(
+            //         crossAxisAlignment: CrossAxisAlignment.start,
+            //         children: [
+            //           TSectionHeading(title: subCat, onPressed: () {}),
+            //           const SizedBox(height: TSizes.spaceBtwItems / 2),
+            //           SizedBox(
+            //             height: 120,
+            //             child: ListView.separated(
+            //               itemCount: images.length,
+            //               scrollDirection: Axis.horizontal,
+            //               separatorBuilder: (_, __) => const SizedBox(width: TSizes.spaceBtwItems),
+            //               itemBuilder: (_, index) => TProductCardHorizontal(imageUrl: images[index]),
+            //             ),
+            //           ),
+            //           const SizedBox(height: TSizes.spaceBtwSections),
+            //         ],
+            //       );
+            //     }).toList(),
+            //   ),
+            // ),
           ],
         ),
       ),

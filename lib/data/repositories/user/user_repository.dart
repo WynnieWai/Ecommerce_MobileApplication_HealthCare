@@ -1,6 +1,11 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:testing_asg1/data/repositories/authentication/authentication_repository.dart';
 import '../../../features/personalization/models/user_model.dart';
 import 'package:testing_asg1/utils/exceptions/firebase_exceptions.dart';
@@ -79,7 +84,7 @@ class UserRepository extends GetxController {
     }
   }
 
-  /// Function to remove user data from Firestore
+/// Function to remove user data from Firestore
   Future<void> removeUserRecord(String userId) async {
     try {
       await _db.collection("Users").doc(userId).delete();
@@ -94,6 +99,25 @@ class UserRepository extends GetxController {
     }
   }
 
-  /// Upload any Image
+
+  // Upload any Image
+  Future<String> uploadImage(String path, XFile image) async {
+    try {
+      final ref = FirebaseStorage.instance.ref(path).child(image.name);
+      await ref.putFile(File(image.path));
+      final url = await ref.getDownloadURL();
+      return url;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
+  uploadProfileImage(String imagePath) {}
 
 }
