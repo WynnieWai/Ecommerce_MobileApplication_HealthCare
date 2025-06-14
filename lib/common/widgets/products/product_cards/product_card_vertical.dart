@@ -17,10 +17,12 @@ import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
-class TProductCardVertical extends StatelessWidget{
-  const TProductCardVertical ({super.key, required this.product});
+import '../../../../utils/constants/image_strings.dart';
 
-  final Product product;
+class TProductCardVertical extends StatelessWidget{
+  const TProductCardVertical ({super.key});
+
+  // final Product product;
 
   
 
@@ -50,8 +52,8 @@ class TProductCardVertical extends StatelessWidget{
               child: Stack(
                 children: [
                   // --- Thumbnail Image
-                  // const TRoundedImage(imageUrl: TImages.productImage80, applyImageRadius: true,),
-                  TRoundedImage(imageUrl: product.imageUrl, applyImageRadius: true,),
+                  const TRoundedImage(imageUrl: TImages.productImage80, applyImageRadius: true,),
+                  //TRoundedImage(imageUrl: product.imageUrl, applyImageRadius: true,),
       
                   // --- Sale Tag
                   Positioned(
@@ -68,12 +70,12 @@ class TProductCardVertical extends StatelessWidget{
                   Positioned(
                     top: 0,
                     right: 0,
-                    // child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red),
-                    child: TCircularIcon(
-                      icon: Iconsax.heart5,
-                      color: product.isFavorite ? Colors.red : null, // Red if true, default if false
-                      // onPressed: () => _toggleFavorite(product),
-                    ),
+                    child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                    // child: TCircularIcon(
+                    //   icon: Iconsax.heart5,
+                    //   color: product.isFavorite ? Colors.red : null, // Red if true, default if false
+                    //   // onPressed: () => _toggleFavorite(product),
+                    // ),
                   ),
                 ],
               )
@@ -87,9 +89,9 @@ class TProductCardVertical extends StatelessWidget{
             //   child:Column(
             //     crossAxisAlignment: CrossAxisAlignment.start,
             //     children: [
-            //       TProductTitleText(title: product.title,smallSize: true),
+            //       TProductTitleText(title: 'Green Nike Air Shoes',smallSize: true),
             //       const SizedBox(height:TSizes.spaceBtwItems/2),
-            //       TBrandTitleWithVerifiedIcon(title:product.brand),
+            //       TBrandTitleWithVerifiedIcon(title:'Nike'),
             //     ], 
             //   ),
             // ),
@@ -102,9 +104,9 @@ class TProductCardVertical extends StatelessWidget{
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TProductTitleText(title: product.title, smallSize: true),
+                        TProductTitleText(title: 'Green Nike Air Shoes', smallSize: true),
                         const SizedBox(height: TSizes.spaceBtwItems/2),
-                        TBrandTitleWithVerifiedIcon(title: product.brand),
+                        TBrandTitleWithVerifiedIcon(title: 'Nike'),
                       ],
                     ),
                   ),
@@ -124,7 +126,7 @@ class TProductCardVertical extends StatelessWidget{
                 /// Price 
                 Padding(
                   padding: const EdgeInsets.only(left: TSizes.md),
-                  child: TProductPriceText(price: product.price),
+                  child: TProductPriceText(price: '35.0'),
                 ),
 
                 /// Add to Cart Button 

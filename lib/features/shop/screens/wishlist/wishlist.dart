@@ -27,13 +27,13 @@ class FavouriteScreen extends StatelessWidget {
           padding: const EdgeInsets.all(TSizes.defaultSpace),
           child: Column(
             children: [
-              // TGridLayout(itemCount: 4, itemBuilder:(_, index) => const TProductCardVertical())
-              TGridLayout(
-                    itemCount: wishlistProducts.length,
-                    itemBuilder: (_, index) => TProductCardVertical(
-                      product: wishlistProducts[index],
-                    ),
-                  ),
+              TGridLayout(itemCount: 4, itemBuilder:(_, index) => const TProductCardVertical())
+              // TGridLayout(
+              //       itemCount: wishlistProducts.length,
+              //       itemBuilder: (_, index) => TProductCardVertical(
+              //         product: wishlistProducts[index],
+              //       ),
+              //     ),
             ],
           ),
         ),

@@ -41,13 +41,13 @@ class TCategoryTab extends StatelessWidget{
               TSectionHeading(title: "You might like", showActionButton: true,onPressed: (){}),
               const SizedBox(height: TSizes.spaceBtwItems),
       
-              // TGridLayout(itemCount:4, itemBuilder: (_,index)=>const TProductCardVertical()),
-              TGridLayout(
-                    itemCount: categoryProducts.length,
-                    itemBuilder: (_, index) => TProductCardVertical(
-                      product: categoryProducts[index],
-                    ),
-                  ),
+              TGridLayout(itemCount:4, itemBuilder: (_,index)=>const TProductCardVertical()),
+              // TGridLayout(
+              //       itemCount: categoryProducts.length,
+              //       itemBuilder: (_, index) => TProductCardVertical(
+              //         product: categoryProducts[index],
+              //       ),
+              //     ),
               const SizedBox(height: TSizes.spaceBtwSections,)
       
             ],
