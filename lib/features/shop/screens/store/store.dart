@@ -65,20 +65,30 @@ class StoreScreen extends StatelessWidget{
                       //TSectionHeading(title:'Featured Brands', showActionButton:true,onPressed: (){}),
                       const SizedBox(height: TSizes.spaceBtwItems/1.5),
       
+                      // TGridLayout(
+                      //   itemCount:4,
+                      //   //itemCount: dummyBrands.length,
+                      //   mainAxisExtent: 80, 
+                      //   itemBuilder:(_,index){
+                      //   final brand = dummyBrands[index];
+                      //   // In the Backend Tutorial we will pass the each Brand and onPress Event also
+                      //   // return const TBrandCard(showBorder:false); 
+                      //   return TBrandCard(
+                      //     showBorder:false,
+                      //     title: brand.title,
+                      //     imagePath: brand.image,
+                      //     productCount: brand.productCount,
+                      //     );
+
+                      // }
+                      // )
                       TGridLayout(
                         itemCount:4,
-                        //itemCount: dummyBrands.length,
                         mainAxisExtent: 80, 
                         itemBuilder:(_,index){
-                        final brand = dummyBrands[index];
                         // In the Backend Tutorial we will pass the each Brand and onPress Event also
                         // return const TBrandCard(showBorder:false); 
-                        return TBrandCard(
-                          showBorder:false,
-                          title: brand.title,
-                          imagePath: brand.image,
-                          productCount: brand.productCount,
-                          );
+                        return TBrandCard(showBorder:false);
 
                       }
                       )
