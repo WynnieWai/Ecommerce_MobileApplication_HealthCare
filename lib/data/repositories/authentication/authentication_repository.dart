@@ -19,36 +19,41 @@ class AuthenticationRepository extends GetxController {
   /// Variables 
   final deviceStorage = GetStorage();
   final _auth = FirebaseAuth.instance; 
+
+  /// Get Authenticated User Data 
+  User? get authUser => _auth.currentUser;
   
   /// Called from main.dart on app launch
   @override 
   void onReady() {
+    // Remove the native splash screen 
     FlutterNativeSplash.remove();
+    // Redirect to the appropriate screen 
     screenRedirect();
   }
 
-  /// Function to Show Relevant Screen
-  screenRedirect() async {
+  /// Function to determine relevant screen and redirect accordingly 
+  void screenRedirect() async {
     final user = _auth.currentUser;
-    if (user != null){
-      if(user.emailVerified){
+
+    if (user != null) {
+      if(user.emailVerified) {
         Get.offAll(()=> const NavigationMenu());
-      }else{
+      } 
+      else {
         Get.offAll(()=> VerifyEmailScreen(email: _auth.currentUser?.email));
       }
-    } else{
-          // Loacl Storage 
-        if (kDebugMode) {
-          print('===================== GET STORAGE Auth Repo =====================');
-          print(deviceStorage.read('IsFirstTime'));
-        }
-
+    } 
+    else {
+        // Loacl Storage 
         deviceStorage.writeIfNull('IsFirstTime', true);
-        deviceStorage.read('IsFirstTime') != true ? Get.offAll(() => const LoginScreen()) : Get.offAll(const OnBoardingScreen());
 
-        }
-
+        // Check if it's the first time launching the app
+        deviceStorage.read('IsFirstTime') != true 
+          ? Get.offAll(() => const LoginScreen())  // Redirect to Login Screen if not the first time 
+          : Get.offAll(const OnBoardingScreen());  // Redirect to OnBoarding Screen if it's the first time
     }
+  }
 
   
 
