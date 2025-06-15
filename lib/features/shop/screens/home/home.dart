@@ -4,7 +4,9 @@ import 'package:testing_asg1/common/widgets/custom_shapes/containers/primary_hea
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:testing_asg1/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
+import 'package:testing_asg1/features/shop/controllers/product_controller.dart';
 import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
 import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_appbar.dart';
@@ -19,21 +21,23 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// -- Header --
-            TPrimaryHeaderContainer(
+            const TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   /// -- Appbar --
-                  const THomeAppBar(),
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  THomeAppBar(),
+                  SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Searchbar --
-                  const TSearchContainer(text: 'Search in Store'),
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  TSearchContainer(text: 'Search in Store'),
+                  SizedBox(height: TSizes.spaceBtwSections),
                   
                   /// -- Categories --
                   Padding(
@@ -42,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         /// Heading 
                         TSectionHeading(title: 'Popular Categories', showActionButton: false, textColor: Colors.white),
-                        const SizedBox(height: TSizes.spaceBtwItems),
+                        SizedBox(height: TSizes.spaceBtwItems),
 
                         /// Categories 
                         THomeCategories(),
@@ -50,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  SizedBox(height: TSizes.spaceBtwSections),
                 ],
               )
             ),
@@ -60,22 +64,36 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children:[
-                  //Promo Slider
-                  const TPromoSlider(banners: [TImages.myBanner1, TImages.myBanner2, TImages.myBanner3]),
+                  // Promo Slider
+                  // const TPromoSlider(banners: [TImages.myBanner1, TImages.myBanner2, TImages.myBanner3]),
+                  const TPromoSlider(),
                   const SizedBox(height:TSizes.spaceBtwSections),
 
-                  //Heading
-                  TSectionHeading(title: 'Popular Products',onPressed:()=>Get.to(()=>const AllProducts())),
+                  // Heading
+                  TSectionHeading(title: 'Popular Products',onPressed:() => Get.to(() => const AllProducts())),
                   const SizedBox(height: TSizes.spaceBtwItems),
 
-                  //Popular Product
+                  // Popular Product
+                  Obx (() {
+                    if (controller.isLoading.value) return const TVerticalProductShimmer();
+
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium));
+                    }
+                    return TGridLayout(
+                      itemCount: controller.featuredProducts.length, 
+                      itemBuilder: (_,index) => TProductCardVertical(product: controller.featuredProducts[index]),
+                    );
+                  })
+
                   // TGridLayout(itemCount: 4, itemBuilder: (_,index)=>const TProductCardVertical())
-                  TGridLayout(
-                    itemCount: products.length,
-                    itemBuilder: (_, index) => TProductCardVertical(
-                      product: products[index],
-                    ),
-                  ),
+                  // // TGridLayout(
+                  // //   itemCount: products.length,
+                  // //   itemBuilder: (_, index) => TProductCardVertical(
+                  // //     product: products[index],
+                  // //   ),
+                  // // ),
+                  
                ],
               ),
             ),

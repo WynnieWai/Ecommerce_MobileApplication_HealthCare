@@ -3,6 +3,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
 import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 
@@ -44,13 +45,13 @@ class TSortableProducts extends StatelessWidget {
         const SizedBox(height: TSizes.spaceBtwSections),
     
         //Product
-        // TGridLayout(itemCount: 4, itemBuilder: (_,index)=>TProductCardVertical())
-        TGridLayout(
-          itemCount: products.length,
-          itemBuilder: (_, index) => TProductCardVertical(
-            product: products[index],
-          ),
-        ),
+        TGridLayout(itemCount: 4, itemBuilder: (_,index) => TProductCardVertical(product: ProductModel.empty()))
+        // TGridLayout(
+        //   itemCount: products.length,
+        //   itemBuilder: (_, index) => TProductCardVertical(
+        //     product: products[index],
+        //   ),
+        // ),
       ],
     );
   }

@@ -46,7 +46,6 @@ dependencies:
   lottie: ^3.3.1 # OR RIVE
   shimmer: ^3.0.0
   image_picker: ^1.0.4
-  
 
   # Icons
   iconsax: ^0.0.8
