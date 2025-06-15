@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ProductAttributeModel {
   String? name;
   final List<String>? values;
@@ -12,7 +14,7 @@ class ProductAttributeModel {
   /// Map Json oriented document snapshot from Firebase to Model
   factory ProductAttributeModel.fromJson(Map<String, dynamic> document) {
     final data = document;
-
+    debugPrint(data.toString());
     if (data.isEmpty) return ProductAttributeModel();
 
     return ProductAttributeModel(

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ProductVariationModel {
   final String id;
   String sku;
@@ -39,7 +41,10 @@ class ProductVariationModel {
   /// Map Json oriented document snapshot from Firebase to Model 
   factory ProductVariationModel.fromJson(Map<String, dynamic> document) {
     final data = document;
+    debugPrint(data.toString());
+   
     if (data.isEmpty) return ProductVariationModel.empty();
+    debugPrint('Hihi3');
     return ProductVariationModel(
       id: data['Id'] ?? '', 
       price: double.parse((data['Price'] ?? 0.0).toString()),

@@ -6,10 +6,12 @@ import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/features/shop/screens/checkout/checkout.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
+import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:testing_asg1/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/rating_share_widget.dart';
+import 'package:testing_asg1/utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
@@ -20,14 +22,14 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
+  
     return Scaffold(
       bottomNavigationBar: TBottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// 1 - Product Image Slider
-            const TProductImageSlider(),
+            TProductImageSlider(product: product),
 
             /// 2 - Product Details
             Padding(
@@ -38,11 +40,11 @@ class ProductDetailScreen extends StatelessWidget {
                   const TRatingAndShare(),
 
                   /// - Price, Title, Stock, & Brand
-                  const TProductMetaData(),
+                  TProductMetaData(product: product),
 
                   /// -- Attributes
-                  const TProductAttributes(),
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  if(product.productType == ProductType.variable.toString()) TProductAttributes(product: product),
+                  if(product.productType == ProductType.variable.toString()) const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Checkout Button
                   SizedBox(width: double.infinity, child: ElevatedButton(onPressed: ()=>Get.to(()=> const CheckoutScreen()), child: Text('Checkout'))),
@@ -52,7 +54,7 @@ class ProductDetailScreen extends StatelessWidget {
                   const TSectionHeading(title: 'Description', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   ReadMoreText(
-                    'Bath time should be fun and happy for you and your baby, and with Cetaphil Baby Gentle Wash & Shampoo, it\'s now easier to do! Tear-free, soap-free and hypoallergenic, it keeps your baby\'s hair and skin soft, healthy and clean.',
+                    product.description ?? 'No description available',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',

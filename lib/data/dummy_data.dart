@@ -1,7 +1,12 @@
 import 'package:testing_asg1/features/shop/models/banner_model.dart';
+import 'package:testing_asg1/features/shop/models/brand_model.dart';
+import 'package:testing_asg1/features/shop/models/product_attribute_model.dart';
+import 'package:testing_asg1/features/shop/models/product_variation_model.dart';
 import 'package:testing_asg1/routes/routes.dart';
+import 'package:testing_asg1/utils/constants/enums.dart';
 
 import '../features/shop/models/category_model.dart';
+import '../features/shop/models/product_model.dart';
 import '../utils/constants/image_strings.dart';
 
 class TDummyData {
@@ -10,7 +15,6 @@ class TDummyData {
     BannerModel(imageUrl: TImages.myBanner1, targetScreen: TRoutes.order, active: true),
     BannerModel(imageUrl: TImages.myBanner2, targetScreen: TRoutes.order, active: true),
     BannerModel(imageUrl: TImages.myBanner3, targetScreen: TRoutes.order, active: true),
-
   ];
 
   /// -- User
@@ -70,4 +74,61 @@ class TDummyData {
     CategoryModel(id: '29', name: 'Bathroom', image: TImages.houseHoldIcon, parentId: '6', isFeatured: false),
     CategoryModel(id: '30', name: 'Household Sundries', image: TImages.houseHoldIcon, parentId: '6', isFeatured: false),
   ];
+
+  /// -- List of all Products
+  // static final List<ProductModel> products = [
+  //   ProductModel(
+  //     id: '001',
+  //     title: 'Green Nike sports shoe',
+  //     stock: 15,
+  //     price: 135,
+  //     isFeatured: true,
+  //     thumbnail: TImages.productImage1,
+  //     description: 'Green Nike sports shoe',
+  //     brand: BrandModel(id: '1', image: TImages.nikeLogo, name: 'Nike', productsCount: 265, isFeatured: true),
+  //     images: [TImages.productImage1, TImages.productImage23, TImages.productImage21, TImages.productImage9],
+  //     salePrice: 30,
+  //     sku: 'ABR4568',
+  //     categoryId: '1',
+  //     productType: 'Shoes',
+  //     productAttributes: [
+  //       ProductAttributeModel(name: 'Color', values: ['Green', 'Black', 'Red']),
+  //       ProductAttributeModel(name: 'Size', values: ['EU 30', 'EU 32', 'EU 34']),
+  //     ],
+  //     productVariations: [
+  //       ProductVariationModel(
+  //         id: '1',
+  //         stock: 34,
+  //         price: 134,
+  //         salePrice: 122.6,
+  //         image: TImages.productImage1,
+  //         description: 'This is a Product description for Green Nike sports shoe.',
+  //         attributeValues: {'Color': 'Green', 'Size': 'EU 34'},
+  //       ),
+  //       ProductVariationModel(
+  //         id: '2',
+  //         stock: 15,
+  //         price: 132,
+  //         image: TImages.productImage23,
+  //         attributeValues: {'Color': 'Black', 'Size': 'EU 32'},
+  //       ),
+  //       ProductVariationModel(
+  //         id: '3',
+  //         stock: 0,
+  //         price: 234,
+  //         image: TImages.productImage23,
+  //         attributeValues: {'Color': 'Black', 'Size': 'EU 34'},
+  //       ),
+  //       ProductVariationModel(
+  //         id: '4',
+  //         stock: 222,
+  //         price: 232,
+  //         image: TImages.productImage1,
+  //         attributeValues: {'Color': 'Green', 'Size': 'EU 32'},
+  //       ),
+  //     ],
+
+      
+  //   ),
+  // ];
 }

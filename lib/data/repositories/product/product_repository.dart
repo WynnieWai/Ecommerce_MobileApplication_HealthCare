@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -21,14 +22,17 @@ class ProductRepository extends GetxController {
   /// Get limited featured products 
   Future<List<ProductModel>> getFeaturedProducts() async {
     try {
-      final snapshot = await _db.collection('Products').where('isFeatured', isEqualTo: true).limit(4).get();
+      final snapshot = await _db.collection('Products').where('IsFeatured', isEqualTo: true).limit(4).get();
+      
+      debugPrint(snapshot.docs.map((doc) => doc.data()).toString());
+      
       return snapshot.docs.map((e) => ProductModel.fromSnapshot(e)).toList();
     } on FirebaseException catch (e) {
       throw TFirebaseException(e.code).message;
     } on PlatformException catch (e) {
       throw TPlatformException(e.code).message;
     } catch (e) {
-      throw 'Something went wrong. PLease try again';
+      throw 'Something went wrong in ProductRepository.getFeaturedProducts(). PLease try again';
     }
   }
   
@@ -41,7 +45,7 @@ class ProductRepository extends GetxController {
       // Loop through each product
       for (var product in products) {
         // Get image data link from local assets 
-        final thumbnail = await storage.getImageDataFromAssets(product.thumbnail.toString());
+        final thumbnail = await storage.getImageDataFromAssets(product.thumbnail);
 
         // Upload image and get its URL
         final url = await storage.uploadImageData('Products/Images', thumbnail, product.thumbnail.toString());

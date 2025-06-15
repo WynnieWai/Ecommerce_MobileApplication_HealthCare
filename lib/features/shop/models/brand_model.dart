@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class BrandModel {
   String id;
@@ -33,13 +34,21 @@ class BrandModel {
   factory BrandModel.fromJson(Map<String, dynamic> document) {
     final data = document;
     if (data.isEmpty) return BrandModel.empty();
-    return BrandModel(
-      id: data['Id'] ?? '',
-      name: data['Name'] ?? '', 
-      image: data['Image'] ?? '',
-      isFeatured: data['IsFeatured'] ?? false,
-      productsCount: int.parse((data['ProductsCount'] ?? 0).toString()),
-    );
+    debugPrint(data.toString());
+    try {
+      debugPrint("Return Valid BrandModel");
+      return BrandModel(
+        id: data['Id'] ?? '',
+        name: data['Name'] ?? '',
+        image: data['Image'] ?? '',
+        isFeatured: data['IsFeatured'] ?? false,
+        productsCount: int.parse((data['ProductsCount'] ?? 0).toString()),
+      );
+    } catch (e) {
+      debugPrint('Error creating BrandModel: $e');
+    }
+    debugPrint('Return Empty BrandModel');
+    return BrandModel.empty();
   }
 
   /// Map Json oriented document snapshot from Firebase to UserModel 

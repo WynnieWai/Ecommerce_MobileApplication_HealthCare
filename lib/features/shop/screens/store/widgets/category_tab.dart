@@ -16,14 +16,14 @@ class TCategoryTab extends StatelessWidget{
   @override
   Widget build(BuildContext context){
 
-    // Get products for this category
-    final categoryProducts = productsByCategory[category] ?? [];
+    // // Get products for this category
+    // final categoryProducts = productsByCategory[category] ?? [];
     
-    if (categoryProducts.isEmpty) {
-      return const Center(
-        child: Text('No products available in this category'),
-      );
-    }
+    // if (categoryProducts.isEmpty) {
+    //   return const Center(
+    //     child: Text('No products available in this category'),
+    //   );
+    // }
     
     return ListView(
       shrinkWrap: true,

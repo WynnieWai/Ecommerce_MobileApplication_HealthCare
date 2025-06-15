@@ -8,7 +8,7 @@ import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
 import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';
 import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
-import 'package:testing_asg1/features/shop/controllers/product_controller.dart';
+import 'package:testing_asg1/features/shop/controllers/product/product_controller.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/product_detail.dart';
@@ -53,7 +53,7 @@ class TProductCardVertical extends StatelessWidget{
               child: Stack(
                 children: [
                   // --- Thumbnail Image
-                  Center(child: TRoundedImage(imageUrl: product.thumbnail, applyImageRadius: true, isNetworkImage: true,)),
+                  Center(child: TRoundedImage(imageUrl: product.thumbnail, applyImageRadius: true, isNetworkImage: true)),
       
                   // --- Sale Tag
                   Positioned(
