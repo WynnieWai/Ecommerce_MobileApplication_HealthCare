@@ -5,7 +5,6 @@ import 'package:testing_asg1/common/widgets/custom_shapes/curved_edges/curved_ed
 import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
-import '../../../../../common/widgets/images/t_rounded_image.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';

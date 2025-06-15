@@ -8,7 +8,7 @@ import 'package:testing_asg1/utils/constants/text_strings.dart';
 import 'package:testing_asg1/utils/validators/validation.dart';
 
 class ReAuthLoginForm extends StatelessWidget {
-  const ReAuthLoginForm({Key? key}) : super(key: key);
+  const ReAuthLoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {

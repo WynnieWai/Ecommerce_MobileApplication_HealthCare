@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:testing_asg1/common/widgets/shimmers/shimmer.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';

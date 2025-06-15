@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/features/authentication/controllers/login/login_controller.dart';
 import 'package:testing_asg1/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:testing_asg1/features/authentication/screens/signup/signup.dart';
-import 'package:testing_asg1/navigation_menu.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/constants/text_strings.dart';
 import 'package:testing_asg1/utils/validators/validation.dart';

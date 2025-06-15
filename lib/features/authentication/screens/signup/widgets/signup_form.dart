@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/features/authentication/controllers/signup/signup_controller.dart';
-import 'package:testing_asg1/features/authentication/screens/signup/verify_email.dart';
 import 'package:testing_asg1/features/authentication/screens/signup/widgets/terms_conditions_checkbox.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/constants/text_strings.dart';

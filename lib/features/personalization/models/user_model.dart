@@ -37,7 +37,7 @@ class UserModel {
   static String generateUsername(fullName) {
     List<String> nameParts = fullName.split(" ");
     String firstName = nameParts[0].toLowerCase();
-    String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : "";;
+    String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : "";
 
     String camelCaseUsername = "$firstName$lastName"; // Combine first and last name
     String usernameWithPrefix = "cwt_$camelCaseUsername"; // Add "cwt_" prefix

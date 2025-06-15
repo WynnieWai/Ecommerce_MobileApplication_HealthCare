@@ -5,7 +5,6 @@ import 'package:readmore/readmore.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/screens/checkout/checkout.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
-import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:testing_asg1/features/shop/screens/product_reviews/product_reviews.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_meta_data.dart';
