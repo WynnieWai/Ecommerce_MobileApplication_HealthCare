@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
+import 'package:testing_asg1/common/widgets/products/sortable/sortable_products.dart';
 import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 
@@ -18,7 +19,7 @@ class BrandProducts extends StatelessWidget {
               //TBrandCard(showBorder:true),
               SizedBox(height: TSizes.spaceBtwSections),
 
-              TSortableProducts(),
+              TSortableProducts(products: []),
             ],
           ),
         ),
