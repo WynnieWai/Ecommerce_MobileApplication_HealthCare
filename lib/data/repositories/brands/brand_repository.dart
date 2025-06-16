@@ -1,0 +1,33 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:testing_asg1/features/shop/models/brand_model.dart';
+import 'package:testing_asg1/utils/exceptions/firebase_exceptions.dart';
+import 'package:testing_asg1/utils/exceptions/format_exceptions.dart';
+import 'package:testing_asg1/utils/exceptions/platform_exceptions.dart';
+
+class BrandRepository extends GetxController {
+  static BrandRepository get instance => Get.find();
+
+  // Variables
+  final _db = FirebaseFirestore.instance;
+
+  // Get all categories
+  Future<List<BrandModel>> getALLBrands() async {
+    try {
+      final snapshot = await _db.collection('Brands').get();
+      final result = snapshot.docs.map((e) => BrandModel.fromSnapshot(e)).toList();
+      return result;
+    } on FirebaseException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong while fetching Banners.';
+    }
+  }
+}
