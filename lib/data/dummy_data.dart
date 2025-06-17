@@ -1,12 +1,7 @@
 import 'package:testing_asg1/features/shop/models/banner_model.dart';
-import 'package:testing_asg1/features/shop/models/brand_model.dart';
-import 'package:testing_asg1/features/shop/models/product_attribute_model.dart';
-import 'package:testing_asg1/features/shop/models/product_variation_model.dart';
 import 'package:testing_asg1/routes/routes.dart';
-import 'package:testing_asg1/utils/constants/enums.dart';
 
 import '../features/shop/models/category_model.dart';
-import '../features/shop/models/product_model.dart';
 import '../utils/constants/image_strings.dart';
 
 class TDummyData {

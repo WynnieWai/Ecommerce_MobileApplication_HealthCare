@@ -11,7 +11,6 @@ import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
 import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class TProductImageSlider extends StatelessWidget {

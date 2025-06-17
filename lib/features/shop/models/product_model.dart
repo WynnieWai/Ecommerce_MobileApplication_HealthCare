@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:testing_asg1/features/shop/models/brand_model.dart';
 import 'package:testing_asg1/features/shop/models/product_attribute_model.dart';
 import 'package:testing_asg1/features/shop/models/product_variation_model.dart';
-import 'package:testing_asg1/features/shop/screens/store/dummy_brand.dart';
 
 class ProductModel {
   String id;

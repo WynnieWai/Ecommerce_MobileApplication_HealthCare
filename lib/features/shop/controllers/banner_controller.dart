@@ -1,5 +1,4 @@
 
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:testing_asg1/data/repositories/banners/banner_repository.dart';
 import 'package:testing_asg1/features/shop/models/banner_model.dart';

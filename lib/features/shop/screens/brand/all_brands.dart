@@ -57,14 +57,12 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
 import 'package:testing_asg1/common/widgets/brands/brand_card.dart';
 import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/shimmers/brands_shimmer.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/controllers/brand_controller.dart';
-import 'package:testing_asg1/features/shop/models/brand_model.dart';
 import 'package:testing_asg1/features/shop/screens/brand/brand_products.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:get/get.dart';

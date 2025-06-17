@@ -10,15 +10,12 @@ import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
 import 'package:testing_asg1/features/shop/controllers/product/product_controller.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
-import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/product_detail.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/enums.dart';
-import 'package:testing_asg1/utils/constants/image_strings.dart';
 // ignore: library_prefixes
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
-import '../../../../utils/constants/image_strings.dart';
 
 class TProductCardVertical extends StatelessWidget{
   const TProductCardVertical ({super.key, required this.product});

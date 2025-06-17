@@ -12,7 +12,6 @@ import 'package:testing_asg1/features/shop/controllers/brand_controller.dart';
 import 'package:testing_asg1/features/shop/controllers/category_controller.dart';
 import 'package:testing_asg1/features/shop/screens/brand/all_brands.dart';
 import 'package:testing_asg1/features/shop/screens/brand/brand_products.dart';
-import 'package:testing_asg1/features/shop/screens/store/dummy_brand.dart';
 import 'package:testing_asg1/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';

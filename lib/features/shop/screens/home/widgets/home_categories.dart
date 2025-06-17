@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:testing_asg1/common/widgets/image_text_widgets/vertical_image_text.dart';
 import 'package:testing_asg1/features/shop/controllers/category_controller.dart';
 import 'package:testing_asg1/features/shop/screens/sub_category/sub_categories.dart';
-import 'package:testing_asg1/utils/constants/image_strings.dart';
 
 import '../../../../../common/widgets/shimmers/category_shimmer.dart';
 

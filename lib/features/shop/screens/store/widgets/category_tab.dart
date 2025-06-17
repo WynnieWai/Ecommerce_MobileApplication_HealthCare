@@ -4,7 +4,6 @@ import 'package:testing_asg1/common/widgets/products/product_cards/product_card_
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/models/category_model.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
-import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 
 

@@ -5,7 +5,6 @@ import 'package:testing_asg1/common/widgets/products/sortable/sortable_products.
 import 'package:testing_asg1/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:testing_asg1/features/shop/controllers/brand_controller.dart';
 import 'package:testing_asg1/features/shop/models/brand_model.dart';
-import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/cloud_helper_functions.dart';
 

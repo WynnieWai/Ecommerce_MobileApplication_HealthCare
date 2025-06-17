@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/primary_header_container.dart';
@@ -9,12 +8,10 @@ import 'package:testing_asg1/common/widgets/shimmers/vertical_product_shimmer.da
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/controllers/product/product_controller.dart';
 import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
-import 'package:testing_asg1/features/shop/screens/home/dummy_product.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/promo_slider.dart';
 
-import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {

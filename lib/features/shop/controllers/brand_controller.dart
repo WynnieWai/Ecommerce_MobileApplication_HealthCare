@@ -1,7 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:testing_asg1/data/repositories/brands/brand_repository.dart';
 import 'package:testing_asg1/data/repositories/product/product_repository.dart';
 import 'package:testing_asg1/features/shop/models/brand_model.dart';

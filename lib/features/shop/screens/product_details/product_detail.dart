@@ -13,7 +13,6 @@ import 'package:testing_asg1/features/shop/screens/product_details/widgets/produ
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/rating_share_widget.dart';
 import 'package:testing_asg1/utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/helpers/helper_functions.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key, required this.product});
