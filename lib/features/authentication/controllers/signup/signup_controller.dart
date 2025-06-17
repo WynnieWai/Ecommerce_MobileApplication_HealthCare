@@ -39,20 +39,15 @@ class SignupController extends GetxController {
       }
 
       // Form Validation
-      if (!signupFormKey.currentState!.validate()) {
+      if (!signupFormKey.currentState!.validate()||!privacyPolicy.value) {
         // Remove Loader
         TFullScreenLoader.stopLoading();
-        return;
-      } 
-
-      // Privacy Policy Check
-      if (!privacyPolicy.value) {
         TLoaders.warningSnackBar(
           title: 'Accept Privacy Policy', 
           message: 'In order to create account, you must have to read and accept the Privacy Policy & Terms of Use.'
         );
         return;
-      }
+      } 
 
       // Register user in the Firebase Authentication & Save user data in the Firebase
       final userCredential = await AuthenticationRepository.instance.registerWithEmailAndPassword(email.text.trim(), password.text.trim());
