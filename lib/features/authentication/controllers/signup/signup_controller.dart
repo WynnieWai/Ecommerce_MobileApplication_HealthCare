@@ -18,7 +18,7 @@ class SignupController extends GetxController {
   final privacyPolicy = true.obs; // Observable for privacy policy acceptance
   final email = TextEditingController(); // Controller for email input
   final lastName = TextEditingController(); // Controller for last name input
-  final username = TextEditingController(); // Controller for username input
+  final userName = TextEditingController(); // Controller for username input
   final password = TextEditingController(); // Controller for password input
   final firstName = TextEditingController(); // Controller for first name input
   final phoneNumber = TextEditingController(); // Controller for phone number input
@@ -57,7 +57,7 @@ class SignupController extends GetxController {
         id: userCredential.user!.uid, 
         firstName: firstName.text.trim(), 
         lastName: lastName.text.trim(), 
-        username: username.text.trim(), 
+        userName: userName.text.trim(), 
         email: email.text.trim(), 
         phoneNumber: phoneNumber.text.trim(), 
         profilePicture: ''

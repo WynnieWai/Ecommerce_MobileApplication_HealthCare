@@ -8,7 +8,7 @@ class UserModel {
   final String id;
   String firstName;
   String lastName;
-  final String username;
+  String userName;
   final String email;
   String phoneNumber;
   String profilePicture;
@@ -18,7 +18,7 @@ class UserModel {
     required this.id,
     required this.firstName,
     required this.lastName,
-    required this.username,
+    required this.userName,
     required this.email,
     required this.phoneNumber,
     required this.profilePicture,
@@ -45,14 +45,14 @@ class UserModel {
   }
 
   /// Static function to create an empty user model.
-  static UserModel empty() => UserModel(id: '', firstName: '', lastName: '', username: '', email: '', phoneNumber: '', profilePicture: '');
+  static UserModel empty() => UserModel(id: '', firstName: '', lastName: '', userName: '', email: '', phoneNumber: '', profilePicture: '');
 
   /// Convert model to JSON structure for storing data in Firebase.
   Map<String, dynamic> toJson() {
     return {
       'FirstName': firstName,
       'LastName': lastName,
-      'Username': username,
+      'Username': userName,
       'Email': email,
       'PhoneNumber': phoneNumber,
       'ProfilePicture': profilePicture,
@@ -67,7 +67,7 @@ class UserModel {
         id: document.id,
         firstName: data['FirstName'] ?? '',
         lastName: data['LastName'] ?? '',
-        username: data['Username'] ?? '',
+        userName: data['UserName'] ?? '',
         email: data['Email'] ?? '',
         phoneNumber: data['PhoneNumber'] ?? '',
         profilePicture: data['ProfilePicture'] ?? '',

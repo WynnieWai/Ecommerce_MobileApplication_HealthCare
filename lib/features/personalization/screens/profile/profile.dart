@@ -7,6 +7,7 @@ import 'package:testing_asg1/common/widgets/shimmers/shimmer.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/personalization/controllers/user_controller.dart';
 import 'package:testing_asg1/features/personalization/screens/profile/widgets/change_name.dart';
+import 'package:testing_asg1/features/personalization/screens/profile/widgets/change_username.dart';
 import 'package:testing_asg1/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
@@ -61,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems),
 
               TProfileMenu(onPressed: () => Get.to(() => const ChangeName()), title: 'Name', value: controller.user.value.fullName),
-              TProfileMenu(onPressed: (){}, title: 'Username', value: controller.user.value.username),
+              TProfileMenu(onPressed: () => Get.to(() => const ChangeUsername()), title: 'Username', value: controller.user.value.userName),
 
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(), 

@@ -14,6 +14,7 @@ class UpdateNameController extends GetxController {
 
   final firstName = TextEditingController();
   final lastName = TextEditingController();
+  final userName = TextEditingController();
   final userController = UserController.instance;
   final userRepository = Get.put(UserRepository());
   GlobalKey<FormState> updateUserNameFormKey = GlobalKey<FormState>();
@@ -29,6 +30,7 @@ class UpdateNameController extends GetxController {
   Future<void> initializeNames() async {
     firstName.text = userController.user.value.firstName;
     lastName.text = userController.user.value.lastName;
+    userName.text = userController.user.value.userName;
   }
 
   Future<void> updateUserName() async {
@@ -53,9 +55,13 @@ class UpdateNameController extends GetxController {
       Map<String, dynamic> name = {'FirstName': firstName.text.trim(), 'LastName': lastName.text.trim()};
       await userRepository.updateSingleField(name);
 
+      Map<String, dynamic> usernamedata={'Username': userName.text.trim()};
+      await userRepository.updateSingleField(usernamedata);
+
       // Update the Rx User value
       userController.user.value.firstName = firstName.text.trim();
       userController.user.value.lastName = lastName.text.trim();
+      userController.user.value.userName = userName.text.trim();
 
       // Remove Loader 
       TFullScreenLoader.stopLoading();
@@ -64,7 +70,7 @@ class UpdateNameController extends GetxController {
       TLoaders.successSnackBar(title: 'Congratulations', message: 'Your name has been updated.');
 
       // Move to previous screen 
-      Get.off(() => const ProfileScreen());
+      Get.back();
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
