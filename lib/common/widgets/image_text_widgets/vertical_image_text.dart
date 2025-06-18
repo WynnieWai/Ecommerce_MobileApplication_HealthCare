@@ -51,7 +51,7 @@ class TVerticalImageText extends StatelessWidget {
               padding: TSizes.sm * 1.4,
               isNetworkImage: isNetworkImage,
               backgroundColor: backgroundColor,
-              overlayColor: THelperFunctions.isDarkMode(context) ? TColors.light : TColors.dark,
+              //overlayColor: THelperFunctions.isDarkMode(context) ? TColors.light : TColors.dark,
             ),
 
         
