@@ -3,6 +3,7 @@ import 'package:testing_asg1/data/repositories/categories/category_repository.da
 import 'package:testing_asg1/data/repositories/product/product_repository.dart';
 import 'package:testing_asg1/features/shop/models/category_model.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
+import 'package:testing_asg1/features/shop/screens/sub_category/sub_categories.dart';
 
 import '../../../utils/popups/loaders.dart';
 
@@ -44,12 +45,28 @@ class CategoryController extends GetxController {
   }
 
   /// -- Load selected category data
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async{
+    try{
+      final subCategories = await _categoryRepository.getSubCategories(categoryId);
+      
+      return subCategories;
+
+    }catch(e){
+      TLoaders.errorSnackBar(title: 'Oh Snap!',message: e.toString());
+      return[];
+    }
+  }
   
 
   /// Get Category or Sub-Category Products
   Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async {
-      // Fetch products from the repository
+    // Fetch products from the repository
+    try{
       final products = await ProductRepository.instance.getProductsForCategory(categoryId: categoryId, limit: limit);
       return products;
+    }catch(e){
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+      return[];
+    }
   }
 }
