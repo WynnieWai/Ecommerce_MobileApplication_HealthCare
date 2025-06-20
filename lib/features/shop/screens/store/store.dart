@@ -99,26 +99,21 @@ class StoreScreen extends StatelessWidget{
                           }
 
                             return TGridLayout(
-                            itemCount:brandController.featuredBrands.length,
-                            mainAxisExtent: 80, 
-                            itemBuilder:(_,index){
-                            final brand = brandController.featuredBrands[index];
+                              itemCount:brandController.featuredBrands.length,
+                              mainAxisExtent: 80, 
+                              itemBuilder:(_,index){
+                                final brand = brandController.featuredBrands[index];
 
-                            // In the Backend Tutorial we will pass the each Brand and onPress Event also
-                            // return const TBrandCard(showBorder:false); 
-                            return TBrandCard(showBorder:true, brand:brand, onTap:()=> Get.to(()=> BrandProducts(brand:brand)) );
-                        
+                                // In the Backend Tutorial we will pass the each Brand and onPress Event also
+                                // return const TBrandCard(showBorder:false); 
+                                return TBrandCard(showBorder:true, brand:brand, onTap:()=> Get.to(()=> BrandProducts(brand:brand)) );
                             },
                           );
                         },
                       ),
-
-
-
                     ],
                   ),
                 ),
-      
       
                 //Tabs --video 18
                 bottom: TTabBar(
