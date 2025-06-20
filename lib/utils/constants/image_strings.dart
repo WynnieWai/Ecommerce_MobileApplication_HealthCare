@@ -63,6 +63,7 @@ class TImages {
   static const String deliveredEmailIllustration = "assets/images/animations/sammy-line-man-receives-a-mail.png";
   static const String verifyIllustration = "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
   static const String successfullyRegisterAnimation="assets/images/animations/72462-check-register.json";
+  static const String pencilAnimation="assets/images/animations/140429-pencil-drawing.json";
 
   // -- OnBoarding Images
   // static const String onBoardingImage1 = "assets/images/on_boarding_images/sammy-line-searching.gif";
