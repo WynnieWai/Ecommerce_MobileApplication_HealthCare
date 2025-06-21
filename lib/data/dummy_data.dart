@@ -6,11 +6,11 @@ import '../utils/constants/image_strings.dart';
 
 class TDummyData {
   // /// -- Banners
-  static final List<BannerModel> banners = [
-    BannerModel(imageUrl: TImages.myBanner1, targetScreen: TRoutes.order, active: true),
-    BannerModel(imageUrl: TImages.myBanner2, targetScreen: TRoutes.order, active: true),
-    BannerModel(imageUrl: TImages.myBanner3, targetScreen: TRoutes.order, active: true),
-  ];
+  // static final List<BannerModel> banners = [
+  //   BannerModel(imageUrl: TImages.myBanner1, targetScreen: TRoutes.order, active: true),
+  //   BannerModel(imageUrl: TImages.myBanner2, targetScreen: TRoutes.order, active: true),
+  //   BannerModel(imageUrl: TImages.myBanner3, targetScreen: TRoutes.order, active: true),
+  // ];
 
   /// -- User
   // static final UserModel user = UserModel(
