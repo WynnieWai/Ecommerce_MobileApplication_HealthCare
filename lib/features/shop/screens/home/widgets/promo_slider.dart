@@ -25,7 +25,11 @@ class TPromoSlider extends StatelessWidget {
       if (controller.isLoading.value) {
         return const TShimmerEffect(width: double.infinity, height: 190);
       }
-      else {
+
+      // No data found
+      if (controller.banners.isEmpty) {
+        return const Center(child: Text('No Data Found'));
+      } else {
         return  Column(
           children: [
             CarouselSlider(
