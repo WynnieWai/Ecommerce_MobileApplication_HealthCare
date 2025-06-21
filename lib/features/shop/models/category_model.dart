@@ -39,7 +39,7 @@ class CategoryModel {
         id: document.id,
         name: data['Name'] ?? '',
         image: data['Image'] ?? '',
-        parentId: data['ParentId'] ?? '',
+        parentId: data['ParentId'] ?.toString()?? '',
         isFeatured: data['IsFeatured'] ?? false,
       );
     } else {

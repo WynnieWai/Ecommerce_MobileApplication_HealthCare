@@ -101,30 +101,49 @@ class ProductRepository extends GetxController {
     }
   }
 
+  // Future<List<ProductModel>> getProductsForCategory({required String categoryId, int limit = -1}) async {
+  //   try {
+  //     final productCategoryQuery = limit == -1
+  //         ? await _db.collection('Products').where('CategoryId', isEqualTo: categoryId).get()
+  //         : await _db.collection('Products').where('CategoryId', isEqualTo: categoryId).limit(limit).get();
+
+  //     // Extract the productIds from the query results
+  //     List<String> productIds = productCategoryQuery.docs.map((doc) => doc["productId"]as String).toList();
+
+  //     // Query to get all brands where id is in the list of brandIds
+  //     final productsQuery = await _db.collection('Products').where(FieldPath.documentId, whereIn: productIds).get();
+
+  //     // Map the results to BrandModel instances
+  //     List<ProductModel>products = productsQuery.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+  //     return products;
+
+  //   } on FirebaseException catch (e) {
+  //     throw TFirebaseException(e.code).message;
+  //   } on PlatformException catch (e) {
+  //     throw TPlatformException(e.code).message;
+  //   } catch (e) {
+  //     throw 'Something went wrong. Please try again';
+  //   }
+  // }
+
   Future<List<ProductModel>> getProductsForCategory({required String categoryId, int limit = -1}) async {
-    try {
-      final productCategoryQuery = limit == -1
-          ? await _db.collection('Products').where('Category.Id', isEqualTo: categoryId).get()
-          : await _db.collection('Products').where('Category.Id', isEqualTo: categoryId).limit(limit).get();
+  try {
+    final query = limit == -1
+        ? _db.collection('Products').where('CategoryId', isEqualTo: categoryId)
+        : _db.collection('Products').where('CategoryId', isEqualTo: categoryId).limit(limit);
 
-      // Extract the productIds from the query results
-      List<String> productIds = productCategoryQuery.docs.map((doc) => doc["productId"]as String).toList();
+    final querySnapshot = await query.get();
 
-      // Query to get all brands where id is in the list of brandIds
-      final productsQuery = await _db.collection('Products').where(FieldPath.documentId, whereIn: productIds).get();
-
-      // Map the results to BrandModel instances
-      List<ProductModel>products = productsQuery.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
-      return products;
-
-    } on FirebaseException catch (e) {
-      throw TFirebaseException(e.code).message;
-    } on PlatformException catch (e) {
-      throw TPlatformException(e.code).message;
-    } catch (e) {
-      throw 'Something went wrong. Please try again';
-    }
+    List<ProductModel> products = querySnapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+    return products;
+  } on FirebaseException catch (e) {
+    throw TFirebaseException(e.code).message;
+  } on PlatformException catch (e) {
+    throw TPlatformException(e.code).message;
+  } catch (e) {
+    throw 'Something went wrong. Please try again';
   }
+}
 
   /// Upload dummy data to the Cloud Firebase 
   Future<void> uploadDummyData(List<ProductModel> products) async {
