@@ -43,16 +43,65 @@ class BrandController extends GetxController {
   }
 
   // Get brand for category
-  Future<List<BrandModel>> getBrandsForCategory(String categoryId) async {
-    try {
-      final brands = await brandRepository.getBrandsForCategory(categoryId);
-      return brands;
-    } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-      return [];
-    }
-  }
+  // Future<List<BrandModel>> getBrandsForCategory(String categoryId) async {
+  //   try {
+  //     final brands = await brandRepository.getBrandsForCategory(categoryId);
+  //     return brands;
+  //   } catch (e) {
+  //     TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+  //     return [];
+  //   }
+  // }
+Future<List<BrandModel>> getBrandsForCategory(String categoryId) async {
+  final subCategories = await CategoryController.instance.getSubCategories(categoryId);
+  final categoryIds = [categoryId, ...subCategories.map((c) => c.id)];
 
+  // 1. Fetch products in batches of 10 categoryIds
+  List<QueryDocumentSnapshot> allProductDocs = [];
+  for (var i = 0; i < categoryIds.length; i += 10) {
+    final batch = categoryIds.skip(i).take(10).toList();
+    final productSnapshot = await FirebaseFirestore.instance
+        .collection('Products')
+        .where('CategoryId', whereIn: batch)
+        .get();
+    allProductDocs.addAll(productSnapshot.docs);
+  }
+//   for (var i = 0; i < categoryIds.length; i += 2) {
+//   final batch = categoryIds.skip(i).take(2).toList();
+//   final productSnapshot = await FirebaseFirestore.instance
+//       .collection('Products')
+//       .where('CategoryId', whereIn: batch)
+//       .get();
+//   allProductDocs.addAll(productSnapshot.docs);
+// }
+
+// 2. Get unique brand IDs from products (should be "B027", "B005", etc.)
+final brandIds = allProductDocs
+    .map((doc) => doc['Brand']['Id'] as String)
+    .toSet()
+    .toList();
+
+if (brandIds.isEmpty) return [];
+
+// 3. Fetch brands in batches of 10 brandIds, using documentId
+for (var i = 0; i < brandIds.length; i += 10) {
+  final batch = brandIds.skip(i).take(10).toList();
+  final brandSnapshot = await FirebaseFirestore.instance
+      .collection('Brands')
+      .where(FieldPath.documentId, whereIn: batch)
+      .get();
+  allBrands.addAll(brandSnapshot.docs.map((doc) => BrandModel.fromSnapshot(doc)));
+}
+// for (var i = 0; i < brandIds.length; i += 2) {
+//   final batch = brandIds.skip(i).take(2).toList();
+//   final brandSnapshot = await FirebaseFirestore.instance
+//       .collection('Brands')
+//       .where(FieldPath.documentId, whereIn: batch)
+//       .get();
+//   allBrands.addAll(brandSnapshot.docs.map((doc) => BrandModel.fromSnapshot(doc)));
+// }
+  return allBrands;
+}
 
 //   Future<List<BrandModel>> getBrandsForCategory(String categoryId) async {
 //   try {
