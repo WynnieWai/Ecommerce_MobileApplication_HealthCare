@@ -11,6 +11,7 @@ import 'package:testing_asg1/features/shop/screens/all_products/all_products.dar
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:testing_asg1/features/shop/screens/home/widgets/promo_slider.dart';
+import 'package:testing_asg1/features/shop/screens/search/search_page.dart';
 
 import '../../../../utils/constants/sizes.dart';
 
@@ -20,25 +21,38 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProductController());
-
+    final TextEditingController searchController = TextEditingController();
+    
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             /// -- Header --
-            const TPrimaryHeaderContainer(
+            TPrimaryHeaderContainer(
               child: Column(
                 children: [
                   /// -- Appbar --
-                  THomeAppBar(),
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  const THomeAppBar(),
+                  const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Searchbar --
-                  TSearchContainer(text: 'Search in Store'),
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  // TSearchContainer(text: 'Search in Store'),
+                  // TSearchContainer(
+                  //       text: 'Search in Store',
+                  //       controller: searchController,
+                  //       onChanged: (value) {
+                  //         controller.searchProducts(value); // Call your search method
+                  //       },
+                  //     ),
+                    TSearchContainer(
+                      text: 'Search in Store',
+                      onTap: () => Get.to(() => const SearchPage()),
+                    ),
+
+                  const SizedBox(height: TSizes.spaceBtwSections),
                   
                   /// -- Categories --
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: TSizes.defaultSpace), 
                     child: Column(
                       children: [
@@ -52,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               )
             ),

@@ -8,6 +8,7 @@ import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/controllers/category_controller.dart';
 import 'package:testing_asg1/features/shop/models/category_model.dart';
 import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
+import 'package:testing_asg1/features/shop/screens/product_details/product_detail.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/cloud_helper_functions.dart';
@@ -177,6 +178,7 @@ class SubCategoriesScreen extends StatelessWidget {
                 return ListView.builder(
                   shrinkWrap: true,
                   itemCount: subCategories.length,
+                  padding: const EdgeInsets.all(TSizes.defaultSpace),
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (_,index){
 
@@ -213,7 +215,10 @@ class SubCategoriesScreen extends StatelessWidget {
                                 itemCount: products.length, 
                                 scrollDirection: Axis.horizontal,
                                 separatorBuilder: (context, index) => const SizedBox(width: TSizes.spaceBtwItems),
-                                itemBuilder: (context, index) => TProductCardHorizontal(product: products[index]),
+                                itemBuilder: (context, index) => GestureDetector(
+                                  onTap: () => Get.to(() => ProductDetailScreen(product: products[index])),
+                                  child: TProductCardHorizontal(product: products[index]),
+                                ),
                               ),
                             ),
 

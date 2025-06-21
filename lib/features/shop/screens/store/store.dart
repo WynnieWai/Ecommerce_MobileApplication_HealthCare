@@ -12,6 +12,7 @@ import 'package:testing_asg1/features/shop/controllers/brand_controller.dart';
 import 'package:testing_asg1/features/shop/controllers/category_controller.dart';
 import 'package:testing_asg1/features/shop/screens/brand/all_brands.dart';
 import 'package:testing_asg1/features/shop/screens/brand/brand_products.dart';
+import 'package:testing_asg1/features/shop/screens/search/search_page.dart';
 import 'package:testing_asg1/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
@@ -58,8 +59,13 @@ class StoreScreen extends StatelessWidget{
                     children: [
                       //Search Bar
                       // const SizedBox(height:TSizes.spaceBtwItems),
-                      const TSearchContainer(
-                            text:"Search in Store", showBorder:true, showBackground:false, padding: EdgeInsets.zero),
+                      // const TSearchContainer(
+                      //       text:"Search in Store", showBorder:true, showBackground:false, padding: EdgeInsets.zero),
+                                          TSearchContainer(
+                      text: 'Search in Store',
+                      onTap: () => Get.to(() => const SearchPage()),
+                    ),
+                            
                       const SizedBox(height: TSizes. spaceBtwSections),
       
       

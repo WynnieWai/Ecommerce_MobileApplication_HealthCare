@@ -30,7 +30,7 @@ class TSortableProducts extends StatelessWidget{
             controller.sortProducts(value!);
 
           },
-          items: ['Name','Higher Price','Lower Price','Sale','Newest','Popularity']
+          items: ['Name','Higher Price','Lower Price']
             .map((option) => DropdownMenuItem(value: option, child: Text(option)))
             .toList(),
         ),

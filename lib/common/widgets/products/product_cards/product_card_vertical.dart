@@ -36,6 +36,9 @@ class TProductCardVertical extends StatelessWidget{
     /// Container with side paddings, color, edges, radius, and shadow
     return GestureDetector(
       onTap:() => Get.to(() => ProductDetailScreen(product: product)),
+        // child: SizedBox(
+        // width: 180,
+        // height: 320,
       child: Container(
         width: 180,
         padding: const EdgeInsets.all(1),
@@ -112,7 +115,7 @@ class TProductCardVertical extends StatelessWidget{
 
             // Use Spacer() to utilize all the space to set the price and the cart button at the bottom
             // This usually happens when Product title is in single line or 2 lines (Max) 
-            const Spacer(),
+           // const Spacer(),
 
             /// Price Row
             Row(
@@ -149,6 +152,7 @@ class TProductCardVertical extends StatelessWidget{
         ),
       ),
     );
+    
   }
 
 }

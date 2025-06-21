@@ -15,7 +15,8 @@ class ProductController extends GetxController {
   final isLoading = false.obs;
   final productRepository = Get.put(ProductRepository());
   RxList<ProductModel> featuredProducts = <ProductModel>[].obs;
-
+  List<ProductModel> allFeaturedProducts = [];
+  List<ProductModel> allProducts = [];
   @override 
   void onInit() {
     fetchFeaturedProducts();
@@ -31,6 +32,7 @@ class ProductController extends GetxController {
       final products = await productRepository.getFeaturedProducts();
       debugPrint('Hihi4');
       // Assign Products
+        allFeaturedProducts = products; // cache all products
       featuredProducts.assignAll(products);
       debugPrint('Hihi5');
 
@@ -44,13 +46,24 @@ class ProductController extends GetxController {
     Future<List<ProductModel>> fetchAllFeaturedProducts() async {
     try {
       // Fetch Products
-      final products = await productRepository.getFeaturedProducts();
+      final products = await productRepository.getAllFeaturedProducts();
       return products;
     } catch (e) {
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       return [];
     }
+    
   }
+
+  Future<List<ProductModel>> fetchAllProducts() async {
+  try {
+    final products = await productRepository.getAllProducts();
+    return products;
+  } catch (e) {
+    TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    return [];
+  }
+}
 
 
   /// Get the product price or price range for variations 
@@ -102,4 +115,16 @@ class ProductController extends GetxController {
   String getProductStockStatus(int stock) {
     return stock > 0 ? 'In Stock' : 'Out of Stock';
   }
+// Add this search method
+void searchProducts(String query) {
+  if (query.isEmpty) {
+    featuredProducts.assignAll(allFeaturedProducts);
+  } else {
+    final results = allFeaturedProducts.where((product) =>
+      product.title.toLowerCase().contains(query.toLowerCase())
+    ).toList();
+    featuredProducts.assignAll(results);
+  }
+}
+  
 }
