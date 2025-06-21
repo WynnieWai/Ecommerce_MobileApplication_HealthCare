@@ -11,6 +11,7 @@ import 'package:testing_asg1/features/shop/screens/product_reviews/product_revie
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/widgets/rating_share_widget.dart';
+import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
 
@@ -36,7 +37,7 @@ class ProductDetailScreen extends StatelessWidget {
               child: Column(
                 children: [
                   /// - Rating & Share
-                  const TRatingAndShare(),
+                  // const TRatingAndShare(),
 
                   /// - Price, Title, Stock, & Brand
                   TProductMetaData(product: product),
@@ -50,25 +51,25 @@ class ProductDetailScreen extends StatelessWidget {
                   const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// - Description
-                  const TSectionHeading(title: 'Description', showActionButton: false),
-                  const SizedBox(height: TSizes.spaceBtwItems),
+                  const TSectionHeading(title: 'Description', showActionButton: false, fontSize: 18.0),
+                  const SizedBox(height: 10),
                   ReadMoreText(
                     product.description ?? 'No description available',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',
                     trimExpandedText: ' Less',
-                    moreStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800),
-                    lessStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800)
+                    moreStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: TColors.primary),
+                    lessStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w800, color: TColors.primary)
                   ),
                 
                   /// - Reviews
-                  const Divider(),
+                  // const Divider(),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const TSectionHeading(title: 'Reviews(199)', showActionButton: false),
+                      const TSectionHeading(title: 'Reviews', showActionButton: false),
                       IconButton(icon: const Icon(Iconsax.arrow_right_3, size: 18), onPressed: () => Get.to(() => const ProductReviewsScreen())),
                     ],
                   ),

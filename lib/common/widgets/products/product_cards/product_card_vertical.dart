@@ -20,7 +20,10 @@ import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
 class TProductCardVertical extends StatelessWidget{
-  const TProductCardVertical ({super.key, required this.product});
+  const TProductCardVertical ({
+    super.key, 
+    required this.product
+  });
 
   final ProductModel product;
 
@@ -56,16 +59,16 @@ class TProductCardVertical extends StatelessWidget{
       
       
                   // --- Sale Tag
-                  if(salePercentage != null)
-                    Positioned(
-                      top: 12,
-                      child: TRoundedContainer(
-                        radius: TSizes.sm,
-                        backgroundColor: TColors.secondary.withOpacity(0.8),
-                        padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
-                        child: Text('$salePercentage%', style:Theme.of(context).textTheme.labelLarge!.apply(color:TColors.black))
-                      ),
-                    ),
+                  // if(salePercentage != null)
+                  //   Positioned(
+                  //     top: 12,
+                  //     child: TRoundedContainer(
+                  //       radius: TSizes.sm,
+                  //       backgroundColor: TColors.secondary.withOpacity(0.8),
+                  //       padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
+                  //       child: Text('$salePercentage%', style:Theme.of(context).textTheme.labelLarge!.apply(color:TColors.black))
+                  //     ),
+                  //   ),
 
                   // -- Favourite Icon Button 
                   Positioned(
@@ -92,9 +95,16 @@ class TProductCardVertical extends StatelessWidget{
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TProductTitleText(title: product.title, smallSize: true),
+                    TProductTitleText(
+                      title: product.title, 
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
+                      // smallSize: true
+                    ),
                     const SizedBox(height: TSizes.spaceBtwItems / 2),
-                    TBrandTitleWithVerifiedIcon(title: product.brand!.name),
+                    TBrandTitleWithVerifiedIcon(title: product.brand!.name, brandTextSize: TextSizes.small),
                   ],
                 ),
               ),
@@ -108,7 +118,6 @@ class TProductCardVertical extends StatelessWidget{
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                
                 
                 /// Price 
                 Flexible(
