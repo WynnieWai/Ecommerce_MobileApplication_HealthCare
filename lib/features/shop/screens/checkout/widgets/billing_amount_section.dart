@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:testing_asg1/features/shop/controllers/product/cart_controller.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
+import 'package:testing_asg1/utils/helpers/pricing_calculator.dart';
 
 class TBillingAmountSection extends StatelessWidget {
   const TBillingAmountSection({
@@ -8,6 +10,8 @@ class TBillingAmountSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartController= CartController.instance;
+    final subTotal =cartController.totalCartPrice.value;
      return Column(
       children: [
         Row(
@@ -16,7 +20,7 @@ class TBillingAmountSection extends StatelessWidget {
             //Billing Address
             Text('Subtotal', style: Theme.of(context).textTheme.bodyMedium),
             //Product Price
-            Text('\$15.0', style: Theme.of(context).textTheme.bodyMedium),
+            Text('\$$subTotal', style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems/2),
@@ -28,7 +32,8 @@ class TBillingAmountSection extends StatelessWidget {
             //Billing Address
             Text('Shipping Fee', style: Theme.of(context).textTheme.bodyMedium),
             //Product Price
-            Text('\$8.0', style: Theme.of(context).textTheme.labelLarge),
+            Text('\$${TPricingCalculator.calculateShippingCost(subTotal, 'US')}', style: Theme.of(context).textTheme.labelLarge),
+
           ],
         ),
 
@@ -41,7 +46,7 @@ class TBillingAmountSection extends StatelessWidget {
             //Billing Address
             Text('Tax Fee', style: Theme.of(context).textTheme.bodyMedium),
             //Product Price
-            Text('\$3.0', style: Theme.of(context).textTheme.labelLarge),
+            Text('\$${TPricingCalculator.calculateTax(subTotal, 'US')}', style: Theme.of(context).textTheme.labelLarge),
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems/2),
@@ -53,7 +58,8 @@ class TBillingAmountSection extends StatelessWidget {
             //Billing Address
             Text('Order Total', style: Theme.of(context).textTheme.bodyMedium),
             //Product Price
-            Text('\$26.0', style: Theme.of(context).textTheme.titleMedium),
+            Text('\$${TPricingCalculator.calculateTotalPrice(subTotal, 'US')}', style: Theme.of(context).textTheme.titleMedium),
+
           ],
         ),      
       ],    

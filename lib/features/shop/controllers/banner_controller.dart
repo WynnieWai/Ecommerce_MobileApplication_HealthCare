@@ -7,7 +7,7 @@ import 'package:testing_asg1/utils/popups/loaders.dart';
 class BannerController extends GetxController {
   /// Variables
   final isLoading = false.obs;
-  final carousalCurrentIndex = 0.0.obs;
+  final carousalCurrentIndex = 0.obs;
   final RxList<BannerModel> banners = <BannerModel>[].obs; 
 
   @override

@@ -1,6 +1,12 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:testing_asg1/common/widgets/brands/brand_card.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:testing_asg1/common/widgets/shimmers/shimmer.dart';
+import 'package:testing_asg1/features/shop/models/brand_model.dart';
+import 'package:testing_asg1/features/shop/screens/brand/brand_products.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
@@ -8,30 +14,33 @@ import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 class TBrandShowcase extends StatelessWidget {
   const TBrandShowcase({
     super.key, 
-    required this.images,
-
+    required this.images, required this.brand,
   });
 
+  final BrandModel brand;
   final List<String> images;
 
   @override
   Widget build(BuildContext context) {
-    return TRoundedContainer(
-      showBorder: true,
-      borderColor: TColors.darkerGrey,
-      backgroundColor: Colors.transparent,
-      padding: const EdgeInsets.all(TSizes.sm),
-      margin:const EdgeInsets.only(bottom:TSizes.spaceBtwItems),
-      child:Column(
-        children: [
-          // Brand with Product Count
-          //const TBrandCard(showBorder:false),
-          const SizedBox(height: TSizes.spaceBtwItems),
-    
-          //Brand top 3 products images
-          Row( children:images.map((image) =>brandTopProductImageWidget(image, context)).toList())
-        ],
-      )
+    return InkWell(
+      onTap: () => Get.to(() => BrandProducts(brand: brand)),
+      child: TRoundedContainer(
+        showBorder: true,
+        borderColor: TColors.darkerGrey,
+        backgroundColor: Colors.transparent,
+        padding: const EdgeInsets.all(TSizes.sm),
+        margin:const EdgeInsets.only(bottom:TSizes.spaceBtwItems),
+        child:Column(
+          children: [
+            // Brand with Product Count
+            TBrandCard(showBorder:false, brand: brand),
+            const SizedBox(height: TSizes.spaceBtwItems),
+      
+            //Brand top 3 products images
+            Row( children:images.map((image) =>brandTopProductImageWidget(image, context)).toList())
+          ],
+        )
+      ),
     );
   }
 
@@ -42,7 +51,12 @@ class TBrandShowcase extends StatelessWidget {
         padding:const EdgeInsets.all(TSizes.md),
         margin:const EdgeInsets.only(right:TSizes.sm),
         backgroundColor: THelperFunctions.isDarkMode(context)?TColors.darkGrey:TColors.light,
-        child: Image(fit: BoxFit.contain, image: AssetImage(image)),
+        child: CachedNetworkImage(
+          fit: BoxFit.contain,
+          imageUrl: image,
+          progressIndicatorBuilder: (context,url,downloadProgess)=>const TShimmerEffect(width: 100, height: 100),
+          errorWidget: (context, url, error)=> const Icon(Icons.error),
+        )
       ),
     );
   }

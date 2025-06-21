@@ -5,6 +5,8 @@ import 'package:testing_asg1/common/styles/shadows.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
+import 'package:testing_asg1/common/widgets/products/favourite_icon/favourite_icon.dart';
+import 'package:testing_asg1/common/widgets/products/product_cards/add_to_cart_button.dart' show ProductCardAddToCartButton;
 import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';
 import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
@@ -69,7 +71,7 @@ class TProductCardVertical extends StatelessWidget{
                   Positioned(
                     top: 0,
                     right: 0,
-                    child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                    child: TFavouriteIcon(productId: product.id)
                     // child: TCircularIcon(
                     //   icon: Iconsax.heart5,
                     //   color: product.isFavorite ? Colors.red : null, // Red if true, default if false
@@ -130,21 +132,8 @@ class TProductCardVertical extends StatelessWidget{
                   ),
                 ),
 
-                /// Add to Cart Button 
-                Container(
-                  decoration: const BoxDecoration(
-                    color:TColors.dark,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(TSizes.cardRadiusMd),
-                      bottomRight: Radius.circular(TSizes.productImageRadius),
-                    ),
-                  ),
-                  child: const SizedBox(
-                    width: TSizes.iconLg * 1.2,
-                    height: TSizes.iconLg * 1.2,
-                    child: Center(child:Icon(Iconsax.add, color: TColors.white)),
-                  ),
-                ),
+                /// Add to Cart
+                ProductCardAddToCartButton(product: product),
               ],
             ),
           ],
@@ -152,4 +141,5 @@ class TProductCardVertical extends StatelessWidget{
       ),
     );
   }
+
 }

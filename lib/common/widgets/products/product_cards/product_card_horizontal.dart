@@ -3,24 +3,35 @@ import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
+import 'package:testing_asg1/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';
 import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
+import 'package:testing_asg1/features/shop/controllers/product/product_controller.dart';
+import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
+import 'package:testing_asg1/utils/constants/enums.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
 class TProductCardHorizontal extends StatelessWidget {
-  final String imageUrl;
-
   const TProductCardHorizontal({
     super.key,
-    required this.imageUrl,
+    // required this.imageUrl,
+    required this.product
   });
+
+
+  // final String imageUrl;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+
+    
+    final controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
 
     return Container(
       width: 310,
@@ -43,8 +54,9 @@ class TProductCardHorizontal extends StatelessWidget {
                   height: 120,
                   width: 120,
                   child: TRoundedImage(
-                    imageUrl: imageUrl,
+                    imageUrl: product.thumbnail,
                     applyImageRadius: true,
+                    isNetworkImage: true,
                   ),
                 ),
 
@@ -56,17 +68,17 @@ class TProductCardHorizontal extends StatelessWidget {
                     backgroundColor: TColors.secondary.withOpacity(0.8),
                     padding: const EdgeInsets.symmetric(horizontal: TSizes.sm, vertical: TSizes.xs),
                     child: Text(
-                      '25%',
+                      '$salePercentage%',
                       style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.black),
                     ),
                   ),
                 ),
 
                 /// -- Favourite Icon Button
-                const Positioned(
+                Positioned(
                   top: 0,
                   right: 0,
-                  child: TCircularIcon(icon: Iconsax.heart5, color: Colors.red),
+                  child: TFavouriteIcon(productId: product.id)
                 ),
               ],
             ),
@@ -78,25 +90,48 @@ class TProductCardHorizontal extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: TSizes.sm, left: TSizes.sm),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TProductTitleText(title: 'Green Nike Half Sleeves Shirt', smallSize: true),
+                      TProductTitleText(title: product.title, smallSize: true),
                       SizedBox(height: TSizes.spaceBtwItems / 2),
-                      TBrandTitleWithVerifiedIcon(title: 'Nike'),
+                      TBrandTitleWithVerifiedIcon(title: product.brand!.name),
                     ],
                   ),
 
                   const Spacer(),
-
+                   /// Price Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Flexible(child: TProductPriceText(price: '256.0')),
+                    children: [                     
+                      /// Price 
+                      Flexible(
+                        child: Column(
+                          children: [
+                            if (product.productType == ProductType.single.toString() && product.salePrice > 0) 
+                            Padding(
+                              padding: const EdgeInsets.only(left: TSizes.sm),
+                              child: Text(
+                                product.price.toString(), 
+                                style: Theme.of(context).textTheme.labelMedium!.apply(decoration: TextDecoration.lineThrough),
+                              ),
+                            ),
+
+                            /// Price, Show sale price as main price if sale exist 
+                            Padding(
+                              padding: const EdgeInsets.only(left: TSizes.sm),
+                              child: TProductPriceText(price: controller.getProductPrice(product)),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      /// Add to Cart Button 
                       Container(
                         decoration: const BoxDecoration(
-                          color: TColors.dark,
+                          color:TColors.dark,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(TSizes.cardRadiusMd),
                             bottomRight: Radius.circular(TSizes.productImageRadius),
@@ -105,11 +140,11 @@ class TProductCardHorizontal extends StatelessWidget {
                         child: const SizedBox(
                           width: TSizes.iconLg * 1.2,
                           height: TSizes.iconLg * 1.2,
-                          child: Center(child: Icon(Iconsax.add, color: TColors.white)),
+                          child: Center(child:Icon(Iconsax.add, color: TColors.white)),
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),

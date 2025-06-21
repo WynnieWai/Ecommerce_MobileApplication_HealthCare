@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:testing_asg1/features/shop/controllers/product/cart_controller.dart';
 import 'package:testing_asg1/features/shop/controllers/product/images_controller.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/features/shop/models/product_variation_model.dart';
@@ -29,8 +30,17 @@ class VariationController extends GetxController {
           selectedVariation.image;
     }
 
+    // Show selected variation quantity already in the cart.
+    if (selectedVariation.id.isNotEmpty) {
+      final cartController = CartController.instance;
+      cartController.productQuantityInCart.value = cartController.getVariationQuantityInCart(product.id, selectedVariation.id);
+    }
+
     // Assign the Selected Variation
     this.selectedVariation.value = selectedVariation;
+
+    // Update selected product variation status
+    getProductVariationStockStatus();
   }
 
   // Check if selected attributes matches any variation attributes
