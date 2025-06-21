@@ -205,6 +205,11 @@ class AddressController extends GetxController {
                             await selectAddress(snapshot.data![index]);
                             Get.back();
                           },
+                          onDelete: () async {
+                            if (snapshot.data![index].id.isNotEmpty) {
+                              await deleteAddress(snapshot.data![index].id);
+                            }
+                          },
                         ),
                       );
                     },
@@ -237,4 +242,28 @@ class AddressController extends GetxController {
       addressFormKey.currentState?.reset();
     }
 
+
+  Future<void> deleteAddress(String addressId) async {
+    try {
+      final wasSelected = selectedAddress.value.id == addressId;
+      await addressRepository.deleteAddress(addressId);
+
+      // Refresh data
+      refreshData.toggle();
+
+      // If deleted address was selected, pick another or clear
+      if (wasSelected) {
+        final addresses = await addressRepository.fetchUserAddresses();
+        if (addresses.isNotEmpty) {
+          await selectAddress(addresses.first);
+        } else {
+          selectedAddress.value = AddressModel.empty();
+        }
+      }
+
+      TLoaders.successSnackBar(title: 'Deleted', message: 'Address deleted successfully.');
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Delete Failed', message: e.toString());
+    }
+  }
 }

@@ -56,5 +56,18 @@ Future<String> addAddress(AddressModel address) async {
   }
 }
 
+  Future<void> deleteAddress(String addressId) async {
+    try {
+      final userId = AuthenticationRepository.instance.authUser!.uid;
+      await _db
+          .collection('Users')
+          .doc(userId)
+          .collection('Addresses')
+          .doc(addressId)
+          .delete();
+    } catch (e) {
+      throw 'Something went wrong while deleting the address. Try again later';
+    }
+  }
 
 }
