@@ -3,9 +3,14 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/data/repositories/address/address_repository.dart';
 import 'package:testing_asg1/features/personalization/models/address_model.dart';
+import 'package:testing_asg1/features/personalization/screens/address/add_new_address.dart';
+import 'package:testing_asg1/features/personalization/screens/address/widgets/single_address.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
+import 'package:testing_asg1/utils/constants/sizes.dart';
+import 'package:testing_asg1/utils/helpers/cloud_helper_functions.dart';
 import 'package:testing_asg1/utils/helpers/network_manager.dart';
 import 'package:testing_asg1/utils/popups/full_screen_loader.dart';
 import 'package:testing_asg1/utils/popups/loaders.dart';
@@ -62,7 +67,7 @@ class AddressController extends GetxController {
 }
 
 
-Future addNewAddresses() async {
+  Future addNewAddresses() async {
   try {
     // Start Loading
     TFullScreenLoader.openLoadingDialog('Storing Address...', TImages.docerAnimation);
@@ -122,6 +127,52 @@ Future addNewAddresses() async {
 
   }
 }
+
+
+  // Show Addresses ModalBottomSheet at Checkout
+  Future<dynamic> selectNewAddressPopup(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (context) => Container(
+        padding: const EdgeInsets.all(TSizes.lg),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const TSectionHeading(title: 'Select Address', showActionButton: false),
+            FutureBuilder(
+              future: getAllUserAddresses(),
+              builder: (_, snapshot) {
+                // Helper Function: Handle Loader, No Record, OR ERROR Message
+                final response = TCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot);
+                if (response != null) return response;
+
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (_, index) => TSingleAddress(
+                    address: snapshot.data![index],
+                    onTap: () async {
+                      await selectAddress(snapshot.data![index]);
+                      Get.back();
+                    },
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: TSizes.defaultSpace * 2),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () => Get.to(() => const AddNewAddressScreen()),
+                child: const Text('Add new address'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
 
     /// Function to reset form fields
     void resetFormFields() {
