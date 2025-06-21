@@ -90,7 +90,7 @@ class ProductController extends GetxController {
   }
 
   /// -- Calculate Discount Percentage 
-  String? calculateSalePercentage(double originalPrice, double salePrice) {
+  String?  calculateSalePercentage(double originalPrice, double salePrice) {
     if (salePrice <= 0.0) return null;
     if (originalPrice <= 0) return null;
 

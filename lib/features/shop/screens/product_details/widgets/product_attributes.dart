@@ -33,37 +33,79 @@ class TProductAttributes extends StatelessWidget {
               child: Column(
                 children: [
                   /// Title, Price and Stock Status
-                  Row(
+                  // Row(
+                  //   children: [
+                  //     TSectionHeading(title: 'Variation', showActionButton: false),
+                  //     SizedBox(width: TSizes.spaceBtwItems),
+                      
+                  //     Column(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Row(
+                  //           children: [
+                  //             // const TProductTitleText(title: 'Price : ', smallSize: true),
+                  //             const TProductTitleText(title: 'Price : '),
+                              
+                  //             /// Actual Price
+                  //             // if(controller.selectedVariation.value.salePrice > 0)
+                  //             // Text(
+                  //             //   '\$${controller.selectedVariation.value.price.toStringAsFixed(2)}',
+                  //             //   style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),
+                  //             // ),
+                  //             // const SizedBox(width: TSizes.spaceBtwItems),
+      
+                  //             /// Sale Price
+                  //             TProductPriceText(price: controller.getVariationPrice()),
+                  //           ],
+                  //         ),
+      
+                  //         /// Stock
+                  //         Row(
+                  //           children: [
+                  //             // const TProductTitleText(title: 'Stock : ', smallSize: true),
+                  //             const TProductTitleText(title: 'Stock : '),
+                  //             // Text(controller.variationStockStatus.value, style: Theme.of(context).textTheme.titleMedium),
+                  //             Text(controller.variationStockStatus.value, style: Theme.of(context).textTheme.titleMedium),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ],
+                  // ),
+
+                  /// Title, Price and Stock Status
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TSectionHeading(title: 'Variation', showActionButton: false),
-                      SizedBox(width: TSizes.spaceBtwItems),
-                      
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      const SizedBox(height: TSizes.spaceBtwItems / 4),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Row(
-                            children: [
-                              const TProductTitleText(title: 'Price : ', smallSize: true),
-                              
-                              /// Actual Price
-                              if(controller.selectedVariation.value.salePrice > 0)
-                              Text(
-                                '\$${controller.selectedVariation.value.price.toStringAsFixed(2)}',
-                                style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough),
-                              ),
-                              const SizedBox(width: TSizes.spaceBtwItems),
-      
-                              /// Sale Price
-                              TProductPriceText(price: controller.getVariationPrice()),
-                            ],
-                          ),
-      
-                          /// Stock
-                          Row(
-                            children: [
-                              const TProductTitleText(title: 'Stock : ', smallSize: true),
-                              Text(controller.variationStockStatus.value, style: Theme.of(context).textTheme.titleMedium),
-                            ],
+                          const TProductTitleText(title: 'Price : '),
+                          /// Actual Price
+                          // if(controller.selectedVariation.value.salePrice > 0)
+                          //   Text(
+                          //     '\$${controller.selectedVariation.value.price.toStringAsFixed(2)}',
+                          //     style: Theme.of(context).textTheme.titleSmall!.apply(
+                          //       decoration: TextDecoration.lineThrough,
+                          //     ),
+                          //   ),
+                          // const SizedBox(width: TSizes.spaceBtwItems),
+                          /// Sale Price
+                          TProductPriceText(price: controller.getVariationPrice()),
+                        ],
+                      ),
+
+                      /// Row
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const TProductTitleText(title: 'Stock : '),
+                          Text(
+                            controller.variationStockStatus.value,
+                            style: Theme.of(context).textTheme.titleMedium,
                           ),
                         ],
                       ),
@@ -71,11 +113,11 @@ class TProductAttributes extends StatelessWidget {
                   ),
                   
                   /// Variation Description
-                  TProductTitleText(
-                    title: controller.selectedVariation.value.description ?? 'No description available',
-                    smallSize: true,
-                    maxLines: 4,
-                  ),
+                  // TProductTitleText(
+                  //   title: controller.selectedVariation.value.description ?? 'No description available',
+                  //   smallSize: true,
+                  //   maxLines: 4,
+                  // ),
                 ],
               ),
             ),
@@ -88,7 +130,11 @@ class TProductAttributes extends StatelessWidget {
               .map((attribute)=> Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TSectionHeading(title: attribute.name ?? '', showActionButton: false),
+                  TSectionHeading(
+                    title: attribute.name ?? '', 
+                    showActionButton: false, 
+                    fontSize: 18.0,
+                  ),
                   const SizedBox(height: TSizes.spaceBtwItems / 2),
                   Obx(
                     () => Wrap(
@@ -102,6 +148,7 @@ class TProductAttributes extends StatelessWidget {
                         return TChoiceChip(
                           text: attributeValue,
                           selected: isSelected,
+                          textStyle: const TextStyle(fontSize: 16),
                           onSelected: available ? (selected) {
                             if (selected && available) {
                               controller.onAttributeSelected(product, attribute.name ?? '', attributeValue);

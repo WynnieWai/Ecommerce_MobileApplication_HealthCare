@@ -32,13 +32,13 @@ class TProductMetaData extends StatelessWidget {
         Row(
           children: [
             /// Sale Tag
-            TRoundedContainer(
-              radius:TSizes.sm,
-              backgroundColor: TColors.secondary.withOpacity(0.8),
-              padding:const EdgeInsets.symmetric(horizontal: TSizes.sm,vertical:TSizes.xs),
-              child:Text('$salePercentage%',style:Theme.of(context).textTheme.labelLarge!.apply(color:TColors.black)),
-            ),
-            const SizedBox(width: TSizes.spaceBtwItems),
+            // TRoundedContainer(
+            //   radius:TSizes.sm,
+            //   backgroundColor: TColors.secondary.withOpacity(0.8),
+            //   padding:const EdgeInsets.symmetric(horizontal: TSizes.sm,vertical:TSizes.xs),
+            //   child:Text('$salePercentage%',style:Theme.of(context).textTheme.labelLarge!.apply(color:TColors.black)),
+            // ),
+            // const SizedBox(width: TSizes.spaceBtwItems),
 
             /// Price
             // Text('\$250', style: Theme.of(context).textTheme.titleSmall!.apply(decoration: TextDecoration.lineThrough)),
@@ -49,14 +49,14 @@ class TProductMetaData extends StatelessWidget {
         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
         /// Title
-        TProductTitleText(title: product.title),
+        TProductTitleText(title: product.title, style: Theme.of(context).textTheme.headlineSmall ?.copyWith(fontWeight: FontWeight.bold),),
         const SizedBox(height: TSizes.spaceBtwItems / 1.5),
         
         /// Stock Status
         Row(
           children: [
             const TProductTitleText(title: 'Status'),
-            const SizedBox(width: TSizes.spaceBtwItems),
+            const SizedBox(width: 8),
             Text(controller.getProductStockStatus(product.stock), style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
@@ -66,14 +66,23 @@ class TProductMetaData extends StatelessWidget {
         Row(
           children: [
             TCircularImage(
-              image: product.brand != null ? product.brand!.image : '',
+              // image: product.brand != null ? product.brand!.image : '',
+              image: product.brand?.image ?? '',
               width: 32,
               height: 32,
               overlayColor: darkMode ? TColors.white : TColors.black,
+              isNetworkImage: true,
+              padding: 0,
+              fit: BoxFit.contain,
             ),
-            TBrandTitleWithVerifiedIcon(title: product.brand != null? product.brand!.name : '', brandTextSize: TextSizes.medium),
+            const SizedBox(width: 8),
+            TBrandTitleWithVerifiedIcon(
+              title: product.brand != null? product.brand!.name : '', 
+              brandTextSize: TextSizes.medium
+            ),
           ],
         ),
+        const SizedBox(height: 10),
       ],
     );
   }

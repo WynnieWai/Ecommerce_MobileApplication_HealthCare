@@ -10,20 +10,23 @@ class TSectionHeading extends StatelessWidget {
     required this.title, 
     this.buttonTitle = 'View all', 
     this.onPressed,
+    this.fontSize,
   });
 
   final Color? textColor;
   final bool showActionButton;
   final String title, buttonTitle;
   final void Function()? onPressed;
+  final dynamic fontSize;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title, 
-          style: Theme.of(context).textTheme.headlineSmall!.apply(color: textColor), 
+        Text(
+          title, 
+          style: Theme.of(context).textTheme.headlineSmall!.apply(color: textColor).copyWith(fontSize: fontSize), 
           maxLines: 1, 
           overflow: TextOverflow.ellipsis),
         if(showActionButton) TextButton(onPressed: onPressed, child: Text(buttonTitle, style: TextStyle(color: TColors.primary)))
