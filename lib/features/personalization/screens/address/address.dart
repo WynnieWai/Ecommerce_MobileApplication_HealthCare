@@ -45,9 +45,11 @@ class UserAddressScreen extends StatelessWidget{
                   shrinkWrap: true,
                   itemCount: addresses.length,
                   itemBuilder:(_,index)=>
-                   TSingleAddress(
-                    address:addresses[index],
-                     onTap:()=> controller.selectAddress(addresses[index])),
+                    TSingleAddress(
+                      address:addresses[index],
+                      onTap:()=> controller.selectAddress(addresses[index]),
+                      onDelete: () => controller.deleteAddress(addresses[index].id),
+                    ),
                   );
               }
             ),

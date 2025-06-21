@@ -13,10 +13,12 @@ class TSingleAddress extends StatelessWidget{
     super.key,
     required this.address,
     required this.onTap,
+    required this.onDelete,
   });
 
   final AddressModel address;
   final VoidCallback onTap;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context){
@@ -33,25 +35,55 @@ class TSingleAddress extends StatelessWidget{
           padding: const EdgeInsets.all(TSizes.md),
           width:double.infinity,
           showBorder: true,
-          backgroundColor: selectedAddress?TColors.primary.withOpacity(0.5):Colors.transparent,
+          backgroundColor: selectedAddress?TColors.primary.withOpacity(0.25):Colors.transparent,
           borderColor: selectedAddress
             ?Colors.transparent
             :dark
               ?TColors.darkerGrey
               :TColors.grey,
           margin: EdgeInsets.only(bottom: TSizes.spaceBtwItems),
+          // child: Stack(
+          //   children: [
+          //     Positioned(
+          //       right:5,
+          //       top:0,
+          //       child: Icon(
+          //         selectedAddress?Iconsax.tick_circle5:null,
+          //         color: selectedAddress
+          //           ?dark
+          //             ?TColors.light
+          //             :TColors.dark
+          //           :null,
+          //       ),
+          //     ),
+
           child: Stack(
             children: [
+              // Right-top: Tick icon and delete button in a column
               Positioned(
-                right:5,
-                top:0,
-                child: Icon(
-                  selectedAddress?Iconsax.tick_circle5:null,
-                  color: selectedAddress
-                    ?dark
-                      ?TColors.light
-                      :TColors.dark
-                    :null,
+                right: 0,
+                top: 0,
+                child: Column(
+                  children: [
+                    Icon(
+                      selectedAddress ? Iconsax.tick_circle5 : null,
+                      color: selectedAddress
+                          ? dark
+                              ? TColors.light
+                              : TColors.dark
+                          : null,
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                      onPressed: onDelete,
+                      tooltip: 'Delete Address',
+                      padding: EdgeInsets.zero,
+                      constraints: BoxConstraints(),
+                    ),
+                  ],
                 ),
               ),
         
