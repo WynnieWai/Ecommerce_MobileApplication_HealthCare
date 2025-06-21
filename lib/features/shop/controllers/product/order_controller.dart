@@ -40,6 +40,14 @@ class OrderController extends GetxController {
   // Add methods for order processing
   void processOrder(double totalAmount) async {
     try {
+      // Check if address is selected
+      if (addressController.selectedAddress.value.id.isEmpty) {
+        TLoaders.errorSnackBar(
+          title: 'No Address',
+          message: 'Please select a shipping address before proceeding.',
+        );
+        return;
+      }
       // Start Loader
       TFullScreenLoader.openLoadingDialog('Processing your order', TImages.pencilAnimation);
 
@@ -47,7 +55,7 @@ class OrderController extends GetxController {
       final userId = AuthenticationRepository.instance.authUser?.uid;
       if (userId == null || userId.isEmpty) return;
       
-      if (userId.isEmpty) return;
+      //if (userId.isEmpty) return;
 
       // Add Details
       final order = OrderModel(

@@ -130,49 +130,100 @@ class AddressController extends GetxController {
 
 
   // Show Addresses ModalBottomSheet at Checkout
-  Future<dynamic> selectNewAddressPopup(BuildContext context) {
-    return showModalBottomSheet(
-      context: context,
-      builder: (context) => Container(
-        padding: const EdgeInsets.all(TSizes.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TSectionHeading(title: 'Select Address', showActionButton: false),
-            FutureBuilder(
-              future: getAllUserAddresses(),
-              builder: (_, snapshot) {
-                // Helper Function: Handle Loader, No Record, OR ERROR Message
-                final response = TCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot);
-                if (response != null) return response;
+  // Future<dynamic> selectNewAddressPopup(BuildContext context) {
+  //   return showModalBottomSheet(
+  //     context: context,
+      
+  //     builder: (context) => Container(
+  //       padding: const EdgeInsets.all(TSizes.lg),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           const TSectionHeading(title: 'Select Address', showActionButton: false),
+  //           FutureBuilder(
+  //             future: getAllUserAddresses(),
+  //             builder: (_, snapshot) {
+  //               // Helper Function: Handle Loader, No Record, OR ERROR Message
+  //               final response = TCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot);
+  //               if (response != null) return response;
 
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (_, index) => TSingleAddress(
-                    address: snapshot.data![index],
-                    onTap: () async {
-                      await selectAddress(snapshot.data![index]);
-                      Get.back();
+  //               return ListView.builder(
+  //                 shrinkWrap: true,
+  //                 itemCount: snapshot.data!.length,
+  //                 itemBuilder: (_, index) => TSingleAddress(
+  //                   address: snapshot.data![index],
+  //                   onTap: () async {
+  //                     await selectAddress(snapshot.data![index]);
+  //                     Get.back();
+  //                   },
+  //                 ),
+  //               );
+  //             },
+  //           ),
+  //           const SizedBox(height: TSizes.defaultSpace * 2),
+  //           SizedBox(
+  //             width: double.infinity,
+  //             child: ElevatedButton(
+  //               onPressed: () => Get.to(() => const AddNewAddressScreen()),
+  //               child: const Text('Add new address'),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+
+  //   );
+  // }
+    Future<dynamic> selectNewAddressPopup(BuildContext context) {
+      return showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        builder: (context) => DraggableScrollableSheet(
+          expand: false,
+          initialChildSize: 0.7, // 70% of screen height
+          minChildSize: 0.4,
+          maxChildSize: 0.95,
+          builder: (context, scrollController) => Padding(
+            padding: const EdgeInsets.all(TSizes.lg),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const TSectionHeading(title: 'Select Address', showActionButton: false),
+                Expanded(
+                  child: FutureBuilder(
+                    future: getAllUserAddresses(),
+                    builder: (_, snapshot) {
+                      final response = TCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot);
+                      if (response != null) return response;
+
+                      return ListView.builder(
+                        controller: scrollController,
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (_, index) => TSingleAddress(
+                          address: snapshot.data![index],
+                          onTap: () async {
+                            await selectAddress(snapshot.data![index]);
+                            Get.back();
+                          },
+                        ),
+                      );
                     },
                   ),
-                );
-              },
+                ),
+                const SizedBox(height: TSizes.defaultSpace * 2),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => Get.to(() => const AddNewAddressScreen()),
+                    child: const Text('Add new address'),
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: TSizes.defaultSpace * 2),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () => Get.to(() => const AddNewAddressScreen()),
-                child: const Text('Add new address'),
-              ),
-            ),
-          ],
+          ),
         ),
-      ),
-    );
-  }
-
+      );
+    }
 
     /// Function to reset form fields
     void resetFormFields() {
