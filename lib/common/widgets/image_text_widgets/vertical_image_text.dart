@@ -48,7 +48,7 @@ class TVerticalImageText extends StatelessWidget {
             TCircularImage(
               image: image,
               fit: BoxFit.fitWidth,
-              padding: TSizes.sm * 1.4,
+              padding: TSizes.sm,
               isNetworkImage: isNetworkImage,
               backgroundColor: backgroundColor,
               //overlayColor: THelperFunctions.isDarkMode(context) ? TColors.light : TColors.dark,
@@ -58,9 +58,10 @@ class TVerticalImageText extends StatelessWidget {
             /// Text
             const SizedBox(height: TSizes.spaceBtwItems / 2), 
             SizedBox(
-              width: 55, 
+              width: 60, 
               child: Text(
                 title, 
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.labelMedium!.apply(color: textColor), 
                 maxLines: 1, 
                 overflow: TextOverflow.ellipsis,
