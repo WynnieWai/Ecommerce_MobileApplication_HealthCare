@@ -181,7 +181,7 @@ class SubCategoriesScreen extends StatelessWidget {
                   itemBuilder: (_,index){
 
                     final subCategory = subCategories[index];
-
+                    print('Building product FutureBuilder for subCategory: ${subCategory.id}');
                     return FutureBuilder(
                       future: controller.getCategoryProducts(categoryId: subCategory.id),
                       builder: (context, snapshot) {
