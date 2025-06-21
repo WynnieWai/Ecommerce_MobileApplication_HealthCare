@@ -145,6 +145,7 @@ class ProductRepository extends GetxController {
   }
 }
 
+
   /// Upload dummy data to the Cloud Firebase 
   Future<void> uploadDummyData(List<ProductModel> products) async {
     try {

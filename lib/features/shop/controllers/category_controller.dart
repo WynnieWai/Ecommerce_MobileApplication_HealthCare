@@ -73,16 +73,69 @@ Future<List<CategoryModel>> getSubCategories(String categoryId) async {
 }
 
   /// Get Category or Sub-Category Products
-  Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async {
-      print('getCategoryProducts called for $categoryId');
-    // Fetch products from the repository
-    try{
-      final products = await ProductRepository.instance.getProductsForCategory(categoryId: categoryId, limit: limit);
-      print('Products for $categoryId: ${products.length}');
-      return products;
-    }catch(e){
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-      return[];
+  // Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async {
+  //     print('getCategoryProducts called for $categoryId');
+  //   // Fetch products from the repository
+  //   try{
+  //     final products = await ProductRepository.instance.getProductsForCategory(categoryId: categoryId, limit: limit);
+  //     print('Products for $categoryId: ${products.length}');
+  //     return products;
+  //   }catch(e){
+  //     TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+  //     return[];
+  //   }
+  // }
+
+//   Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async {
+//   try {
+//     // 1. Get all subcategories for this category
+//     final subCategories = await getSubCategories(categoryId);
+//     final subCategoryIds = subCategories.map((c) => c.id).toList();
+
+//     // 2. Also include the main category id (optional, in case some products are directly under it)
+//     subCategoryIds.add(categoryId);
+
+//     // 3. Query products where CategoryId is in subCategoryIds
+//     final snapshot = await FirebaseFirestore.instance
+//         .collection('Products')
+//         .where('CategoryId', whereIn: subCategoryIds)
+//         .limit(limit)
+//         .get();
+
+//     final products = snapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+//     return products;
+//   } catch (e) {
+//     // handle error
+//     return [];
+//   }
+// }
+
+Future<List<ProductModel>> getCategoryProducts({required String categoryId, int limit = 4}) async {
+  try {
+    // 1. Get all subcategories for this category
+    final subCategories = await getSubCategories(categoryId);
+    final subCategoryIds = subCategories.map((c) => c.id).toList();
+
+    // 2. Also include the main category id (optional, in case some products are directly under it)
+    subCategoryIds.add(categoryId);
+
+    // 3. Query products where CategoryId is in subCategoryIds
+    var query = FirebaseFirestore.instance
+        .collection('Products')
+        .where('CategoryId', whereIn: subCategoryIds);
+
+    // Only add limit if limit > 0
+    if (limit > 0) {
+      query = query.limit(limit);
     }
+
+    final snapshot = await query.get();
+    final products = snapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
+    return products;
+  } catch (e) {
+    return [];
   }
+}
+
+
 }
