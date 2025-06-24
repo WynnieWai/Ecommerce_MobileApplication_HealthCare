@@ -6,6 +6,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:testing_asg1/data/repositories/product/product_repository.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
+import 'package:testing_asg1/upload_data.dart';
 import 'package:testing_asg1/utils/constants/enums.dart';
 import 'package:testing_asg1/utils/popups/loaders.dart';
 
@@ -35,7 +36,7 @@ class ProductController extends GetxController {
         allFeaturedProducts = products; // cache all products
       featuredProducts.assignAll(products);
       debugPrint('Hihi5');
-
+      //uploadDummyProducts(); // Uncomment this line to upload dummy products
     } catch (e) {
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {

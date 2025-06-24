@@ -63,7 +63,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   SizedBox(height: TSizes.spaceBtwSections),
                   TSectionHeading(title: 'App Settings', showActionButton: false),
                   SizedBox(height: TSizes.spaceBtwItems),
-                  TSettingsMenuTile(icon: Iconsax.document_upload, title: 'Load Data', subTitle: 'Upload Data to your Cloud Firebase'),
+                  //TSettingsMenuTile(icon: Iconsax.document_upload, title: 'Load Data', subTitle: 'Upload Data to your Cloud Firebase'),
 
                   TSettingsMenuTile(
                     icon: Iconsax.location,
