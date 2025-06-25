@@ -224,9 +224,9 @@ class TPromoSlider extends StatelessWidget {
                   : TRoundedImage(
                       imageUrl: banner.imageUrl!,
                       isNetworkImage: true,
-                      onPressed: banner.targetScreen != null
-                          ? () => Get.toNamed(banner.targetScreen!)
-                          : null,
+                      // onPressed: banner.targetScreen != null
+                      //     ? () => Get.toNamed(banner.targetScreen!)
+                      //     : null,
                     );
             }).toList(),
           ),

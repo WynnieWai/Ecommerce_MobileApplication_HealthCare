@@ -70,7 +70,7 @@ class UserModel {
         userName: data['Username'] ?? '',
         email: data['Email'] ?? '',
         phoneNumber: data['PhoneNumber'] ?? '',
-        profilePicture: data['ProfilePicture'] ?? '',
+        profilePicture: data['profilePicture'] ?? '',
       );
     }
     else {

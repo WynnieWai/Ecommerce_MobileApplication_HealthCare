@@ -51,7 +51,7 @@ class _SettingScreenState extends State<SettingScreen> {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  const TSectionHeading(title: 'Account Setting', showActionButton: false),
+                  const TSectionHeading(title: 'Account Settings', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   TSettingsMenuTile(icon: Iconsax.safe_home, title: 'My Addresses', subTitle: 'Set shopping delivery address', onTap: () => Get.to(() => const UserAddressScreen())),
                   TSettingsMenuTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add,remove products and move to checkout', onTap: () => Get.to(() => const CartScreen())),
