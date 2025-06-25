@@ -21,20 +21,31 @@ class TBottomAddToCart extends StatelessWidget {
     final controller = CartController.instance;
     controller.updateAlreadyAddedProductCount(product);
     final dark = THelperFunctions.isDarkMode(context);
+
+    final isVariable = product.productType == ProductType.variable.toString();
+    final selectedVariation = controller.variationController.selectedVariation.value;
+
+    // 🔁 Fetch latest stock from Firestore once
+    Future.microtask(() async {
+      final stock = await controller.getLatestStock(
+        product.id,
+        variationId: isVariable ? selectedVariation.id : null,
+      );
+      controller.latestStock.value = stock;
+    });
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace, vertical: TSizes.defaultSpace / 2),
       decoration: BoxDecoration(
         color: dark ? TColors.darkerGrey : TColors.light,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(TSizes.cardRadiusLg),
           topRight: Radius.circular(TSizes.cardRadiusLg),
-        )
+        ),
       ),
-      child: Obx(
-      () {
-        final isVariable = product.productType == ProductType.variable.toString();
-        final selectedVariation = controller.variationController.selectedVariation.value;
-        final stock = isVariable ? selectedVariation.stock : product.stock;
+      child: Obx(() {
+        final quantity = controller.productQuantityInCart.value;
+        final stock = controller.latestStock.value;
 
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,38 +58,33 @@ class TBottomAddToCart extends StatelessWidget {
                   width: 40,
                   height: 40,
                   color: TColors.white,
-                  onPressed: controller.productQuantityInCart.value > 0
+                  onPressed: quantity > 0
                       ? () => controller.productQuantityInCart.value -= 1
                       : null,
                 ),
                 const SizedBox(width: TSizes.spaceBtwItems),
-                Text(controller.productQuantityInCart.value.toString(),
+                Text(quantity.toString(),
                     style: Theme.of(context).textTheme.titleSmall),
                 const SizedBox(width: TSizes.spaceBtwItems),
                 TCircularIcon(
-                icon: Iconsax.add,
-                backgroundColor: TColors.black,
-                width: 40,
-                height: 40,
-                color: TColors.white,
-                onPressed: () {
-                  if (controller.productQuantityInCart.value < stock) {
-                    controller.productQuantityInCart.value += 1;
-                  } else {
-                    TLoaders.warningSnackBar(
-                      title: 'Stock Limit Reached',
-                      message: 'You have reached the maximum stock for this item.',
-                    );
-                  }
-                },
-              ),
-
+                  icon: Iconsax.add,
+                  backgroundColor: TColors.black,
+                  width: 40,
+                  height: 40,
+                  color: TColors.white,
+                  onPressed: quantity < stock
+                      ? () => controller.productQuantityInCart.value += 1
+                      : () {
+                          TLoaders.warningSnackBar(
+                            title: 'Stock Limit Reached',
+                            message: 'You have reached the maximum stock for this item.',
+                          );
+                        },
+                ),
               ],
             ),
             ElevatedButton(
-              onPressed: controller.productQuantityInCart.value > 0
-                  ? () => controller.addToCart(product)
-                  : null,
+              onPressed: quantity > 0 ? () => controller.addToCart(product) : null,
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(TSizes.md),
                 backgroundColor: TColors.black,
@@ -88,9 +94,8 @@ class TBottomAddToCart extends StatelessWidget {
             ),
           ],
         );
-      },
-    ),
-
+      }),
     );
   }
+
 }

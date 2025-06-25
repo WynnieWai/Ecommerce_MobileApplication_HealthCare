@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:testing_asg1/features/shop/controllers/product/variation_controller.dart';
 import 'package:testing_asg1/features/shop/models/cart_item_model.dart';
@@ -14,6 +15,7 @@ class CartController extends GetxController {
   RxInt noOfCartItems = 0.obs;
   RxDouble totalCartPrice = 0.0.obs;
   RxInt productQuantityInCart = 0.obs;
+  final RxInt latestStock = 0.obs;
   RxList<CartItemModel> cartItems = <CartItemModel>[].obs;
   final variationController = VariationController.instance;
 
@@ -222,4 +224,30 @@ class CartController extends GetxController {
     cartItems.clear();
     updateCart();
   }
+
+  Future<int> getLatestStock(String productId, {String? variationId}) async {
+    try {
+      final doc = await FirebaseFirestore.instance
+          .collection('Products')
+          .doc(productId)
+          .get(const GetOptions(source: Source.server));
+
+      if (!doc.exists) return 0;
+
+      final data = doc.data() as Map<String, dynamic>;
+
+      if (variationId != null && variationId.isNotEmpty) {
+        final variations = List<Map<String, dynamic>>.from(data['ProductVariations'] ?? []);
+        final match = variations.firstWhere((v) => v['Id'] == variationId, orElse: () => {});
+        return (match['Stock'] ?? 0) as int;
+      }
+
+      return (data['Stock'] ?? 0) as int;
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Stock Error', message: e.toString());
+      return 0;
+    }
+  }
+
+
 }
