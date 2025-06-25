@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/containers/rounded_container.dart';
-import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
 import 'package:testing_asg1/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';

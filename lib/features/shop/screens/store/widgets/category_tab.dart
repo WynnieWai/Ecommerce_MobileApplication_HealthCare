@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:testing_asg1/common/widgets/brands/brand_show_case.dart';
 import 'package:testing_asg1/common/widgets/layouts/grid_layout.dart';
 import 'package:testing_asg1/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:testing_asg1/common/widgets/shimmers/vertical_product_shimmer.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/controllers/category_controller.dart';
 import 'package:testing_asg1/features/shop/models/category_model.dart';
-import 'package:testing_asg1/features/shop/models/product_model.dart';
 import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
 import 'package:testing_asg1/features/shop/screens/store/widgets/category_brands.dart';
-import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/cloud_helper_functions.dart';
 

@@ -1,5 +1,3 @@
-import 'package:testing_asg1/features/shop/models/banner_model.dart';
-import 'package:testing_asg1/routes/routes.dart';
 
 import '../features/shop/models/category_model.dart';
 import '../utils/constants/image_strings.dart';

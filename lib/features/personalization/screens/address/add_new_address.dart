@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
 import 'package:testing_asg1/features/personalization/controllers/address_controller.dart';
-import 'package:testing_asg1/features/personalization/screens/address/address.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/validators/validation.dart';
 

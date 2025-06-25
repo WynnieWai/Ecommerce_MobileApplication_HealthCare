@@ -2,7 +2,6 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:testing_asg1/data/repositories/user/user_repository.dart';
 import 'package:testing_asg1/features/personalization/controllers/user_controller.dart';
-import 'package:testing_asg1/features/personalization/screens/profile/profile.dart';
 import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/helpers/network_manager.dart';
 import 'package:testing_asg1/utils/popups/full_screen_loader.dart';

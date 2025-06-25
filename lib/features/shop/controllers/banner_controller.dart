@@ -99,7 +99,6 @@ import 'package:get/get.dart';
 import 'package:testing_asg1/data/repositories/banners/banner_repository.dart';
 import 'package:testing_asg1/features/shop/models/banner_model.dart';
 import 'package:testing_asg1/utils/popups/loaders.dart';
-import 'package:video_player/video_player.dart';
 
 class BannerController extends GetxController {
   // State variables

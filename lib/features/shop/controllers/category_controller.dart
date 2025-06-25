@@ -1,13 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:testing_asg1/data/repositories/categories/category_repository.dart';
-import 'package:testing_asg1/data/repositories/product/product_repository.dart';
 import 'package:testing_asg1/features/shop/models/category_model.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
-import 'package:testing_asg1/features/shop/screens/sub_category/sub_categories.dart';
-import 'package:testing_asg1/utils/exceptions/firebase_exceptions.dart';
-import 'package:testing_asg1/utils/exceptions/platform_exceptions.dart';
 
 import '../../../utils/popups/loaders.dart';
 

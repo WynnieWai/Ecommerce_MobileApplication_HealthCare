@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:testing_asg1/common/widgets/success_screen/success_screen.dart';
 import 'package:testing_asg1/data/repositories/authentication/authentication_repository.dart';
 import 'package:testing_asg1/data/repositories/order/order_repository.dart';

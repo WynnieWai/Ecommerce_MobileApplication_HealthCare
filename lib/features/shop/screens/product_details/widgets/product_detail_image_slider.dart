@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
-import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
 import 'package:testing_asg1/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:testing_asg1/common/widgets/products/favourite_icon/favourite_icon.dart';

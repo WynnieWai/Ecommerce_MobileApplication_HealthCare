@@ -6,7 +6,6 @@ import 'package:testing_asg1/features/shop/controllers/brand_controller.dart';
 import 'package:testing_asg1/features/shop/controllers/category_controller.dart';
 import 'package:testing_asg1/features/shop/models/category_model.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
-import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/cloud_helper_functions.dart';
 

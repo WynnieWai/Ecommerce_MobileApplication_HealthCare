@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/features/shop/controllers/product/favourites_controller.dart';
-import 'package:testing_asg1/features/shop/screens/wishlist/wishlist.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
 
 class TFavouriteIcon extends StatelessWidget{

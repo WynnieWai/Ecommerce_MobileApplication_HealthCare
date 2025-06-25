@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
-import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
 import 'package:testing_asg1/common/widgets/texts/t_brand_title_text_verified_icon.dart';
 import 'package:testing_asg1/features/shop/models/cart_item_model.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
-import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 

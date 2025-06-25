@@ -11,7 +11,6 @@ import 'package:testing_asg1/features/shop/models/banner_model.dart';
 import 'package:testing_asg1/features/shop/models/category_model.dart';
 import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/product_detail.dart';
-import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/cloud_helper_functions.dart';
 

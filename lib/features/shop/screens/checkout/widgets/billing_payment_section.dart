@@ -6,7 +6,6 @@ import 'package:testing_asg1/common/widgets/custom_shapes/containers/rounded_con
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/controllers/product/checkout_controller.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
-import 'package:testing_asg1/utils/constants/image_strings.dart';
 import 'package:testing_asg1/utils/constants/sizes.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 

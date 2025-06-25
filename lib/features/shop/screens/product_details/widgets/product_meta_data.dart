@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testing_asg1/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:testing_asg1/common/widgets/images/t_circular_image.dart';
 import 'package:testing_asg1/common/widgets/texts/product_price_text.dart';
 import 'package:testing_asg1/common/widgets/texts/product_title_text.dart';
