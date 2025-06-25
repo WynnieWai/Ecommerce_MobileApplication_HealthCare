@@ -33,7 +33,7 @@ class ProductController extends GetxController {
       final products = await productRepository.getFeaturedProducts();
       debugPrint('Hihi4');
       // Assign Products
-        allFeaturedProducts = products; // cache all products
+      allFeaturedProducts = products; // cache all products
       featuredProducts.assignAll(products);
       debugPrint('Hihi5');
       uploadDummyProducts(); // Uncomment this line to upload dummy products
