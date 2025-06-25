@@ -47,8 +47,8 @@ class ProductDetailScreen extends StatelessWidget {
                   if(product.productType == ProductType.variable.toString()) const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// -- Checkout Button
-                  SizedBox(width: double.infinity, child: ElevatedButton(onPressed: ()=>Get.to(()=> const CheckoutScreen()), child: Text('Checkout'))),
-                  const SizedBox(height: TSizes.spaceBtwSections),
+                  // SizedBox(width: double.infinity, child: ElevatedButton(onPressed: ()=>Get.to(()=> const CheckoutScreen()), child: Text('Checkout'))),
+                  // const SizedBox(height: TSizes.spaceBtwSections),
 
                   /// - Description
                   const TSectionHeading(title: 'Description', showActionButton: false, fontSize: 18.0),
