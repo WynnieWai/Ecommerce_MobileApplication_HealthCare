@@ -4,45 +4,45 @@ import 'package:flutter/material.dart';
 void uploadDummyProducts() async {
   final firestore = FirebaseFirestore.instance;
     // for (int i = 14; i <= 54; i++) {
-    final productId = '087'; // "014" ~ "054"
+    final productId = '083'; // "014" ~ "054"
 
     final dummyProduct = {
-      'Title': 'Dove Sakura Blossom Body Wash 1L',
-      'Stock': 10,
-      'Price': 27.50,
+      'Title': 'Orita Gel Air Freshener Fresh Linen 170g',
+      'Stock': 150,
+      'Price': 6.30,
       'IsFeatured': true,
-      'Thumbnail': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FPersonal%20Care%2FBath%20Care%2FDove%2Fdove-sakura.png?alt=media&token=35b8c5eb-6a2c-496f-a8d9-483e9883f5a2',
+      'Thumbnail': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FHousehold%2FHouseholdSundries%2FOrita%2Forita-air-fresh.png?alt=media&token=f603e757-f394-459c-a9b4-0d6eb6d6738e',
       'Brand': {
-        'Id': 'B002',
-        'Image': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/BrandLogo%2FDove%2Fdove-logo.jpg?alt=media&token=d5941392-2044-436d-86a5-f3dccca66e5d',
-        'Name': 'Dove',
-        'ProductsCount': 10,
+        'Id': 'B033',
+        'Image': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/BrandLogo%2FOrita%2Forita-logo.png?alt=media&token=b13550bc-ac02-44e7-968a-b4b3253a2b21',
+        'Name': 'Orita',
+        'ProductsCount': 150,
         'IsFeatured': true
       },
       'Images': [
-        'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FPersonal%20Care%2FBath%20Care%2FDove%2Fdove-sakura.png?alt=media&token=35b8c5eb-6a2c-496f-a8d9-483e9883f5a2'
+        'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FHousehold%2FHouseholdSundries%2FOrita%2Forita-air-fresh.png?alt=media&token=f603e757-f394-459c-a9b4-0d6eb6d6738e'
         
       ],
-      'Description': 'Dove Sakura Blossom Body Wash 1L is enriched with Japanese-style pinkish sakura and rice water essence to gently cleanse and deeply hydrate the skin. It leaves your skin feeling plump, tender, and subtly scented after each shower. The nourishing formula replenishes moisture, making it ideal for daily use. Simply pour into your hand, lather, massage over the body, and rinse off with water for soft, refreshed skin.',
-      'SalePrice':27.50,
-      'SKU': 'SKU087',
-      'CategoryId': 'C014',
+      'Description': 'Orita Gel Air Freshener Fresh Linen 170g is a convenient and stylish way to freshen up your home with a clean, refreshing linen scent. Its spiral container design allows you to control the intensity of fragrance diffusion. To use, tear along the perforation, grip the top and bottom, then twist and lift to open. Ideal for use in bedrooms, bathrooms, or closets. Contains ingredients such as aqua, fragrance, and gelling agents. Do not ingest or apply to skin. Avoid eye contact, rinse thoroughly and seek medical advice if it occurs.',
+      'SalePrice':6.30,
+      'SKU': 'SKU083',
+      'CategoryId': 'C027',
       'ProductType': 'ProductType.variable',
       'ProductAttributes': [
         {
           'Name': 'Size',
-          'Values': ['1000ml']
+          'Values': ['170g']
         },
       ],
       'ProductVariations': [
         {
           'Id': '1',
-          'Stock': 10,
-          'Price':27.50,
-          'SKU': '1000ml SKU',
-          'SalePrice': 27.50,
-          'Image': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FPersonal%20Care%2FBath%20Care%2FDove%2Fdove-sakura.png?alt=media&token=35b8c5eb-6a2c-496f-a8d9-483e9883f5a2',
-          'AttributeValues': {'Size': '1000ml'}
+          'Stock':150,
+          'Price':6.30,
+          'SKU': '170g SKU',
+          'SalePrice': 6.30,
+          'Image': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FHousehold%2FHouseholdSundries%2FOrita%2Forita-air-fresh.png?alt=media&token=f603e757-f394-459c-a9b4-0d6eb6d6738e',
+          'AttributeValues': {'Size': '170g'}
         }
       ]
     };
