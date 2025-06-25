@@ -10,7 +10,8 @@ import 'package:testing_asg1/utils/helpers/helper_functions.dart';
 
 class TCartItem extends StatelessWidget {
   const TCartItem({
-    super.key, required this.cartItem,
+    super.key, 
+    required this.cartItem,
   });
 
   final CartItemModel cartItem;
@@ -18,6 +19,7 @@ class TCartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Product Image
         TRoundedImage(
@@ -29,28 +31,94 @@ class TCartItem extends StatelessWidget {
           backgroundColor: THelperFunctions.isDarkMode(context)? TColors.darkerGrey : TColors.light
         ),
         const SizedBox(width: TSizes.spaceBtwItems),
-        //Title and Price & Size
+
+        // Product Info
+        // 📝 Product Info
         Expanded(
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TBrandTitleWithVerifiedIcon( title: cartItem.brandName ?? ''),
-              Flexible(child: TProductTitleText(title: cartItem.title, maxLines: 1)),
-          
-              Text.rich(TextSpan(
-                children: (cartItem.selectedVariation ?? {}).entries.map(
-                  (e) => TextSpan(
-                    children: [
-                      TextSpan(text: ' ${e.key} ', style: Theme.of(context).textTheme.bodySmall),
-                      TextSpan(text: '${e.value} ', style: Theme.of(context).textTheme.bodyLarge),
-                    ],
+              // Brand
+              TBrandTitleWithVerifiedIcon(title: cartItem.brandName ?? ''),
+              const SizedBox(height: 4),
+
+              // Product title (smaller)
+              Text(
+                cartItem.title,
+                style: Theme.of(context).textTheme.bodyMedium,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 4),
+
+              // // Size Info (e.g., Size 125ml)
+              // Text.rich(
+              //   TextSpan(
+              //     children: (cartItem.selectedVariation ?? {}).entries.map(
+              //       (e) => TextSpan(
+              //         children: [
+              //           TextSpan(
+              //             text: '${e.key}: ',
+              //             style: Theme.of(context).textTheme.bodySmall,
+              //           ),
+              //           TextSpan(
+              //             text: '${e.value}',
+              //             style: Theme.of(context).textTheme.bodyMedium,
+              //           ),
+              //         ],
+              //       ),
+              //     ).toList(),
+              //   ),
+              // ),
+
+              // Size and Quantity (inline)
+              Row(
+                children: [
+                  Text(
+                    'Size: ${cartItem.selectedVariation?['Size'] ?? 'N/A'}',
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
-                ).toList(),
-              ))
+                  const SizedBox(width: 12),
+                  Text(
+                    'Qty: ${cartItem.quantity}',
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+              
+              const SizedBox(height: 4),
+
+              // Product Price
+              Text(
+                '\$${cartItem.price.toStringAsFixed(2)}',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
             ],
           ),
-        )
+        ),
+        
+        // // Title and Price & Size
+        // Expanded(
+        //   child: Column(
+        //     mainAxisSize: MainAxisSize.min,
+        //     crossAxisAlignment: CrossAxisAlignment.start,
+        //     children: [
+        //       TBrandTitleWithVerifiedIcon( title: cartItem.brandName ?? ''),
+        //       Flexible(child: TProductTitleText(title: cartItem.title, maxLines: 1)),
+          
+        //       Text.rich(TextSpan(
+        //         children: (cartItem.selectedVariation ?? {}).entries.map(
+        //           (e) => TextSpan(
+        //             children: [
+        //               TextSpan(text: ' ${e.key} ', style: Theme.of(context).textTheme.bodySmall),
+        //               TextSpan(text: '${e.value} ', style: Theme.of(context).textTheme.bodyLarge),
+        //             ],
+        //           ),
+        //         ).toList(),
+        //       ))
+        //     ],
+        //   ),
+        // )
       ],
     );
   }

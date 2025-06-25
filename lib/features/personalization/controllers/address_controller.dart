@@ -174,6 +174,7 @@ class AddressController extends GetxController {
 
   //   );
   // }
+
     Future<dynamic> selectNewAddressPopup(BuildContext context) {
       return showModalBottomSheet(
         context: context,
@@ -189,6 +190,9 @@ class AddressController extends GetxController {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const TSectionHeading(title: 'Select Address', showActionButton: false),
+
+                const SizedBox(height: 15), // ADD THIS LINE for spacing
+
                 Expanded(
                   child: FutureBuilder(
                     future: getAllUserAddresses(),

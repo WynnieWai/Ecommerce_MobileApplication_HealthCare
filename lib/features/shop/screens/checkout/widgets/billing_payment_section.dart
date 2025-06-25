@@ -23,7 +23,7 @@ class TBillingPaymentSection extends StatelessWidget {
     return Column(
        children: [
         TSectionHeading(title: 'Payment Method', buttonTitle: 'Change', onPressed: ()=> controller.selectPaymentMethod(context)),
-        const SizedBox(height: TSizes.spaceBtwItems/2),
+        // const SizedBox(height: TSizes.spaceBtwItems / 2),
         Obx(
           ()=> Row(
             children: [

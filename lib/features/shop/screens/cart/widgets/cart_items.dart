@@ -21,6 +21,7 @@ class TCartItems extends StatelessWidget {
     return Obx(
       () => ListView.separated(
         shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         separatorBuilder: (_,__)=>const SizedBox(height:TSizes.spaceBtwSections), 
         itemCount: cartController.cartItems.length,
         itemBuilder: (_, index) => Obx(

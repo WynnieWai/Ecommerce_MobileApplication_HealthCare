@@ -29,6 +29,7 @@ class TSingleAddress extends StatelessWidget{
       (){ 
         final selectedAddressId = controller.selectedAddress.value.id;
         final selectedAddress = selectedAddressId == address.id;
+
         return InkWell(
         onTap:onTap,
         child: TRoundedContainer(
@@ -42,6 +43,7 @@ class TSingleAddress extends StatelessWidget{
               ?TColors.darkerGrey
               :TColors.grey,
           margin: EdgeInsets.only(bottom: TSizes.spaceBtwItems),
+
           // child: Stack(
           //   children: [
           //     Positioned(
@@ -57,53 +59,136 @@ class TSingleAddress extends StatelessWidget{
           //       ),
           //     ),
 
-          child: Stack(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Right-top: Tick icon and delete button in a column
-              Positioned(
-                right: 0,
-                top: 0,
+              // Left Side: Address Info
+              Expanded(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(
-                      selectedAddress ? Iconsax.tick_circle5 : null,
-                      color: selectedAddress
-                          ? dark
-                              ? TColors.light
-                              : TColors.dark
-                          : null,
+                    Text(
+                      address.name,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.delete,
-                        color: Colors.red,
-                      ),
-                      onPressed: onDelete,
-                      tooltip: 'Delete Address',
-                      padding: EdgeInsets.zero,
-                      constraints: BoxConstraints(),
+                    const SizedBox(height: TSizes.sm),
+                    Text(
+                      address.formattedPhoneNo,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
+                    const SizedBox(height: TSizes.sm / 2),
+                    // 🆕 Custom formatted address
+                    Text(
+                      '${address.street}, ${address.postalCode}',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      '${address.city}, ${address.state}, ${address.country}',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    // Text(
+                    //   address.toString(),
+                    //   softWrap: true,
+                    //   style: Theme.of(context).textTheme.bodyMedium,
+                    // ),
                   ],
                 ),
               ),
-        
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+
+              const SizedBox(width: TSizes.spaceBtwItems),
+
+              // Right Side: Icons
+              Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    address.name,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.titleLarge,
+                  if (selectedAddress)
+                    Icon(
+                      Iconsax.tick_circle5,
+                      color: dark ? TColors.light : TColors.dark,
+                    ),
+                  const SizedBox(width: TSizes.sm),
+                  IconButton(
+                    icon: const Icon(Icons.delete, color: Colors.red),
+                    onPressed: onDelete,
+                    tooltip: 'Delete Address',
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
                   ),
-                  const SizedBox(height:TSizes.sm/2),
-                  Text(address.formattedPhoneNo,maxLines: 1,overflow: TextOverflow.ellipsis),
-                  const SizedBox(height: TSizes.sm/2),
-                  Text(address.toString(),softWrap: true),
                 ],
-              )
+              ),
+
+              // Column(
+              //   children: [
+              //     if (selectedAddress)
+              //       Icon(
+              //         Iconsax.tick_circle5,
+              //         color: dark ? TColors.light : TColors.dark,
+              //       ),
+              //     IconButton(
+              //       icon: const Icon(Icons.delete, color: Colors.red),
+              //       onPressed: onDelete,
+              //       tooltip: 'Delete Address',
+              //       padding: EdgeInsets.zero,
+              //       constraints: const BoxConstraints(),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
+
+
+          // child: Stack(
+          //   children: [
+          //     // Right-top: Tick icon and delete button in a column
+          //     Positioned(
+          //       right: 0,
+          //       top: 0,
+          //       child: Column(
+          //         children: [
+          //           Icon(
+          //             selectedAddress ? Iconsax.tick_circle5 : null,
+          //             color: selectedAddress
+          //                 ? dark
+          //                     ? TColors.light
+          //                     : TColors.dark
+          //                 : null,
+          //           ),
+          //           IconButton(
+          //             icon: Icon(
+          //               Icons.delete,
+          //               color: Colors.red,
+          //             ),
+          //             onPressed: onDelete,
+          //             tooltip: 'Delete Address',
+          //             padding: EdgeInsets.zero,
+          //             constraints: BoxConstraints(),
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+        
+          //     Column(
+          //       crossAxisAlignment: CrossAxisAlignment.start,
+          //       children: [
+          //         Text(
+          //           address.name,
+          //           maxLines: 2,
+          //           overflow: TextOverflow.ellipsis,
+          //           style: Theme.of(context).textTheme.titleLarge,
+          //         ),
+          //         const SizedBox(height:TSizes.sm/2),
+          //         Text(address.formattedPhoneNo,maxLines: 1,overflow: TextOverflow.ellipsis),
+          //         const SizedBox(height: TSizes.sm/2),
+          //         Text(address.toString(),softWrap: true),
+          //       ],
+          //     )
+          //   ],
+          // ),
         ),
       );
       }

@@ -65,20 +65,40 @@ class TBillingAddressSection extends StatelessWidget {
         ),
         Obx(() => addressController.selectedAddress.value.id.isNotEmpty
             ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start, // ensures left alignment
+
                 children: [
-                  Text(addressController.selectedAddress.value.name, style: Theme.of(context).textTheme.bodyLarge),
+                  // Name with profile icon
+                  Row(
+                    children: [
+                      const Icon(Icons.person, color: Colors.grey, size: 16),
+                      const SizedBox(width: TSizes.spaceBtwItems),
+                      Text(
+                        addressController.selectedAddress.value.name,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                    ],
+                  ),
+                  // Text(addressController.selectedAddress.value.name, style: Theme.of(context).textTheme.bodyLarge),
                   const SizedBox(height: TSizes.spaceBtwItems / 2),
+
+                  // Phone number
                   Row(
                     children: [
                       const Icon(Icons.phone, color: Colors.grey, size: 16),
                       const SizedBox(width: TSizes.spaceBtwItems),
-                      Text(addressController.selectedAddress.value.phoneNumber, style: Theme.of(context).textTheme.bodyMedium),
+                      Text(
+                        addressController.selectedAddress.value.phoneNumber, 
+                        style: Theme.of(context).textTheme.bodyMedium
+                      ),
                     ],
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems / 2),
+
+                  // Address line 
                   Row(
                     children: [
-                      const Icon(Icons.location_history, color: Colors.grey, size: 16),
+                      const Icon(Icons.location_on, color: Colors.grey, size: 16),
                       const SizedBox(width: TSizes.spaceBtwItems),
                       Expanded(
                         child: Text(

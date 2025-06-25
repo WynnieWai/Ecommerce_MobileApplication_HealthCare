@@ -38,19 +38,35 @@ class UserAddressScreen extends StatelessWidget{
             
               /// Helper Function: Handle Loader, No Record, OR ERROR Message
               final response = TCloudHelperFunctions.checkMultiRecordState(snapshot: snapshot);
+              
               if (response != null) return response;
             
-                final addresses = snapshot.data!;
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: addresses.length,
-                  itemBuilder:(_,index)=>
-                    TSingleAddress(
-                      address:addresses[index],
-                      onTap:()=> controller.selectAddress(addresses[index]),
-                      onDelete: () => controller.deleteAddress(addresses[index].id),
-                    ),
-                  );
+              final addresses = snapshot.data!;
+
+              // return Column(
+              //   crossAxisAlignment: CrossAxisAlignment.start,
+              //   children: [
+              //     const SizedBox(height: TSizes.spaceBtwItems), // Add space between heading and card
+              //     ...addresses.map(
+              //       (address) => TSingleAddress(
+              //         address: address,
+              //         onTap: () => controller.selectAddress(address),
+              //         onDelete: () => controller.deleteAddress(address.id),
+              //       ),
+              //     ).toList(),
+              //   ],
+              // );
+                
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: addresses.length,
+                itemBuilder:(_,index)=>
+                  TSingleAddress(
+                    address:addresses[index],
+                    onTap:()=> controller.selectAddress(addresses[index]),
+                    onDelete: () => controller.deleteAddress(addresses[index].id),
+                  ),
+              );
               }
             ),
           )
