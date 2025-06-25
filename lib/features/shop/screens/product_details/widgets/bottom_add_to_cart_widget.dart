@@ -25,7 +25,6 @@ class TBottomAddToCart extends StatelessWidget {
     final isVariable = product.productType == ProductType.variable.toString();
     final selectedVariation = controller.variationController.selectedVariation.value;
 
-    // 🔁 Fetch latest stock from Firestore once
     Future.microtask(() async {
       final stock = await controller.getLatestStock(
         product.id,
