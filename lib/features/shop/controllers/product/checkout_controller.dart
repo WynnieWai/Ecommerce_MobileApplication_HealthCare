@@ -59,56 +59,76 @@ class CheckoutController extends GetxController {
     );
   }
 
-  Future<bool> deductItemsFromFirebase() async {
-      final firestore = FirebaseFirestore.instance;
-      final cartItems = CartController.instance.cartItems;
-      bool allSuccess = true;
+Future<bool> deductItemsFromFirebase() async {
+  final firestore = FirebaseFirestore.instance;
+  final cartItems = CartController.instance.cartItems;
+  bool allSuccess = true;
 
-      for (final cartItem in cartItems) {
-        try {
-          final productRef = firestore.collection('Products').doc(cartItem.productId);
-          final productSnapshot = await productRef.get();
+  for (final cartItem in cartItems) {
+    try {
+      final productRef = firestore.collection('Products').doc(cartItem.productId);
+      final productSnapshot = await productRef.get(const GetOptions(source: Source.server));
 
-          if (!productSnapshot.exists) {
-            TLoaders.errorSnackBar(title: 'Error', message: 'Product not found');
-            allSuccess = false;
-            continue;
-          }
+      if (!productSnapshot.exists) {
+        TLoaders.errorSnackBar(title: 'Error', message: 'Product not found: ${cartItem.title}');
+        allSuccess = false;
+        continue;
+      }
 
-          final data = productSnapshot.data() as Map<String, dynamic>;
-          final variations = List<Map<String, dynamic>>.from(data['ProductVariations'] ?? []);
+      final data = productSnapshot.data() as Map<String, dynamic>;
+      final isVariableProduct = cartItem.variationId != null && cartItem.variationId!.isNotEmpty;
 
-          final variationIndex = variations.indexWhere((v) => v['Id'] == cartItem.variationId);
-          if (variationIndex == -1) {
-            TLoaders.errorSnackBar(title: 'Error', message: 'Variation not found');
-            allSuccess = false;
-            continue;
-          }
+      if (isVariableProduct) {
+        // Handle variation products
+        final variations = List<Map<String, dynamic>>.from(data['ProductVariations'] ?? []);
+        final variationIndex = variations.indexWhere((v) => v['Id'] == cartItem.variationId);
 
-          final currentStock = variations[variationIndex]['Stock'] ?? 0;
-          if (currentStock < cartItem.quantity) {
-            TLoaders.errorSnackBar(
-              title: 'Out of stock',
-              message: 'Not enough stock for ${cartItem.title}',
-            );
-            allSuccess = false;
-            continue;
-          }
-
-
-          // Deduct stock
-          variations[variationIndex]['Stock'] = currentStock - cartItem.quantity;
-          await productRef.update({'ProductVariations': variations});
-
-
-          if (variations[variationIndex]['Stock']==0){
-            await productRef.update({'IsFeatured':false});
-          }
-        } catch (e) {
-          TLoaders.errorSnackBar(title: 'Error', message: 'Error updating stock: $e');
+        if (variationIndex == -1) {
+          TLoaders.errorSnackBar(title: 'Error', message: 'Selected variation not found for ${cartItem.title}');
           allSuccess = false;
+          continue;
+        }
+
+        final currentStock = (variations[variationIndex]['Stock'] ?? 0) as int;
+        if (cartItem.quantity > currentStock) {
+          TLoaders.errorSnackBar(title: 'Out of Stock', message: 'Not enough stock for ${cartItem.title}');
+          allSuccess = false;
+          continue;
+        }
+
+        // Deduct stock and update Firestore
+        variations[variationIndex]['Stock'] = currentStock - cartItem.quantity;
+        await productRef.update({'ProductVariations': variations});
+
+        // Optionally mark product as not featured if stock = 0
+        if (variations[variationIndex]['Stock'] == 0) {
+          await productRef.update({'IsFeatured': false});
+        }
+      } else {
+        // Handle simple products (non-variant)
+        final currentStock = (data['Stock'] ?? 0) as int;
+        if (cartItem.quantity > currentStock) {
+          TLoaders.errorSnackBar(title: 'Out of Stock', message: 'Not enough stock for ${cartItem.title}');
+          allSuccess = false;
+          continue;
+        }
+
+        // Deduct stock and update Firestore
+        final updatedStock = currentStock - cartItem.quantity;
+        await productRef.update({'Stock': updatedStock});
+
+        if (updatedStock == 0) {
+          await productRef.update({'IsFeatured': false});
         }
       }
-      return allSuccess;
+
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Error', message: 'Error updating stock for ${cartItem.title}: $e');
+      allSuccess = false;
+    }
   }
+
+  return allSuccess;
+}
+
 }

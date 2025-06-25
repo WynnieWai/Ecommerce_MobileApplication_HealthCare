@@ -69,10 +69,13 @@ class CartController extends GetxController {
   void addOneToCart(CartItemModel item) {
     int index = cartItems.indexWhere((cartItem) => cartItem.productId == item.productId && cartItem.variationId == item.variationId);
 
-    if (index >= 0) {
+    if (index >= 0 && cartItems[index].quantity<variationController.selectedVariation.value.stock) {
       cartItems[index].quantity += 1;
     } else {
-      cartItems.add(item);
+      TLoaders.warningSnackBar(
+        title: 'Stock Limit Reached',
+        message: 'You have reached the maximum stock for this item.',
+      );
     }
 
     updateCart();

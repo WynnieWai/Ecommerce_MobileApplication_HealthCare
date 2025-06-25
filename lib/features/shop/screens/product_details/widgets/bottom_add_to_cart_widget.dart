@@ -4,7 +4,9 @@ import 'package:iconsax/iconsax.dart';
 import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/features/shop/controllers/product/cart_controller.dart';
 import 'package:testing_asg1/utils/constants/colors.dart';
+import 'package:testing_asg1/utils/constants/enums.dart';
 import 'package:testing_asg1/utils/helpers/helper_functions.dart';
+import 'package:testing_asg1/utils/popups/loaders.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 import '../../../models/product_model.dart';
@@ -29,7 +31,12 @@ class TBottomAddToCart extends StatelessWidget {
         )
       ),
       child: Obx(
-        () => Row(
+      () {
+        final isVariable = product.productType == ProductType.variable.toString();
+        final selectedVariation = controller.variationController.selectedVariation.value;
+        final stock = isVariable ? selectedVariation.stock : product.stock;
+
+        return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
@@ -40,23 +47,38 @@ class TBottomAddToCart extends StatelessWidget {
                   width: 40,
                   height: 40,
                   color: TColors.white,
-                  onPressed: () => controller.productQuantityInCart.value < 1 ? null : controller.productQuantityInCart.value -= 1,
+                  onPressed: controller.productQuantityInCart.value > 0
+                      ? () => controller.productQuantityInCart.value -= 1
+                      : null,
                 ),
                 const SizedBox(width: TSizes.spaceBtwItems),
-                Text(controller.productQuantityInCart.value.toString(), style: Theme.of(context).textTheme.titleSmall),
+                Text(controller.productQuantityInCart.value.toString(),
+                    style: Theme.of(context).textTheme.titleSmall),
                 const SizedBox(width: TSizes.spaceBtwItems),
                 TCircularIcon(
-                  icon: Iconsax.add,
-                  backgroundColor: TColors.black,
-                  width: 40,
-                  height: 40,
-                  color: TColors.white,
-                  onPressed: () => controller.productQuantityInCart.value += 1,
-                ),
+                icon: Iconsax.add,
+                backgroundColor: TColors.black,
+                width: 40,
+                height: 40,
+                color: TColors.white,
+                onPressed: () {
+                  if (controller.productQuantityInCart.value < stock) {
+                    controller.productQuantityInCart.value += 1;
+                  } else {
+                    TLoaders.warningSnackBar(
+                      title: 'Stock Limit Reached',
+                      message: 'You have reached the maximum stock for this item.',
+                    );
+                  }
+                },
+              ),
+
               ],
             ),
             ElevatedButton(
-              onPressed: controller.productQuantityInCart.value < 1 ? null : () => controller.addToCart(product), 
+              onPressed: controller.productQuantityInCart.value > 0
+                  ? () => controller.addToCart(product)
+                  : null,
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(TSizes.md),
                 backgroundColor: TColors.black,
@@ -65,8 +87,10 @@ class TBottomAddToCart extends StatelessWidget {
               child: const Text('Add to Cart'),
             ),
           ],
-        ),
-      ),
+        );
+      },
+    ),
+
     );
   }
 }
