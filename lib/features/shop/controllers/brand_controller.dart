@@ -84,6 +84,25 @@ final brandIds = allProductDocs
 if (brandIds.isEmpty) return [];
 
 // 3. Fetch brands in batches of 10 brandIds, using documentId
+// for (var i = 0; i < brandIds.length; i += 10) {
+//   final batch = brandIds.skip(i).take(10).toList();
+//   final brandSnapshot = await FirebaseFirestore.instance
+//       .collection('Brands')
+//       .where(FieldPath.documentId, whereIn: batch)
+//       .get();
+//   allBrands.addAll(brandSnapshot.docs.map((doc) => BrandModel.fromSnapshot(doc)));
+// }
+// // for (var i = 0; i < brandIds.length; i += 2) {
+// //   final batch = brandIds.skip(i).take(2).toList();
+// //   final brandSnapshot = await FirebaseFirestore.instance
+// //       .collection('Brands')
+// //       .where(FieldPath.documentId, whereIn: batch)
+// //       .get();
+// //   allBrands.addAll(brandSnapshot.docs.map((doc) => BrandModel.fromSnapshot(doc)));
+// // }
+//   return allBrands;
+
+// 3. Fetch brands in batches of 10 brandIds, using documentId
 for (var i = 0; i < brandIds.length; i += 10) {
   final batch = brandIds.skip(i).take(10).toList();
   final brandSnapshot = await FirebaseFirestore.instance
@@ -92,16 +111,18 @@ for (var i = 0; i < brandIds.length; i += 10) {
       .get();
   allBrands.addAll(brandSnapshot.docs.map((doc) => BrandModel.fromSnapshot(doc)));
 }
-// for (var i = 0; i < brandIds.length; i += 2) {
-//   final batch = brandIds.skip(i).take(2).toList();
-//   final brandSnapshot = await FirebaseFirestore.instance
-//       .collection('Brands')
-//       .where(FieldPath.documentId, whereIn: batch)
-//       .get();
-//   allBrands.addAll(brandSnapshot.docs.map((doc) => BrandModel.fromSnapshot(doc)));
-// }
-  return allBrands;
+
+// --- ADD THIS BLOCK TO REMOVE DUPLICATES ---
+final uniqueBrands = <String, BrandModel>{};
+for (final brand in allBrands) {
+  uniqueBrands[brand.id] = brand; // Use brand.id as the key
 }
+allBrands.assignAll(uniqueBrands.values.toList());
+// --- END DEDUPLICATION BLOCK ---
+
+return allBrands;
+}
+
 
 //   Future<List<BrandModel>> getBrandsForCategory(String categoryId) async {
 //   try {
