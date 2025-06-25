@@ -71,7 +71,6 @@ dependencies:
   video_player: ^2.10.0
   chewie: ^1.11.3
 
-
 #--------------- ./ PACKAGES END ------------------#
 dev_dependencies:
   flutter_test:

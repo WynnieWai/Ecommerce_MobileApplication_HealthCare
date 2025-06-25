@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:testing_asg1/app.dart';
 import 'package:testing_asg1/data/repositories/authentication/authentication_repository.dart';
+import 'package:testing_asg1/features/shop/controllers/banner_controller.dart';
 import 'package:testing_asg1/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -13,7 +14,7 @@ Future<void> main() async {
 
   // Widgets Binding
   final WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-
+  
   // GetX Local Storage 
   await GetStorage.init();
 
