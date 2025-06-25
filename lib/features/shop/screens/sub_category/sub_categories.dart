@@ -153,38 +153,41 @@ class SubCategoriesScreen extends StatelessWidget {
         child: Column(
           children: [
           /// Top banner from Firestore
-          FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
-            future: FirebaseFirestore.instance
-                .collection('Banners')
-                .where('Active', isEqualTo: true)
-                .where('TargetScreen', isEqualTo: category.id) // or category.name if you use name
-                .limit(1)
-                .get(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                // fallback image if no banner found
-                return Padding(
-                  padding: const EdgeInsets.all(TSizes.defaultSpace),
-                  child: TRoundedImage(
-                    width: double.infinity,
-                    imageUrl: TImages.promoBanner1,
-                    applyImageRadius: true,
-                  ),
-                );
-              }
-              final banner = BannerModel.fromSnapshot(snapshot.data!.docs.first);
-              return Padding(
-                padding: const EdgeInsets.all(TSizes.defaultSpace),
-                child: TRoundedImage(
-                  width: double.infinity,
-                  height: 200,
-                  imageUrl: banner.imageUrl ?? TImages.promoBanner1,
-                  isNetworkImage: true,
-                  fit: BoxFit.cover,
-                  applyImageRadius: true,
-                ),
-              );
-            },
+                FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                future: FirebaseFirestore.instance
+                    .collection('Banners')
+                    .where('Active', isEqualTo: true)
+                    .where('TargetScreen', isEqualTo: category.id) // use category.name if needed
+                    .limit(1)
+                    .get(),
+                builder: (context, snapshot) {
+                  // If still loading, you can return a loader or empty space
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const SizedBox.shrink(); // or a loading shimmer
+                  }
+
+                  // If no data or no banners found, show nothing
+                  if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                    return const SizedBox.shrink();
+                  }
+
+                  // Show banner from Firebase
+                  final banner = BannerModel.fromSnapshot(snapshot.data!.docs.first);
+                  return Padding(
+                    padding: const EdgeInsets.all(TSizes.defaultSpace),
+                    child: TRoundedImage(
+                      width: double.infinity,
+                      height: 200,
+                      imageUrl: banner.imageUrl!, // <- banner from Firestore
+                      isNetworkImage: true,
+                      fit: BoxFit.cover,
+                      applyImageRadius: true,
+                    ),
+                  );
+                },
+              ),
+            const SizedBox(height: TSizes.spaceBtwSections
+
           ),
             // /// Top banner
             // Padding(
