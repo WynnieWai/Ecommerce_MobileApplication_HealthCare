@@ -55,6 +55,12 @@ class TCartItems extends StatelessWidget {
                   
                   //Product Total Price
                   TProductPriceText(price: (item.price * item.quantity).toStringAsFixed(1)),
+                  // Delete Button
+                  IconButton(
+                    icon: Icon(Icons.delete, color: Colors.red),
+                    onPressed: () => cartController.removeFromCart(item),
+                    tooltip: 'Delete Item',
+                  ),
                 ],
               ),
             ]

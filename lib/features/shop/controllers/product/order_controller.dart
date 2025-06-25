@@ -75,6 +75,19 @@ class OrderController extends GetxController {
       // Save the order to Firestore
       await orderRepository.saveOrder(order, userId);
 
+      // Deduct items and check result
+      final stockDeducted = await checkoutController.deductItemsFromFirebase();
+
+      if (!stockDeducted) {
+        // Do not clear cart or show success, maybe show a warning
+        TLoaders.warningSnackBar(
+          title: 'Order Failed',
+          message: 'Some items are out of stock. Please review your cart.',
+        );
+        TFullScreenLoader.stopLoading();
+        return;
+    } 
+
       // Update the cart status
       cartController.clearCart();
 

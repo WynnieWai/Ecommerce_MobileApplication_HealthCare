@@ -92,6 +92,18 @@ class CartController extends GetxController {
     }
   }
 
+  void removeFromCart(CartItemModel item) {
+    int index = cartItems.indexWhere((cartItem) =>
+        cartItem.productId == item.productId &&
+        cartItem.variationId == item.variationId);
+
+    if (index >= 0) {
+      cartItems.removeAt(index);
+      updateCart();
+      TLoaders.customToast(message: 'Product removed from the Cart.');
+    }
+  }
+
   void removeFromCartDialog(int index) {
     Get.defaultDialog(
       title: 'Remove Product',

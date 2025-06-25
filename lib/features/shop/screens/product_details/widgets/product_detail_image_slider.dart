@@ -6,6 +6,7 @@ import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
 import 'package:testing_asg1/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
 import 'package:testing_asg1/common/widgets/icons/t_circular_icon.dart';
 import 'package:testing_asg1/common/widgets/images/t_rounded_image.dart';
+import 'package:testing_asg1/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:testing_asg1/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:testing_asg1/features/shop/controllers/product/images_controller.dart';
 import 'package:testing_asg1/features/shop/models/product_model.dart';
@@ -87,7 +88,9 @@ class TProductImageSlider extends StatelessWidget {
             TAppBar(
               showBackArrow: true,
               actions: [
-                TFavouriteIcon(productId: product.id)
+                TFavouriteIcon(productId: product.id),
+                const SizedBox(width: 2), // Optional: space between icons
+                const TCartCounterIcon(),
               ],
             )
           ],
