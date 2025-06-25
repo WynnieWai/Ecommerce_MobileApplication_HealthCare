@@ -79,6 +79,38 @@ class UserController extends GetxController {
     }
   }
 
+  Future<void> saveUserGoogleRecord(UserCredential? userCredentials) async {
+    try {
+      // Refresh User Record
+      await fetchUserRecord();
+
+      // Only save if user doesn't already exist
+      if (user.value.id.isEmpty && userCredentials != null) {
+        final email = userCredentials.user?.email ?? '';
+        final uid = userCredentials.user?.uid ?? '';
+
+        // Create user with only email and id
+        final user = UserModel(
+          id: uid,
+          firstName: '',
+          lastName: '',
+          userName: '',
+          email: email,
+          phoneNumber: '',
+          profilePicture: '',
+        );
+
+        // Save user record with only email
+        await userRepository.saveUserRecord(user);
+      }
+    } catch (e) {
+      TLoaders.warningSnackBar(
+        title: 'Data not saved',
+        message: 'Something went wrong while saving your Google email.',
+      );
+    }
+  }
+
 
   // Upload Profile Image
   uploadUserProfilePicture() async {
