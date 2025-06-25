@@ -69,34 +69,41 @@ class TSearchContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
+    // Force light theme style regardless of dark mode
+    const Color forcedBgColor = TColors.light;
+    final Color iconColor = TColors.dark.withOpacity(0.5);
+    final Color textColor = TColors.dark.withOpacity(0.5);
 
-
-      // If onTap is provided and onChanged is null, show a tappable container
-      if (onTap != null && onChanged == null) {
-        return Padding(
-          padding: padding,
-          child: GestureDetector(
-            onTap: onTap,
-            child: Container(
-              width: TDeviceUtils.getScreenWidth(context),
-              padding: const EdgeInsets.all(TSizes.md),
-              decoration: BoxDecoration(
-                color: showBackground ? (dark ? TColors.dark : TColors.light) : Colors.transparent,
-                borderRadius: BorderRadius.circular(TSizes.cardRadiusLg),
-                border: showBorder ? Border.all(color: TColors.grey) : null,
-              ),
-              child: Row(
-                children: [
-                  Icon(icon, color: TColors.darkerGrey),
-                  const SizedBox(width: TSizes.spaceBtwItems),
-                  Text(text, style: Theme.of(context).textTheme.bodySmall),
-                ],
-              ),
+    // If it's a tappable container
+    if (onTap != null && onChanged == null) {
+      return Padding(
+        padding: padding,
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            width: TDeviceUtils.getScreenWidth(context),
+            padding: const EdgeInsets.all(TSizes.md),
+            decoration: BoxDecoration(
+              color: showBackground ? forcedBgColor : Colors.transparent,
+              borderRadius: BorderRadius.circular(TSizes.cardRadiusLg),
+              border: showBorder ? Border.all(color: TColors.grey) : null,
+            ),
+            child: Row(
+              children: [
+                Icon(icon, color: iconColor),
+                const SizedBox(width: TSizes.spaceBtwItems),
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(color: textColor),
+                ),
+              ],
             ),
           ),
-        );
-      }
+        ),
+      );
+    }
+
+    // If it's an input TextField
     return Padding(
       padding: padding,
       child: TextField(
@@ -104,9 +111,9 @@ class TSearchContainer extends StatelessWidget {
         onChanged: onChanged,
         decoration: InputDecoration(
           hintText: text,
-          prefixIcon: Icon(icon, color: TColors.darkerGrey),
+          prefixIcon: Icon(icon, color: iconColor),
           filled: showBackground,
-          fillColor: showBackground ? (dark ? TColors.dark : TColors.light) : Colors.transparent,
+          fillColor: forcedBgColor,
           border: showBorder
               ? OutlineInputBorder(
                   borderRadius: BorderRadius.circular(TSizes.cardRadiusLg),
@@ -114,8 +121,61 @@ class TSearchContainer extends StatelessWidget {
                 )
               : InputBorder.none,
           contentPadding: const EdgeInsets.all(TSizes.md),
+          hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(color: textColor),
         ),
       ),
     );
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   final dark = THelperFunctions.isDarkMode(context);
+
+
+  //     // If onTap is provided and onChanged is null, show a tappable container
+  //     if (onTap != null && onChanged == null) {
+  //       return Padding(
+  //         padding: padding,
+  //         child: GestureDetector(
+  //           onTap: onTap,
+  //           child: Container(
+  //             width: TDeviceUtils.getScreenWidth(context),
+  //             padding: const EdgeInsets.all(TSizes.md),
+  //             decoration: BoxDecoration(
+  //               color: showBackground ? (dark ? TColors.dark : TColors.light) : Colors.transparent,
+  //               borderRadius: BorderRadius.circular(TSizes.cardRadiusLg),
+  //               border: showBorder ? Border.all(color: TColors.grey) : null,
+  //             ),
+  //             child: Row(
+  //               children: [
+  //                 Icon(icon, color: TColors.darkerGrey),
+  //                 const SizedBox(width: TSizes.spaceBtwItems),
+  //                 Text(text, style: Theme.of(context).textTheme.bodySmall),
+  //               ],
+  //             ),
+  //           ),
+  //         ),
+  //       );
+  //     }
+  //   return Padding(
+  //     padding: padding,
+  //     child: TextField(
+  //       controller: controller,
+  //       onChanged: onChanged,
+  //       decoration: InputDecoration(
+  //         hintText: text,
+  //         prefixIcon: Icon(icon, color: TColors.darkerGrey),
+  //         filled: showBackground,
+  //         fillColor: showBackground ? (dark ? TColors.dark : TColors.light) : Colors.transparent,
+  //         border: showBorder
+  //             ? OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(TSizes.cardRadiusLg),
+  //                 borderSide: BorderSide(color: TColors.grey),
+  //               )
+  //             : InputBorder.none,
+  //         contentPadding: const EdgeInsets.all(TSizes.md),
+  //       ),
+  //     ),
+  //   );
+  // }
 }

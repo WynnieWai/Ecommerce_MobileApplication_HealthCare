@@ -23,6 +23,7 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
+  bool isDarkModeOn = Get.isDarkMode; // initial value based on current theme
   bool isGeolocationOn = true;
   bool isSafeModeOn = true;
   bool isHDImageQualityOn = true;
@@ -51,7 +52,7 @@ class _SettingScreenState extends State<SettingScreen> {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  const TSectionHeading(title: 'Account Settings', showActionButton: false),
+                  const TSectionHeading(title: 'Settings', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   TSettingsMenuTile(icon: Iconsax.safe_home, title: 'My Addresses', subTitle: 'Set shopping delivery address', onTap: () => Get.to(() => const UserAddressScreen())),
                   TSettingsMenuTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add,remove products and move to checkout', onTap: () => Get.to(() => const CartScreen())),
@@ -65,6 +66,22 @@ class _SettingScreenState extends State<SettingScreen> {
                   TSectionHeading(title: 'App Settings', showActionButton: false),
                   SizedBox(height: TSizes.spaceBtwItems),
                   //TSettingsMenuTile(icon: Iconsax.document_upload, title: 'Load Data', subTitle: 'Upload Data to your Cloud Firebase'),
+
+                  /// Dark mode toggle button
+                  TSettingsMenuTile(
+                    icon: Iconsax.moon,
+                    title: 'Dark Mode',
+                    subTitle: 'Enable dark theme throughout the app',
+                    trailing: Switch(
+                      value: isDarkModeOn,
+                      onChanged: (value) {
+                        setState(() {
+                          isDarkModeOn = value;
+                          Get.changeThemeMode(isDarkModeOn ? ThemeMode.dark : ThemeMode.light);
+                        });
+                      },
+                    ),
+                  ),
 
                   TSettingsMenuTile(
                     icon: Iconsax.location,

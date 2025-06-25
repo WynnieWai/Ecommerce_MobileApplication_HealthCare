@@ -50,8 +50,10 @@ class TVerticalImageText extends StatelessWidget {
               fit: BoxFit.fitWidth,
               padding: TSizes.sm,
               isNetworkImage: isNetworkImage,
-              backgroundColor: backgroundColor,
-              //overlayColor: THelperFunctions.isDarkMode(context) ? TColors.light : TColors.dark,
+              // backgroundColor: backgroundColor,
+              // overlayColor: THelperFunctions.isDarkMode(context) ? TColors.light : TColors.dark,
+              backgroundColor: Colors.white, // fixed for both themes
+              overlayColor: Colors.black,    // icon color stays visible
             ),
 
         
