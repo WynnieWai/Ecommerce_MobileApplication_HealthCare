@@ -14,9 +14,28 @@ class BannerRepository extends GetxController {
   final _db = FirebaseFirestore.instance;
 
   /// Get all order related to current User
+// Future<List<BannerModel>> fetchBanners() async {
+//   try {
+//     final result = await _db.collection('Banners').where('Active', isEqualTo: true).get();
+//     return result.docs.map((documentSnapshot) => BannerModel.fromSnapshot(documentSnapshot)).toList();
+//   } on FirebaseException catch (e) {
+//     throw TFirebaseException(e.code).message;
+//   } on FormatException catch (_) {
+//     throw const TFormatException();
+//   } on PlatformException catch (e) {
+//     throw TPlatformException(e.code).message;
+//   } catch (e) {
+//     throw 'Something went wrong while fetching Banners.';
+//   }
+// }
+
 Future<List<BannerModel>> fetchBanners() async {
   try {
-    final result = await _db.collection('Banners').where('Active', isEqualTo: true).get();
+    final result = await _db
+        .collection('Banners')
+        .where('Active', isEqualTo: true)
+        .where('TargetScreen', isEqualTo: 'home') // <-- Only fetch home banners
+        .get();
     return result.docs.map((documentSnapshot) => BannerModel.fromSnapshot(documentSnapshot)).toList();
   } on FirebaseException catch (e) {
     throw TFirebaseException(e.code).message;
@@ -28,7 +47,6 @@ Future<List<BannerModel>> fetchBanners() async {
     throw 'Something went wrong while fetching Banners.';
   }
 }
-
 
   /// Upload Banners to the Cloud Firebase
 }
