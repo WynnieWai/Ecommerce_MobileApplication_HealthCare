@@ -8,6 +8,7 @@ import "package:testing_asg1/common/widgets/list_tiles/user_profile_tile.dart";
 import "package:testing_asg1/common/widgets/texts/section_heading.dart";
 import "package:testing_asg1/data/repositories/authentication/authentication_repository.dart";
 import "package:testing_asg1/features/personalization/screens/address/address.dart";
+import "package:testing_asg1/features/personalization/screens/faq/frequent_ask_question.dart";
 import "package:testing_asg1/features/personalization/screens/profile/profile.dart";
 import "package:testing_asg1/features/shop/screens/cart/cart.dart";
 import "package:testing_asg1/features/shop/screens/order/order.dart";
@@ -50,12 +51,12 @@ class _SettingScreenState extends State<SettingScreen> {
               padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
-                  const TSectionHeading(title: 'Accont Setting', showActionButton: false),
+                  const TSectionHeading(title: 'Account Setting', showActionButton: false),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   TSettingsMenuTile(icon: Iconsax.safe_home, title: 'My Addresses', subTitle: 'Set shopping delivery address', onTap: () => Get.to(() => const UserAddressScreen())),
                   TSettingsMenuTile(icon: Iconsax.shopping_cart, title: 'My Cart', subTitle: 'Add,remove products and move to checkout', onTap: () => Get.to(() => const CartScreen())),
                   TSettingsMenuTile(icon: Iconsax.bag_tick, title: 'My Orders', subTitle: 'In-progress and Completed Orders', onTap: () => Get.to(() => const OrderScreen())),
-                  TSettingsMenuTile(icon: Iconsax.bank, title: 'Bank Account', subTitle: 'Withdraw balance to registered bank account'),
+                  TSettingsMenuTile(icon: Iconsax.message_question, title: 'FAQs', subTitle: 'Find answers to common questions', onTap: () => Get.to(() => const FrequentAskQuestion()),),
                   TSettingsMenuTile(icon: Iconsax.discount_shape, title: 'My Coupons', subTitle: 'List of all the discounted coupons'),
                   TSettingsMenuTile(icon: Iconsax.notification, title: 'Notifications', subTitle: 'Set any kind of notification message'),
                   TSettingsMenuTile(icon: Iconsax.security_card, title: 'Account Privacy', subTitle: 'Manage data usage and connected accounts'),
