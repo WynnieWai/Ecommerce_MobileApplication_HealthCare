@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:testing_asg1/common/widgets/appbar/appbar.dart';
@@ -6,6 +7,7 @@ import 'package:testing_asg1/common/widgets/products/product_cards/product_card_
 import 'package:testing_asg1/common/widgets/shimmers/horizontal_product_shimmer.dart';
 import 'package:testing_asg1/common/widgets/texts/section_heading.dart';
 import 'package:testing_asg1/features/shop/controllers/category_controller.dart';
+import 'package:testing_asg1/features/shop/models/banner_model.dart';
 import 'package:testing_asg1/features/shop/models/category_model.dart';
 import 'package:testing_asg1/features/shop/screens/all_products/all_products.dart';
 import 'package:testing_asg1/features/shop/screens/product_details/product_detail.dart';
@@ -150,16 +152,50 @@ class SubCategoriesScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            /// Top banner
-            Padding(
-              padding: const EdgeInsets.all(TSizes.defaultSpace),
-              child: TRoundedImage(
-                width: double.infinity,
-                imageUrl: TImages.promoBanner1,
-                applyImageRadius: true,
-              ),
-            ),
-            const SizedBox(height: TSizes.spaceBtwSections),
+          /// Top banner from Firestore
+          FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+            future: FirebaseFirestore.instance
+                .collection('Banners')
+                .where('Active', isEqualTo: true)
+                .where('TargetScreen', isEqualTo: category.id) // or category.name if you use name
+                .limit(1)
+                .get(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                // fallback image if no banner found
+                return Padding(
+                  padding: const EdgeInsets.all(TSizes.defaultSpace),
+                  child: TRoundedImage(
+                    width: double.infinity,
+                    imageUrl: TImages.promoBanner1,
+                    applyImageRadius: true,
+                  ),
+                );
+              }
+              final banner = BannerModel.fromSnapshot(snapshot.data!.docs.first);
+              return Padding(
+                padding: const EdgeInsets.all(TSizes.defaultSpace),
+                child: TRoundedImage(
+                  width: double.infinity,
+                  height: 200,
+                  imageUrl: banner.imageUrl ?? TImages.promoBanner1,
+                  isNetworkImage: true,
+                  fit: BoxFit.cover,
+                  applyImageRadius: true,
+                ),
+              );
+            },
+          ),
+            // /// Top banner
+            // Padding(
+            //   padding: const EdgeInsets.all(TSizes.defaultSpace),
+            //   child: TRoundedImage(
+            //     width: double.infinity,
+            //     imageUrl: TImages.promoBanner1,
+            //     applyImageRadius: true,
+            //   ),
+            // ),
+            //const SizedBox(height: TSizes.spaceBtwSections),
 
             /// Sub-Categories 
             FutureBuilder(
