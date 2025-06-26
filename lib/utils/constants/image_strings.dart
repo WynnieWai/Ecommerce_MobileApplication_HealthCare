@@ -66,6 +66,11 @@ class TImages {
   static const String pencilAnimation="assets/images/animations/140429-pencil-drawing.json";
   static const String orderCompletedAnimation="assets/images/animations/120978-payment-successful.json";
 
+    // -- OnBoarding Images
+  static const String onBoardingImage1 = "assets/images/on_boarding_images/searching_1.png";
+  static const String onBoardingImage2 = "assets/images/on_boarding_images/payment_2.png";
+  static const String onBoardingImage3 = "assets/images/on_boarding_images/delivery_3.png";
+
   // -- OnBoarding Images
   // static const String onBoardingImage1 = "assets/images/on_boarding_images/sammy-line-searching.gif";
   // static const String onBoardingImage2 = "assets/images/on_boarding_images/sammy-line-shopping.gif";

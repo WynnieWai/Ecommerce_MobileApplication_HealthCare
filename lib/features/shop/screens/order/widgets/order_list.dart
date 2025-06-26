@@ -37,6 +37,8 @@ class TOrderListItems extends StatelessWidget{
 
       // Congratulations! Record Found
       final orders = snapshot.data!;
+      // Sort orders by date descending (newest first)
+      orders.sort((a, b) => b.orderDate.compareTo(a.orderDate));
 
         return ListView.separated(
           shrinkWrap: true,

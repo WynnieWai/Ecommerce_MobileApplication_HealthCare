@@ -6,6 +6,7 @@ import 'package:testing_asg1/features/authentication/screens/onboarding/widgets/
 import 'package:testing_asg1/features/authentication/screens/onboarding/widgets/onboarding_next_button.dart';
 import 'package:testing_asg1/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
 import 'package:testing_asg1/features/authentication/screens/onboarding/widgets/onboarding_skip.dart';
+import 'package:testing_asg1/utils/constants/image_strings.dart';
 
 
 import 'package:testing_asg1/utils/constants/text_strings.dart';
@@ -29,29 +30,38 @@ class OnBoardingScreen extends StatelessWidget {
             children: [
               OnBoardingPage(
                // image: Lottie.asset('assets/images/animations/searching.json'),
-                image:Transform.scale(
-                  scale: 2.0,
-                  child: Lottie.asset('assets/images/animations/searching.json'),
+                // image:Transform.scale(
+                //   scale: 2.0,
+                //   child: Lottie.asset('assets/images/animations/searching.json'),
+                // ),
+                  image: Transform.scale(
+                  scale: 2.0, // Increase this value to make it larger
+                  child: Image.asset(TImages.onBoardingImage1),
                 ),
-                
                 title: TTexts.onBoardingTitle1, 
                 subTitle: TTexts.onBoardingSubTitle1,
               ),
               OnBoardingPage(
+                // image: Transform.scale(
+                //   scale: 2.0,
+                //   child: Lottie.asset('assets/images/animations/payment.json'),
+                // ),
                 image: Transform.scale(
-                  scale: 2.0,
-                  child: Lottie.asset('assets/images/animations/payment.json'),
+                  scale: 2.0, // Increase this value to make it larger
+                  child: Image.asset(TImages.onBoardingImage2),
                 ),
-                //image: TImages.onBoardingImage2,
                 title: TTexts.onBoardingTitle2, 
                 subTitle: TTexts.onBoardingSubTitle2,
               ),
               OnBoardingPage(
+                // image: Transform.scale(
+                //   scale: 2.0,
+                //   child: Lottie.asset('assets/images/animations/delivery.json'),
+                // ),
                 image: Transform.scale(
-                  scale: 2.0,
-                  child: Lottie.asset('assets/images/animations/delivery.json'),
+                  scale: 2.0, // Increase this value to make it larger
+                  child: Image.asset(TImages.onBoardingImage3),
                 ),
-                //image: TImages.onBoardingImage3,
                 title: TTexts.onBoardingTitle3, 
                 subTitle: TTexts.onBoardingSubTitle3,
               ),
