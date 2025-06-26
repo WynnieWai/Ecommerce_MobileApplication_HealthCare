@@ -36,7 +36,7 @@ class ProductController extends GetxController {
       allFeaturedProducts = products; // cache all products
       featuredProducts.assignAll(products);
       debugPrint('Hihi5');
-      uploadDummyProducts(); // Uncomment this line to upload dummy products
+      //uploadDummyProducts(); // Uncomment this line to upload dummy products
     } catch (e) {
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     } finally {

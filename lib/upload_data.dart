@@ -4,46 +4,47 @@ import 'package:flutter/material.dart';
 void uploadDummyProducts() async {
   final firestore = FirebaseFirestore.instance;
     // for (int i = 14; i <= 54; i++) {
-    final productId = '083'; // "014" ~ "054"
+    final productId = '097'; // "014" ~ "054"
 
     final dummyProduct = {
-      'Title': 'Orita Gel Air Freshener Fresh Linen 170g',
-      'Stock': 150,
-      'Price': 6.30,
+      'Title': 'Alltest Vaginal Ph Rapid Test (Vaginal Discharge) 1s',
+      'Stock': 100,
+      'Price': 21.90,
       'IsFeatured': true,
-      'Thumbnail': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FHousehold%2FHouseholdSundries%2FOrita%2Forita-air-fresh.png?alt=media&token=f603e757-f394-459c-a9b4-0d6eb6d6738e',
+      'Thumbnail': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FHealth%2FMedic%20Device%2FAll%20Test%2Falltest-vaginal.png?alt=media&token=5e0669ec-5841-4ed4-b475-a646f82a403d',
       'Brand': {
-        'Id': 'B033',
-        'Image': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/BrandLogo%2FOrita%2Forita-logo.png?alt=media&token=b13550bc-ac02-44e7-968a-b4b3253a2b21',
-        'Name': 'Orita',
-        'ProductsCount': 150,
+        'Id': 'B001',
+        'Image': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/BrandLogo%2FAlltest%2Falltest-logo.jpg?alt=media&token=ea0fc21f-b3fb-4c80-be00-3342ad1f03bd',
+        'Name': 'AllTest',
+        'ProductsCount': 100,
         'IsFeatured': true
       },
       'Images': [
-        'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FHousehold%2FHouseholdSundries%2FOrita%2Forita-air-fresh.png?alt=media&token=f603e757-f394-459c-a9b4-0d6eb6d6738e'
+        'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FHealth%2FMedic%20Device%2FAll%20Test%2Falltest-vaginal.png?alt=media&token=5e0669ec-5841-4ed4-b475-a646f82a403d'
         
       ],
-      'Description': 'Orita Gel Air Freshener Fresh Linen 170g is a convenient and stylish way to freshen up your home with a clean, refreshing linen scent. Its spiral container design allows you to control the intensity of fragrance diffusion. To use, tear along the perforation, grip the top and bottom, then twist and lift to open. Ideal for use in bedrooms, bathrooms, or closets. Contains ingredients such as aqua, fragrance, and gelling agents. Do not ingest or apply to skin. Avoid eye contact, rinse thoroughly and seek medical advice if it occurs.',
-      'SalePrice':6.30,
-      'SKU': 'SKU083',
-      'CategoryId': 'C027',
+      'Description': 'The Alltest Vaginal pH Rapid Test is a quick and reliable dry chemical test designed to semi-quantitatively detect vaginal pH levels using a swab sample, aiding in the diagnosis of bacterial vaginosis. By measuring the pH of vaginal secretions, it helps distinguish between normal and abnormal pH levels, which can be indicative of infections. The test involves collecting a vaginal swab, applying the sample to the test panel, and comparing the resulting color change with a reference scale. Results should be read while the swab area is still moist for accuracy. It is essential to follow the instructions carefully for proper sample collection and handling.',
+      'SalePrice':21.90,
+      'SKU': 'All Test SKU',
+      'CategoryId': 'C010',
       'ProductType': 'ProductType.variable',
       'ProductAttributes': [
         {
           'Name': 'Size',
-          'Values': ['170g']
+          'Values': ['1 piece']
         },
       ],
       'ProductVariations': [
         {
           'Id': '1',
-          'Stock':150,
-          'Price':6.30,
-          'SKU': '170g SKU',
-          'SalePrice': 6.30,
-          'Image': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FHousehold%2FHouseholdSundries%2FOrita%2Forita-air-fresh.png?alt=media&token=f603e757-f394-459c-a9b4-0d6eb6d6738e',
-          'AttributeValues': {'Size': '170g'}
-        }
+          'Stock': 100,
+          'Price':21.90,
+          'SKU': '1 piece SKU',
+          'SalePrice': 21.90,
+          'Image': 'https://firebasestorage.googleapis.com/v0/b/ecommerceapp-87f00.firebasestorage.app/o/ProductImage%2FHealth%2FMedic%20Device%2FAll%20Test%2Falltest-vaginal.png?alt=media&token=5e0669ec-5841-4ed4-b475-a646f82a403d',
+          'AttributeValues': {'Size': '1 piece'}
+        },
+         
       ]
     };
 
