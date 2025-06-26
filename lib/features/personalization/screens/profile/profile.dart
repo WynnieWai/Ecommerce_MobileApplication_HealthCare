@@ -61,9 +61,18 @@ class ProfileScreen extends StatelessWidget {
               const TSectionHeading(title: "Profile Information",showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
 
-              TProfileMenu(onPressed: () => Get.to(() => const ChangeName()), title: 'Name', value: controller.user.value.fullName),
-              TProfileMenu(onPressed: () => Get.to(() => const ChangeUsername()), title: 'Username', value: controller.user.value.userName),
-
+              // TProfileMenu(onPressed: () => Get.to(() => const ChangeName()), title: 'Name', value: controller.user.value.fullName),
+              // TProfileMenu(onPressed: () => Get.to(() => const ChangeUsername()), title: 'Username', value: controller.user.value.userName),
+                  Obx(() => TProfileMenu(
+                  onPressed: () => Get.to(() => const ChangeName()),
+                  title: 'Name',
+                  value: controller.user.value.fullName,
+                )),
+                Obx(() => TProfileMenu(
+                  onPressed: () => Get.to(() => const ChangeUsername()),
+                  title: 'Username',
+                  value: controller.user.value.userName,
+                )),
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(), 
               const SizedBox(height: TSizes.spaceBtwItems),

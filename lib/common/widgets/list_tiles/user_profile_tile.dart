@@ -15,29 +15,58 @@ class TUserProfileTile extends StatelessWidget {
 
   final VoidCallback onPressed;
 
+  // @override
+  // Widget build(BuildContext context) {
+  //   final controller = UserController.instance;
+  //   controller.fetchUserRecord();
+  //   return ListTile(
+  //     // leading: TCircularImage(image: controller.user.value.profilePicture, width:50, height:50, padding:0, isNetworkImage: true,),
+  //     leading: Obx(() {
+  //       final networkImage = controller.user.value.profilePicture;
+  //       final image = networkImage.isNotEmpty
+  //           ? networkImage
+  //           : TImages.user; // Fallback to default image if empty
+  //           return controller.imageUploading.value
+  //           ? const TShimmerEffect(width: 50, height: 50, radius: 50)
+  //           : TCircularImage(
+  //               image: image,
+  //               width: 50,
+  //               height: 50,
+  //               isNetworkImage: networkImage.isNotEmpty,
+  //             );
+  //     }),
+  //     title:Text(controller.user.value.fullName,style: Theme.of(context).textTheme.headlineSmall!.apply(color:TColors.white)),
+  //     subtitle: Text(controller.user.value.email,style:Theme.of(context).textTheme.bodyMedium!.apply(color:TColors.white)),
+  //     trailing: IconButton(onPressed: onPressed,icon: const Icon(Iconsax.edit,color:TColors.white)),
+  //   );
+  // }
   @override
-  Widget build(BuildContext context) {
-    final controller = UserController.instance;
-    controller.fetchUserRecord();
-    return ListTile(
-      // leading: TCircularImage(image: controller.user.value.profilePicture, width:50, height:50, padding:0, isNetworkImage: true,),
-      leading: Obx(() {
-        final networkImage = controller.user.value.profilePicture;
-        final image = networkImage.isNotEmpty
-            ? networkImage
-            : TImages.user; // Fallback to default image if empty
-            return controller.imageUploading.value
-            ? const TShimmerEffect(width: 50, height: 50, radius: 50)
-            : TCircularImage(
-                image: image,
-                width: 50,
-                height: 50,
-                isNetworkImage: networkImage.isNotEmpty,
-              );
-      }),
-      title:Text(controller.user.value.fullName,style: Theme.of(context).textTheme.headlineSmall!.apply(color:TColors.white)),
-      subtitle: Text(controller.user.value.email,style:Theme.of(context).textTheme.bodyMedium!.apply(color:TColors.white)),
-      trailing: IconButton(onPressed: onPressed,icon: const Icon(Iconsax.edit,color:TColors.white)),
-    );
-  }
+Widget build(BuildContext context) {
+  final controller = UserController.instance;
+  return ListTile(
+    leading: Obx(() {
+      final networkImage = controller.user.value.profilePicture;
+      final image = networkImage.isNotEmpty
+          ? networkImage
+          : TImages.user; // Fallback to default image if empty
+      return controller.imageUploading.value
+          ? const TShimmerEffect(width: 50, height: 50, radius: 50)
+          : TCircularImage(
+              image: image,
+              width: 50,
+              height: 50,
+              isNetworkImage: networkImage.isNotEmpty,
+            );
+    }),
+    title: Obx(() => Text(
+      controller.user.value.fullName,
+      style: Theme.of(context).textTheme.headlineSmall!.apply(color: TColors.white),
+    )),
+    subtitle: Obx(() => Text(
+      controller.user.value.email,
+      style: Theme.of(context).textTheme.bodyMedium!.apply(color: TColors.white),
+    )),
+    trailing: IconButton(onPressed: onPressed, icon: const Icon(Iconsax.edit, color: TColors.white)),
+  );
+}
 }

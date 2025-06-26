@@ -123,11 +123,12 @@ class TBrandCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TBrandTitleWithVerifiedIcon(title:brand.name,brandTextSize: TextSizes.large),
-                  Text(
-                    '${brand.productsCount ?? 0} products',
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  )
+                  // Text(
+                  //   '${brand.productsCount ?? 0} products',
+                  //   overflow: TextOverflow.ellipsis,
+                  //   style: Theme.of(context).textTheme.labelMedium,
+                  // )
+                  
                               
           ],
         ),

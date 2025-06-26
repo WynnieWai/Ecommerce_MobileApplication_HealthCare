@@ -62,12 +62,18 @@ class UpdateNameController extends GetxController {
       userController.user.value.lastName = lastName.text.trim();
       userController.user.value.userName = userName.text.trim();
 
+      // Fetch latest user data from Firestore
+      await userController.fetchUserRecord();
+
+
       // Remove Loader 
       TFullScreenLoader.stopLoading();
 
       // Show Success Message 
       TLoaders.successSnackBar(title: 'Congratulations', message: 'Your name has been updated.');
 
+      // Move to previous screen after a short delay
+      await Future.delayed(const Duration(milliseconds: 900));
       // Move to previous screen 
       Get.back();
     } catch (e) {

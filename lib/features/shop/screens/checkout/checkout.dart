@@ -80,7 +80,7 @@ class CheckoutScreen extends StatelessWidget {
           ()=> orderController.processOrder(totalAmount)
           :() => TLoaders.warningSnackBar(title: 'Empty Cart',message: 'Add items in the cart in order to proceed.'),
 
-        child: Text('Checkout \$$totalAmount'),
+        child: Text('Checkout \$${totalAmount.toStringAsFixed(2)}'),
       ),
     ),
     );
