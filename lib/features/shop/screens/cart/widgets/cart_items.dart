@@ -54,7 +54,7 @@ class TCartItems extends StatelessWidget {
                     ),
                   
                   //Product Total Price
-                  TProductPriceText(price: (item.price * item.quantity).toStringAsFixed(1)),
+                  TProductPriceText(price: (item.price * item.quantity).toStringAsFixed(2)),
                   // Delete Button
                   IconButton(
                     icon: Icon(Icons.delete, color: Colors.red),
