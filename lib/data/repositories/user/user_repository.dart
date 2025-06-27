@@ -119,4 +119,12 @@ class UserRepository extends GetxController {
 
   uploadProfileImage(String imagePath) {}
 
+  /// Get user document snapshot by user ID
+  Future<DocumentSnapshot?> getUserDoc(String userId) async {
+    try {
+      return await _db.collection('Users').doc(userId).get();
+    } catch (e) {
+      return null;
+    }
+  }
 }

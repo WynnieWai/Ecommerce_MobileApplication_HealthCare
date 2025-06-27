@@ -33,19 +33,55 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
+                    // Obx(() {
+                    //   final networkImage = controller.user.value.profilePicture;
+                    //   final image = networkImage.isNotEmpty
+                    //       ? networkImage
+                    //       : TImages.user; // Fallback to default image if empty
+                    //   return controller.imageUploading.value
+                    //       ? const TShimmerEffect(width: 80, height: 80, radius: 80)
+                    //       : TCircularImage(
+                    //           image: image,
+                    //           width: 80,
+                    //           height: 80,
+                    //           isNetworkImage: networkImage.isNotEmpty,
+                    //         );                      
+                    // }),
                     Obx(() {
-                      final networkImage = controller.user.value.profilePicture;
-                      final image = networkImage.isNotEmpty
-                          ? networkImage
-                          : TImages.user; // Fallback to default image if empty
+                      final profileUrl = controller.user.value.profilePicture;
+                      final hasProfile = profileUrl.isNotEmpty;
+                      final cacheBustedUrl = hasProfile
+                          ? '${profileUrl}?v=${DateTime.now().millisecondsSinceEpoch}'
+                          : TImages.user;
                       return controller.imageUploading.value
                           ? const TShimmerEffect(width: 80, height: 80, radius: 80)
-                          : TCircularImage(
-                              image: image,
-                              width: 80,
-                              height: 80,
-                              isNetworkImage: networkImage.isNotEmpty,
-                            );                      
+                          // : TCircularImage(
+                          //     image: hasProfile ? cacheBustedUrl : TImages.user,
+                          //     width: 80,
+                          //     height: 80,
+                          //     isNetworkImage: hasProfile,
+                          //   );
+                          : ClipOval(
+                            child: hasProfile
+                              ? Image.network(
+                                  cacheBustedUrl,
+                                  width: 50,
+                                  height: 50,
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) => Image.asset(
+                                    TImages.user,
+                                    width: 50,
+                                    height: 50,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )
+                              : Image.asset(
+                                  TImages.user,
+                                  width: 50,
+                                  height: 50,
+                                  fit: BoxFit.cover,
+                                ),
+                          );
                     }),
                     TextButton(onPressed: ()=> controller.uploadUserProfilePicture(), child: const Text('Change Profile Picture')),
                   ],

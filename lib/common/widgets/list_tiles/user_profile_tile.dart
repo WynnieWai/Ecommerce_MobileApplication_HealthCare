@@ -44,19 +44,55 @@ class TUserProfileTile extends StatelessWidget {
 Widget build(BuildContext context) {
   final controller = UserController.instance;
   return ListTile(
+    // leading: Obx(() {
+    //   final networkImage = controller.user.value.profilePicture;
+    //   final image = networkImage.isNotEmpty
+    //       ? networkImage
+    //       : TImages.user; // Fallback to default image if empty
+    //   return controller.imageUploading.value
+    //       ? const TShimmerEffect(width: 50, height: 50, radius: 50)
+    //       : TCircularImage(
+    //           image: image,
+    //           width: 50,
+    //           height: 50,
+    //           isNetworkImage: networkImage.isNotEmpty,
+    //         );
+    // }),
     leading: Obx(() {
-      final networkImage = controller.user.value.profilePicture;
-      final image = networkImage.isNotEmpty
-          ? networkImage
-          : TImages.user; // Fallback to default image if empty
+      final profileUrl = controller.user.value.profilePicture;
+      final hasProfile = profileUrl.isNotEmpty;
+      final cacheBustedUrl = profileUrl.isNotEmpty
+        ? '${profileUrl}?v=${DateTime.now().millisecondsSinceEpoch}'
+        : TImages.user;
       return controller.imageUploading.value
           ? const TShimmerEffect(width: 50, height: 50, radius: 50)
-          : TCircularImage(
-              image: image,
-              width: 50,
-              height: 50,
-              isNetworkImage: networkImage.isNotEmpty,
-            );
+          // : TCircularImage(
+          //   image: hasProfile ? cacheBustedUrl : TImages.user,
+          //   width: 50,
+          //   height: 50,
+          //   isNetworkImage: hasProfile,
+          // );
+          : ClipOval(
+            child: hasProfile
+              ? Image.network(
+                  cacheBustedUrl,
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => Image.asset(
+                    TImages.user,
+                    width: 50,
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
+                )
+              : Image.asset(
+                  TImages.user,
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.cover,
+                ),
+          );
     }),
     title: Obx(() => Text(
       controller.user.value.fullName,

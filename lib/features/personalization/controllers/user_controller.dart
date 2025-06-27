@@ -1,7 +1,7 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:testing_asg1/data/repositories/authentication/authentication_repository.dart';
 import 'package:testing_asg1/data/repositories/user/user_repository.dart';
@@ -38,8 +38,12 @@ class UserController extends GetxController {
     try {
       profileLoading.value = true;
       final user = await userRepository.fetchUserDetails();
+      print('[DEBUG] Loaded user from Firestore:');
+      print('  Email: \\${user.email}');
+      print('  ProfilePicture: \\${user.profilePicture}');
       this.user(user);
     } catch (e) {
+      print('[DEBUG] Error loading user: $e');
       user(UserModel.empty());
     } finally {
       profileLoading.value = false;
@@ -47,29 +51,60 @@ class UserController extends GetxController {
   }
 
   /// Save user Record from any Registration provider
+  // Future<void> saveUserRecord(UserCredential? userCredentials) async {
+  //   try {
+  //     // Refresh User Record
+  //     await fetchUserRecord();
+  //     if (user.value.id.isNotEmpty) {
+  //       if (userCredentials != null) {
+  //         // Convert Name to First and Last Name
+  //         final nameParts = UserModel.nameParts(userCredentials.user?.displayName ?? '');
+  //         final userName = UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+
+  //         //Map Data
+  //         final user = UserModel(
+  //           id: userCredentials.user!.uid,
+  //           firstName: nameParts[0],
+  //           lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+  //           userName: userName,
+  //           email: userCredentials.user!.email ?? '',
+  //           phoneNumber: userCredentials.user!.phoneNumber ?? '',
+  //           profilePicture: userCredentials.user!.photoURL ?? '',
+  //         );
+  //         // Save User Record
+  //         await userRepository.saveUserRecord(user);
+  //       }
+  //     }
+  //   } catch (e) {
+  //     TLoaders.warningSnackBar(
+  //       title: 'Data not saved',
+  //       message: 'Something went wrong while saving your information. You can re-save your data in your Profile.',
+  //     );
+  //   }
+  // }
+
   Future<void> saveUserRecord(UserCredential? userCredentials) async {
     try {
-      // Refresh User Record
-      await fetchUserRecord();
-      if (user.value.id.isNotEmpty) {
-        if (userCredentials != null) {
-          // Convert Name to First and Last Name
-          final nameParts = UserModel.nameParts(userCredentials.user?.displayName ?? '');
-          final userName = UserModel.generateUsername(userCredentials.user!.displayName ?? '');
+      if (userCredentials != null) {
+        final displayName = userCredentials.user?.displayName ?? '';
+        final nameParts = UserModel.nameParts(displayName);
+        final userName = UserModel.generateUsername(displayName);
 
-          //Map Data
-          final user = UserModel(
-            id: userCredentials.user!.uid,
-            firstName: nameParts[0],
-            lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-            userName: userName,
-            email: userCredentials.user!.email ?? '',
-            phoneNumber: userCredentials.user!.phoneNumber ?? '',
-            profilePicture: userCredentials.user!.photoURL ?? '',
-          );
-          // Save User Record
-          await userRepository.saveUserRecord(user);
-        }
+        print('[DEBUG] Saving user to Firestore:');
+        print('  Email: \\${userCredentials.user!.email}');
+        print('  ProfilePicture: \\${userCredentials.user!.photoURL}');
+
+        final user = UserModel(
+          id: userCredentials.user!.uid,
+          firstName: nameParts[0],
+          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+          userName: userName,
+          email: userCredentials.user!.email ?? '',
+          phoneNumber: userCredentials.user!.phoneNumber ?? '',
+          profilePicture: userCredentials.user!.photoURL ?? '',
+        );
+        await userRepository.saveUserRecord(user); // This should update or create
+        await fetchUserRecord();
       }
     } catch (e) {
       TLoaders.warningSnackBar(
@@ -79,38 +114,118 @@ class UserController extends GetxController {
     }
   }
 
-  Future<void> saveUserGoogleRecord(UserCredential? userCredentials) async {
-    try {
-      // Refresh User Record
-      await fetchUserRecord();
+  // Future<void> saveUserGoogleRecord(UserCredential? userCredentials) async {
+  //   try {
+  //     // Refresh User Record
+  //     await fetchUserRecord();
 
-      // Only save if user doesn't already exist
-      if (user.value.id.isEmpty && userCredentials != null) {
-        final email = userCredentials.user?.email ?? '';
-        final uid = userCredentials.user?.uid ?? '';
+  //     // Only save if user doesn't already exist
+  //     if (user.value.id.isEmpty && userCredentials != null) {
+  //       final email = userCredentials.user?.email ?? '';
+  //       final uid = userCredentials.user?.uid ?? '';
 
-        // Create user with only email and id
+  //       // Create user with only email and id
+  //       final user = UserModel(
+  //         id: uid,
+  //         firstName: '',
+  //         lastName: '',
+  //         userName: '',
+  //         email: email,
+  //         phoneNumber: '',
+  //         profilePicture: '',
+  //       );
+
+  //       // Save user record with only email
+  //       await userRepository.saveUserRecord(user);
+  //     }
+  //   } catch (e) {
+  //     TLoaders.warningSnackBar(
+  //       title: 'Data not saved',
+  //       message: 'Something went wrong while saving your Google email.',
+  //     );
+  //   }
+  // }
+
+  // Future<void> saveUserGoogleRecord(UserCredential? userCredentials) async {
+  //   try {
+  //     // Refresh User Record
+  //     await fetchUserRecord();
+
+  //     // Only save if user doesn't already exist
+  //     if (user.value.id.isEmpty && userCredentials != null) {
+  //       final displayName = userCredentials.user?.displayName ?? '';
+  //       final nameParts = UserModel.nameParts(displayName);
+  //       final userName = UserModel.generateUsername(displayName);
+
+  //       final user = UserModel(
+  //         id: userCredentials.user!.uid,
+  //         firstName: nameParts[0],
+  //         lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+  //         userName: userName,
+  //         email: userCredentials.user!.email ?? '',
+  //         phoneNumber: userCredentials.user!.phoneNumber ?? '',
+  //         profilePicture: userCredentials.user!.photoURL ?? '',
+  //       );
+
+  //       await userRepository.saveUserRecord(user);
+  //       await fetchUserRecord();
+  //     }
+  //   } catch (e) {
+  //     TLoaders.warningSnackBar(
+  //       title: 'Data not saved',
+  //       message: 'Something went wrong while saving your Google information.',
+  //     );
+  //   }
+  // }
+
+Future<void> saveUserGoogleRecord(UserCredential? userCredentials, GoogleSignInAccount? googleAccount) async {
+  try {
+    if (userCredentials != null) {
+      final userId = userCredentials.user!.uid;
+      // Check if user document exists in Firestore
+      final userDoc = await userRepository.getUserDoc(userId); // You may need to implement this in your repository
+      if (userDoc != null && userDoc.exists) {
+        // Existing user: use Firestore's profilePicture
+        final data = userDoc.data() as Map<String, dynamic>;
+        final displayName = data['firstName'] + (data['lastName'] != null ? ' ' + data['lastName'] : '');
+        final nameParts = UserModel.nameParts(displayName);
+        final userName = data['userName'] ?? UserModel.generateUsername(displayName);
+        final email = data['email'] ?? userCredentials.user?.email ?? googleAccount?.email ?? '';
+        final photoUrl = data['profilePicture'] ?? '';
         final user = UserModel(
-          id: uid,
-          firstName: '',
-          lastName: '',
-          userName: '',
+          id: userId,
+          firstName: nameParts[0],
+          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+          userName: userName,
           email: email,
-          phoneNumber: '',
-          profilePicture: '',
+          phoneNumber: data['phoneNumber'] ?? '',
+          profilePicture: photoUrl,
         );
-
-        // Save user record with only email
+        await userRepository.saveUserRecord(user); // This will update the local model
+      } else {
+        // New user: use Google info
+        final displayName = userCredentials.user?.displayName ?? googleAccount?.displayName ?? '';
+        final nameParts = UserModel.nameParts(displayName);
+        final userName = UserModel.generateUsername(displayName);
+        final email = userCredentials.user?.email ?? googleAccount?.email ?? '';
+        final photoUrl = userCredentials.user?.photoURL ?? googleAccount?.photoUrl ?? '';
+        final user = UserModel(
+          id: userId,
+          firstName: nameParts[0],
+          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+          userName: userName,
+          email: email,
+          phoneNumber: userCredentials.user!.phoneNumber ?? '',
+          profilePicture: photoUrl,
+        );
         await userRepository.saveUserRecord(user);
       }
-    } catch (e) {
-      TLoaders.warningSnackBar(
-        title: 'Data not saved',
-        message: 'Something went wrong while saving your Google email.',
-      );
+      await fetchUserRecord();
     }
+  } catch (e) {
+    // ...existing error handling...
   }
-
+}
 
   // Upload Profile Image
   uploadUserProfilePicture() async {
@@ -125,9 +240,11 @@ class UserController extends GetxController {
           'profilePicture': imageUrl,
         };
         await userRepository.updateSingleField(json);
+        await fetchUserRecord(); // Add this line after updating Firestore
 
         user.value.profilePicture = imageUrl; // Update local user model
         user.refresh(); // Refresh the user observable
+        await fetchUserRecord(); // Add this to ensure the latest data is loaded
         
         TLoaders.successSnackBar(title: 'Profile Picture Updated', message: 'Your profile picture has been updated.');
       }
@@ -138,8 +255,6 @@ class UserController extends GetxController {
       imageUploading.value = false;
     }
   }
-
-
 
   /// Delete Account Warning 
   void deleteAccountWarningPopup() {
