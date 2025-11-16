@@ -1,7 +1,8 @@
 <p align="center">
   <img src="assets/logos/Carewell.png" alt="Carewell Health Care Logo" width="300">
 </p>
-# Carewell Health Care
+
+## Carewell Health Care
 
 Carewell Health Care is a Flutter-based e-commerce mobile application that allows users to browse and purchase healthcare and personal care products through a clean and modern interface. It was developed as part of the SWE311 – Mobile Application System Design course.
 
