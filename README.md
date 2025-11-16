@@ -30,10 +30,12 @@ Carewell Health Care is a Flutter-based e-commerce mobile application that allow
    ```bash
    flutter pub get
 3. Run the app
+   ```bash
    flutter run
+   
 ## Contributor
--Chin Kok Fei 
--Oong Chen Ping 
--Tee Guang De 
--Wai Pui Shan 
--Wong Wan Ning 
+- Chin Kok Fei
+- Oong Chen Ping
+- Tee Guang De
+- Wai Pui Shan
+- Wong Wan Ning 
