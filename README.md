@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/Carewell.png" alt="Carewell Health Care Logo" width="140">
+  <img src="assets/logos/Carewell.png" alt="Carewell Health Care Logo" width="140">
 </p>
 # Carewell Health Care
 
